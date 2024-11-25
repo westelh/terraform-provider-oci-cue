@@ -21,7 +21,7 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/common"
 	oci_log_analytics "github.com/oracle/oci-go-sdk/v65/loganalytics"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 )
 
 var (

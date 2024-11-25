@@ -16,7 +16,7 @@ import (
 	oci_datascience "github.com/oracle/oci-go-sdk/v65/datascience"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
 	tf_client "github.com/westelh/terraform-provider-oci-cue/internal/client"
 	"github.com/westelh/terraform-provider-oci-cue/internal/resourcediscovery"

@@ -22,7 +22,7 @@ import (
 	oci_certificates_management "github.com/oracle/oci-go-sdk/v65/certificatesmanagement"
 	"github.com/oracle/oci-go-sdk/v65/common"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 )
 
 var (

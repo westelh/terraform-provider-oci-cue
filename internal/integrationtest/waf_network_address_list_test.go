@@ -22,7 +22,7 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/common"
 	oci_waf "github.com/oracle/oci-go-sdk/v65/waf"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 )
 
 var (

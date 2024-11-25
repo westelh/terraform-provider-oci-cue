@@ -23,7 +23,7 @@ import (
 	oci_data_labeling_service "github.com/oracle/oci-go-sdk/v65/datalabelingservice"
 	"github.com/oracle/oci-go-sdk/v65/objectstorage"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 )
 
 var (

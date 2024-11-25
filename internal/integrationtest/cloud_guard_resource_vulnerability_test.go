@@ -6,7 +6,7 @@ package integrationtest
 import (
 	"fmt"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
 	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 )
@@ -22,7 +22,7 @@ import (
 
 "github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 
-"github.com/oracle/terraform-provider-oci/httpreplay"
+"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 "github.com/westelh/terraform-provider-oci-cue/internal/acctest"
 
 "github.com/westelh/terraform-provider-oci-cue/internal/utils"

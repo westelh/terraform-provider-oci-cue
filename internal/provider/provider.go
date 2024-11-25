@@ -34,7 +34,7 @@ import (
 	oci_common "github.com/oracle/oci-go-sdk/v65/common"
 	oci_common_auth "github.com/oracle/oci-go-sdk/v65/common/auth"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 	tf_client "github.com/westelh/terraform-provider-oci-cue/internal/client"
 	tf_resource "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 	"github.com/westelh/terraform-provider-oci-cue/internal/utils"

@@ -17,7 +17,7 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/common"
 	oci_identity "github.com/oracle/oci-go-sdk/v65/identity"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
 	"github.com/westelh/terraform-provider-oci-cue/internal/resourcediscovery"
 	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"

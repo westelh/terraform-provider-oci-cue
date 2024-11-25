@@ -13,7 +13,7 @@ import (
 	"github.com/westelh/terraform-provider-oci-cue/internal/resourcediscovery"
 	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"

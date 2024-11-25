@@ -21,7 +21,7 @@ import (
 	oci_apm_synthetics "github.com/oracle/oci-go-sdk/v65/apmsynthetics"
 	"github.com/oracle/oci-go-sdk/v65/common"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 )
 
 var (

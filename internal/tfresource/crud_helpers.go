@@ -33,7 +33,7 @@ import (
 	oci_load_balancer "github.com/oracle/oci-go-sdk/v65/loadbalancer"
 	oci_work_requests "github.com/oracle/oci-go-sdk/v65/workrequests"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 )
 
 var (

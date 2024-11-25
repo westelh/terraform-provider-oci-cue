@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	"github.com/oracle/oci-go-sdk/v65/common"
 	oci_object_storage "github.com/oracle/oci-go-sdk/v65/objectstorage"
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
 	tf_client "github.com/westelh/terraform-provider-oci-cue/internal/client"
 	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"

@@ -18,7 +18,7 @@ import (
 
 	oci_database "github.com/oracle/oci-go-sdk/v65/database"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
 	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 	"github.com/westelh/terraform-provider-oci-cue/internal/utils"

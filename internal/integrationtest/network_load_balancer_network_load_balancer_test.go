@@ -22,7 +22,7 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/common"
 	oci_network_load_balancer "github.com/oracle/oci-go-sdk/v65/networkloadbalancer"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 )
 
 var (

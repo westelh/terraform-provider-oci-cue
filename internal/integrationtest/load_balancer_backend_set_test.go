@@ -15,7 +15,7 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/common"
 	oci_load_balancer "github.com/oracle/oci-go-sdk/v65/loadbalancer"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
 	"github.com/westelh/terraform-provider-oci-cue/internal/resourcediscovery"
 	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"

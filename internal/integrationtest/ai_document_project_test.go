@@ -17,7 +17,7 @@ import (
 	oci_ai_document "github.com/oracle/oci-go-sdk/v65/aidocument"
 	"github.com/oracle/oci-go-sdk/v65/common"
 
-	"github.com/oracle/terraform-provider-oci/httpreplay"
+	"github.com/westelh/terraform-provider-oci-cue/httpreplay"
 	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
 	tf_client "github.com/westelh/terraform-provider-oci-cue/internal/client"
 	"github.com/westelh/terraform-provider-oci-cue/internal/resourcediscovery"
