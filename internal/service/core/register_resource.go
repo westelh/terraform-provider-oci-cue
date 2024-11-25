@@ -3,7 +3,7 @@
 
 package core
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterResource() {
 	tfresource.RegisterResource("oci_core_app_catalog_listing_resource_version_agreement", AppCatalogListingResourceVersionAgreementResource())

@@ -4,12 +4,12 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 	oci_log_analytics "github.com/oracle/oci-go-sdk/v65/loganalytics"
 	oci_objectstorage "github.com/oracle/oci-go-sdk/v65/objectstorage"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

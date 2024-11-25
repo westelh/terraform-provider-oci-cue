@@ -3,7 +3,7 @@ package cloud_migrations
 import (
 	oci_cloud_migrations "github.com/oracle/oci-go-sdk/v65/cloudmigrations"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

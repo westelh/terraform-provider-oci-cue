@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/oracle/terraform-provider-oci/internal/globalvar"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/globalvar"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 )
 
 func exportAttributeAsVariable(sourceAttributes map[string]interface{}, resourceType string, resourceName string, interpolationMap map[string]string) error {

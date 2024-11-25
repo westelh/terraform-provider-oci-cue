@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/oracle/terraform-provider-oci/internal/acctest"
-	"github.com/oracle/terraform-provider-oci/internal/resourcediscovery"
-	tf_objectstorage "github.com/oracle/terraform-provider-oci/internal/service/objectstorage"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
+	"github.com/westelh/terraform-provider-oci-cue/internal/resourcediscovery"
+	tf_objectstorage "github.com/westelh/terraform-provider-oci-cue/internal/service/objectstorage"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"

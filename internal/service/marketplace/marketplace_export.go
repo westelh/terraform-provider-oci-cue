@@ -5,8 +5,8 @@ import (
 	"fmt"
 
 	oci_marketplace "github.com/oracle/oci-go-sdk/v65/marketplace"
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 )
 
 func init() {

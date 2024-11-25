@@ -3,7 +3,7 @@ package vbs_inst
 import (
 	oci_vbs_inst "github.com/oracle/oci-go-sdk/v65/vbsinst"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

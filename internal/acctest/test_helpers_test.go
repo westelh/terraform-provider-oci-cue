@@ -10,14 +10,14 @@ import (
 
 	"github.com/oracle/terraform-provider-oci/httpreplay"
 
-	tf_client "github.com/oracle/terraform-provider-oci/internal/client"
+	tf_client "github.com/westelh/terraform-provider-oci-cue/internal/client"
 
 	"github.com/stretchr/testify/assert"
 
-	"github.com/oracle/terraform-provider-oci/internal/globalvar"
-	"github.com/oracle/terraform-provider-oci/internal/provider"
+	"github.com/westelh/terraform-provider-oci-cue/internal/globalvar"
+	"github.com/westelh/terraform-provider-oci-cue/internal/provider"
 
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
 	"github.com/hashicorp/go-cty/cty"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"

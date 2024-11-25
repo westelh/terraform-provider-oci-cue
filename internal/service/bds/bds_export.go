@@ -5,7 +5,7 @@ import (
 
 	oci_bds "github.com/oracle/oci-go-sdk/v65/bds"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

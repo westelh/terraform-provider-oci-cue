@@ -3,7 +3,7 @@
 
 package compute_cloud_at_customer
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterResource() {
 	tfresource.RegisterResource("oci_compute_cloud_at_customer_ccc_infrastructure", ComputeCloudAtCustomerCccInfrastructureResource())

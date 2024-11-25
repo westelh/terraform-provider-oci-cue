@@ -6,7 +6,7 @@ package datacatalog
 import (
 	"strings"
 
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 	"reflect"
 

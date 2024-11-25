@@ -3,7 +3,7 @@
 
 package apm_config
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_apm_config_config", ApmConfigConfigDataSource())

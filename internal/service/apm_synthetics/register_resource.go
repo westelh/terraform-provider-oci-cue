@@ -3,7 +3,7 @@
 
 package apm_synthetics
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterResource() {
 	tfresource.RegisterResource("oci_apm_synthetics_dedicated_vantage_point", ApmSyntheticsDedicatedVantagePointResource())

@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -19,8 +19,8 @@ import (
 	oci_common "github.com/oracle/oci-go-sdk/v65/common"
 	oci_database_migration "github.com/oracle/oci-go-sdk/v65/databasemigration"
 
-	"github.com/oracle/terraform-provider-oci/internal/client"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/client"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 )
 
 func DatabaseMigrationMigrationResource() *schema.Resource {

@@ -3,7 +3,7 @@
 
 package security_attribute
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_security_attribute_security_attribute", SecurityAttributeSecurityAttributeDataSource())

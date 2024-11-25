@@ -3,7 +3,7 @@
 
 package database_management
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterResource() {
 	tfresource.RegisterResource("oci_database_management_autonomous_database_autonomous_database_dbm_features_management", DatabaseManagementAutonomousDatabaseAutonomousDatabaseDbmFeaturesManagementResource())

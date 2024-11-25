@@ -3,7 +3,7 @@ package generative_ai_agent
 import (
 	oci_generative_ai_agent "github.com/oracle/oci-go-sdk/v65/generativeaiagent"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

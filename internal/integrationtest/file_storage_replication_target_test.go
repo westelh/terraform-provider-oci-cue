@@ -17,12 +17,12 @@ import (
 
 	oci_file_storage "github.com/oracle/oci-go-sdk/v65/filestorage"
 
-	tf_client "github.com/oracle/terraform-provider-oci/internal/client"
+	tf_client "github.com/westelh/terraform-provider-oci-cue/internal/client"
 
 	"github.com/oracle/terraform-provider-oci/httpreplay"
-	"github.com/oracle/terraform-provider-oci/internal/acctest"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 )
 
 var (

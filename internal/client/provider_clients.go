@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 	"github.com/oracle/oci-go-sdk/v65/common"
 	oci_identity_domains "github.com/oracle/oci-go-sdk/v65/identitydomains"
@@ -17,12 +17,12 @@ import (
 
 	oci_kms "github.com/oracle/oci-go-sdk/v65/keymanagement"
 
-	"github.com/oracle/terraform-provider-oci/internal/globalvar"
+	"github.com/westelh/terraform-provider-oci-cue/internal/globalvar"
 
 	oci_common "github.com/oracle/oci-go-sdk/v65/common"
 	oci_work_requests "github.com/oracle/oci-go-sdk/v65/workrequests"
 
-	utils "github.com/oracle/terraform-provider-oci/internal/utils"
+	utils "github.com/westelh/terraform-provider-oci-cue/internal/utils"
 )
 
 var OracleClientRegistrationsVar *OracleClientRegistrations // This is a global registration for all oracle clients. This is invariant information about all clients regardless of region

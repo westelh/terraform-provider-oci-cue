@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	oci_mysql "github.com/oracle/oci-go-sdk/v65/mysql"
-	tf_client "github.com/oracle/terraform-provider-oci/internal/client"
+	tf_client "github.com/westelh/terraform-provider-oci-cue/internal/client"
 )
 
 func (s *MysqlMysqlBackupResourceCrud) createDbBackupClientInRegion(region string) error {

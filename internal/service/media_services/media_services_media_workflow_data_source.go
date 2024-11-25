@@ -11,8 +11,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	oci_media_services "github.com/oracle/oci-go-sdk/v65/mediaservices"
 
-	"github.com/oracle/terraform-provider-oci/internal/client"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/client"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 )
 
 func MediaServicesMediaWorkflowDataSource() *schema.Resource {

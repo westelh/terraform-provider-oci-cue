@@ -9,8 +9,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/oracle/terraform-provider-oci/internal/acctest"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
 	"github.com/oracle/terraform-provider-oci/httpreplay"
 

@@ -3,7 +3,7 @@ package ai_vision
 import (
 	oci_ai_vision "github.com/oracle/oci-go-sdk/v65/aivision"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

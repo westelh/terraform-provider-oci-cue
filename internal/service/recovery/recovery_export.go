@@ -3,7 +3,7 @@ package recovery
 import (
 	oci_recovery "github.com/oracle/oci-go-sdk/v65/recovery"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

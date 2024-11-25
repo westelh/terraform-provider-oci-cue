@@ -20,10 +20,10 @@ import (
 	"github.com/hashicorp/go-multierror"
 	"github.com/hashicorp/go-version"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 
-	"github.com/oracle/terraform-provider-oci/internal/globalvar"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/globalvar"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 	"golang.org/x/mod/semver"
 
@@ -32,9 +32,9 @@ import (
 	oci_common "github.com/oracle/oci-go-sdk/v65/common"
 	oci_identity "github.com/oracle/oci-go-sdk/v65/identity"
 
-	tf_client "github.com/oracle/terraform-provider-oci/internal/client"
-	tf_provider "github.com/oracle/terraform-provider-oci/internal/provider"
-	utils "github.com/oracle/terraform-provider-oci/internal/utils"
+	tf_client "github.com/westelh/terraform-provider-oci-cue/internal/client"
+	tf_provider "github.com/westelh/terraform-provider-oci-cue/internal/provider"
+	utils "github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
 	hcinstall "github.com/hashicorp/hc-install"
 	"github.com/hashicorp/hc-install/fs"

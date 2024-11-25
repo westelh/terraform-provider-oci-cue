@@ -3,7 +3,7 @@
 
 package kms
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_kms_ekms_private_endpoint", KmsEkmsPrivateEndpointDataSource())

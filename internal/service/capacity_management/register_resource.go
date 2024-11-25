@@ -3,7 +3,7 @@
 
 package capacity_management
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterResource() {
 	tfresource.RegisterResource("oci_capacity_management_occ_availability_catalog", CapacityManagementOccAvailabilityCatalogResource())

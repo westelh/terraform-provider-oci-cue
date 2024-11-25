@@ -3,7 +3,7 @@ package ai_document
 import (
 	oci_ai_document "github.com/oracle/oci-go-sdk/v65/aidocument"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

@@ -3,7 +3,7 @@
 
 package operator_access_control
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_operator_access_control_access_request", OperatorAccessControlAccessRequestDataSource())

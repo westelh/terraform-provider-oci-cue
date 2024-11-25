@@ -17,8 +17,8 @@ import (
 	oci_common "github.com/oracle/oci-go-sdk/v65/common"
 	oci_generative_ai_agent "github.com/oracle/oci-go-sdk/v65/generativeaiagent"
 
-	"github.com/oracle/terraform-provider-oci/internal/client"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/client"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 )
 
 func GenerativeAiAgentKnowledgeBaseResource() *schema.Resource {

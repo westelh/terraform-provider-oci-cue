@@ -3,7 +3,7 @@
 
 package disaster_recovery
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterResource() {
 	tfresource.RegisterResource("oci_disaster_recovery_dr_plan", DisasterRecoveryDrPlanResource())

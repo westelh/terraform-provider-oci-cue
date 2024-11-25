@@ -3,7 +3,7 @@
 
 package service_mesh
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterResource() {
 	tfresource.RegisterResource("oci_service_mesh_access_policy", ServiceMeshAccessPolicyResource())

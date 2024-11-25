@@ -21,20 +21,20 @@ import (
 
 	"github.com/hashicorp/go-version"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 
 	oci_common "github.com/oracle/oci-go-sdk/v65/common"
 
 	"github.com/hashicorp/terraform-exec/tfexec"
 	oci_identity "github.com/oracle/oci-go-sdk/v65/identity"
 
-	tf_client "github.com/oracle/terraform-provider-oci/internal/client"
+	tf_client "github.com/westelh/terraform-provider-oci-cue/internal/client"
 
-	"github.com/oracle/terraform-provider-oci/internal/acctest"
-	"github.com/oracle/terraform-provider-oci/internal/globalvar"
-	tf_provider "github.com/oracle/terraform-provider-oci/internal/provider"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
+	"github.com/westelh/terraform-provider-oci-cue/internal/globalvar"
+	tf_provider "github.com/westelh/terraform-provider-oci-cue/internal/provider"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
 	"github.com/stretchr/testify/assert"
 

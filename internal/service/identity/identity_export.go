@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 	oci_identity "github.com/oracle/oci-go-sdk/v65/identity"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

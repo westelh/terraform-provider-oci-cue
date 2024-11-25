@@ -3,7 +3,7 @@ package container_instances
 import (
 	oci_container_instances "github.com/oracle/oci-go-sdk/v65/containerinstances"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

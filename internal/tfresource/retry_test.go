@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/oracle/terraform-provider-oci/internal/globalvar"
+	"github.com/westelh/terraform-provider-oci-cue/internal/globalvar"
 
 	"github.com/stretchr/testify/assert"
 

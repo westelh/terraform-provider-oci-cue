@@ -3,7 +3,7 @@ package vn_monitoring
 import (
 	oci_vn_monitoring "github.com/oracle/oci-go-sdk/v65/vnmonitoring"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

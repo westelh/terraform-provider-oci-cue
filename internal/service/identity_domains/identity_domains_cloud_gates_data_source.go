@@ -9,8 +9,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	oci_identity_domains "github.com/oracle/oci-go-sdk/v65/identitydomains"
 
-	"github.com/oracle/terraform-provider-oci/internal/client"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/client"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 )
 
 func IdentityDomainsCloudGatesDataSource() *schema.Resource {

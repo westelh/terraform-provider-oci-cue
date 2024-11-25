@@ -15,7 +15,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 
-	utils "github.com/oracle/terraform-provider-oci/internal/utils"
+	utils "github.com/westelh/terraform-provider-oci-cue/internal/utils"
 )
 
 /*

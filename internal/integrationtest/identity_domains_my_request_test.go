@@ -9,13 +9,13 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/oracle/terraform-provider-oci/internal/resourcediscovery"
+	"github.com/westelh/terraform-provider-oci-cue/internal/resourcediscovery"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
 	"github.com/oracle/terraform-provider-oci/httpreplay"
-	"github.com/oracle/terraform-provider-oci/internal/acctest"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 )
 
 var (

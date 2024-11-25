@@ -3,7 +3,7 @@
 
 package ai_anomaly_detection
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterResource() {
 	tfresource.RegisterResource("oci_ai_anomaly_detection_ai_private_endpoint", AiAnomalyDetectionAiPrivateEndpointResource())

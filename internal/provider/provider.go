@@ -16,10 +16,10 @@ import (
 	"strings"
 	"time"
 
-	tf_core "github.com/oracle/terraform-provider-oci/internal/service/core"
-	tf_load_balancer "github.com/oracle/terraform-provider-oci/internal/service/load_balancer"
+	tf_core "github.com/westelh/terraform-provider-oci-cue/internal/service/core"
+	tf_load_balancer "github.com/westelh/terraform-provider-oci-cue/internal/service/load_balancer"
 
-	"github.com/oracle/terraform-provider-oci/internal/globalvar"
+	"github.com/westelh/terraform-provider-oci-cue/internal/globalvar"
 
 	"crypto/tls"
 	"crypto/x509"
@@ -35,9 +35,9 @@ import (
 	oci_common_auth "github.com/oracle/oci-go-sdk/v65/common/auth"
 
 	"github.com/oracle/terraform-provider-oci/httpreplay"
-	tf_client "github.com/oracle/terraform-provider-oci/internal/client"
-	tf_resource "github.com/oracle/terraform-provider-oci/internal/tfresource"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	tf_client "github.com/westelh/terraform-provider-oci-cue/internal/client"
+	tf_resource "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 )
 
 var descriptions map[string]string

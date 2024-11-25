@@ -3,7 +3,7 @@
 
 package globally_distributed_database
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_globally_distributed_database_private_endpoint", GloballyDistributedDatabasePrivateEndpointDataSource())

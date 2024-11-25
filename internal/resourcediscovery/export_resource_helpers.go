@@ -17,11 +17,11 @@ import (
 	"sync"
 	"time"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 
-	tf_client "github.com/oracle/terraform-provider-oci/internal/client"
-	"github.com/oracle/terraform-provider-oci/internal/globalvar"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	tf_client "github.com/westelh/terraform-provider-oci-cue/internal/client"
+	"github.com/westelh/terraform-provider-oci-cue/internal/globalvar"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
 	"github.com/hashicorp/terraform-exec/tfexec"
 

@@ -3,7 +3,7 @@
 
 package dns
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterResource() {
 	tfresource.RegisterResource("oci_dns_action_create_zone_from_zone_file", DnsActionCreateZoneFromZoneFileResource())

@@ -4,7 +4,7 @@ package database_migration
 //import (
 //	oci_database_migration "github.com/oracle/oci-go-sdk/v65/databasemigration"
 //
-//	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+//	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 //)
 //
 //func init() {

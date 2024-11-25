@@ -10,7 +10,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	oci_core "github.com/oracle/oci-go-sdk/v65/core"
 
-	"github.com/oracle/terraform-provider-oci/internal/acctest"
+	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
 )
 
 func getPublicIpIdsForRegionScope(compartmentId string, listPublicIpsRequest oci_core.ListPublicIpsRequest) ([]oci_core.PublicIp, error) {

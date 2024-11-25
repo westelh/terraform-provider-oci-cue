@@ -8,12 +8,12 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/oracle/terraform-provider-oci/internal/resourcediscovery"
+	"github.com/westelh/terraform-provider-oci-cue/internal/resourcediscovery"
 
 	oci_data_safe "github.com/oracle/oci-go-sdk/v65/datasafe"
 
-	"github.com/oracle/terraform-provider-oci/internal/acctest"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"

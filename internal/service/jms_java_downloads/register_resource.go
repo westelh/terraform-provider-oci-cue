@@ -3,7 +3,7 @@
 
 package jms_java_downloads
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterResource() {
 	tfresource.RegisterResource("oci_jms_java_downloads_java_download_report", JmsJavaDownloadsJavaDownloadReportResource())

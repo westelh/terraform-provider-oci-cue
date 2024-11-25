@@ -11,8 +11,8 @@ import (
 	oci_common "github.com/oracle/oci-go-sdk/v65/common"
 	oci_onesubscription "github.com/oracle/oci-go-sdk/v65/onesubscription"
 
-	"github.com/oracle/terraform-provider-oci/internal/client"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/client"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 )
 
 func OnesubscriptionComputedUsagesDataSource() *schema.Resource {

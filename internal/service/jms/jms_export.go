@@ -3,7 +3,7 @@ package jms
 import (
 	oci_jms "github.com/oracle/oci-go-sdk/v65/jms"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

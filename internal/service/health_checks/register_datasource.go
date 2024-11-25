@@ -3,7 +3,7 @@
 
 package health_checks
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_health_checks_http_monitor", HealthChecksHttpMonitorDataSource())

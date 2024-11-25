@@ -5,7 +5,7 @@ import (
 
 	oci_blockchain "github.com/oracle/oci-go-sdk/v65/blockchain"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

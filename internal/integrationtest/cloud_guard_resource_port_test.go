@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/oracle/terraform-provider-oci/httpreplay"
-	"github.com/oracle/terraform-provider-oci/internal/acctest"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 )
 
 // Copyright (c) 2017, 2024, Oracle and/or its affiliates. All rights reserved.
@@ -24,9 +24,9 @@ import (
 "github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 
 "github.com/oracle/terraform-provider-oci/httpreplay"
-"github.com/oracle/terraform-provider-oci/internal/acctest"
+"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
 
-"github.com/oracle/terraform-provider-oci/internal/utils"
+"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 )
 
 var (

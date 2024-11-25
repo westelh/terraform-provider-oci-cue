@@ -3,7 +3,7 @@ package visual_builder
 import (
 	oci_visual_builder "github.com/oracle/oci-go-sdk/v65/visualbuilder"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

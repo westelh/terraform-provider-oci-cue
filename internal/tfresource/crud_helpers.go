@@ -23,7 +23,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
 	"sync"
 

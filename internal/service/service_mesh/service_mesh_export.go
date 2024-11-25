@@ -3,7 +3,7 @@ package service_mesh
 import (
 	oci_service_mesh "github.com/oracle/oci-go-sdk/v65/servicemesh"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

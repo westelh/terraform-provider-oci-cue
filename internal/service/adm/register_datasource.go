@@ -3,7 +3,7 @@
 
 package adm
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_adm_knowledge_base", AdmKnowledgeBaseDataSource())

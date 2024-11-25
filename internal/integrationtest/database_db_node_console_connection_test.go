@@ -17,14 +17,14 @@ import (
 	"github.com/oracle/oci-go-sdk/v65/common"
 	oci_database "github.com/oracle/oci-go-sdk/v65/database"
 
-	tf_database "github.com/oracle/terraform-provider-oci/internal/service/database"
+	tf_database "github.com/westelh/terraform-provider-oci-cue/internal/service/database"
 
 	"github.com/oracle/terraform-provider-oci/httpreplay"
-	"github.com/oracle/terraform-provider-oci/internal/acctest"
-	"github.com/oracle/terraform-provider-oci/internal/client"
-	"github.com/oracle/terraform-provider-oci/internal/resourcediscovery"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
+	"github.com/westelh/terraform-provider-oci-cue/internal/client"
+	"github.com/westelh/terraform-provider-oci-cue/internal/resourcediscovery"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 )
 
 var (

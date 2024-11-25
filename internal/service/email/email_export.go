@@ -3,7 +3,7 @@ package email
 import (
 	oci_email "github.com/oracle/oci-go-sdk/v65/email"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

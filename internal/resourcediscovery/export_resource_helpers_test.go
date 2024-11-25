@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 
 	"github.com/hashicorp/terraform-exec/tfexec"
 

@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/oracle/terraform-provider-oci/internal/resourcediscovery"
+	"github.com/westelh/terraform-provider-oci-cue/internal/resourcediscovery"
 
 	"testing"
 
@@ -20,10 +20,10 @@ import (
 	oci_database "github.com/oracle/oci-go-sdk/v65/database"
 
 	"github.com/oracle/terraform-provider-oci/httpreplay"
-	"github.com/oracle/terraform-provider-oci/internal/acctest"
-	"github.com/oracle/terraform-provider-oci/internal/client"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
+	"github.com/westelh/terraform-provider-oci-cue/internal/client"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 )
 
 var (

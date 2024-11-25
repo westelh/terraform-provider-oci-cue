@@ -3,7 +3,7 @@ package psql
 import (
 	oci_psql "github.com/oracle/oci-go-sdk/v65/psql"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

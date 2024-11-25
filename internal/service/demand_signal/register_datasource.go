@@ -3,7 +3,7 @@
 
 package demand_signal
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_demand_signal_occ_demand_signal", DemandSignalOccDemandSignalDataSource())

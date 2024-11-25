@@ -3,7 +3,7 @@ package opa
 import (
 	oci_opa "github.com/oracle/oci-go-sdk/v65/opa"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

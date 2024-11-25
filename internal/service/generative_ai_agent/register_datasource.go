@@ -3,7 +3,7 @@
 
 package generative_ai_agent
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_generative_ai_agent_agent", GenerativeAiAgentAgentDataSource())

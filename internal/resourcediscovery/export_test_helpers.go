@@ -8,13 +8,13 @@ import (
 	"strconv"
 	"strings"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 
 	"github.com/hashicorp/terraform-exec/tfexec"
 
-	"github.com/oracle/terraform-provider-oci/internal/globalvar"
-	tf_provider "github.com/oracle/terraform-provider-oci/internal/provider"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/globalvar"
+	tf_provider "github.com/westelh/terraform-provider-oci-cue/internal/provider"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
 	hcinstall "github.com/hashicorp/hc-install"
 	"github.com/hashicorp/hc-install/fs"

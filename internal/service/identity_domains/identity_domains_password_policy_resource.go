@@ -15,8 +15,8 @@ import (
 
 	oci_identity_domains "github.com/oracle/oci-go-sdk/v65/identitydomains"
 
-	"github.com/oracle/terraform-provider-oci/internal/client"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/client"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 )
 
 func IdentityDomainsPasswordPolicyResource() *schema.Resource {

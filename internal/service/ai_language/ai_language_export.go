@@ -3,7 +3,7 @@ package ai_language
 import (
 	oci_ai_language "github.com/oracle/oci-go-sdk/v65/ailanguage"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

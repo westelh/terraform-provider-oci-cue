@@ -3,7 +3,7 @@
 
 package resourcemanager
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_resourcemanager_private_endpoint", ResourcemanagerPrivateEndpointDataSource())

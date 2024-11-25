@@ -5,7 +5,7 @@ package resourcediscovery
 import (
 	"testing"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 // issue-routing-tag: terraform/default

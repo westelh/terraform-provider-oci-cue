@@ -14,8 +14,8 @@ import (
 	oci_common "github.com/oracle/oci-go-sdk/v65/common"
 	oci_demand_signal "github.com/oracle/oci-go-sdk/v65/demandsignal"
 
-	"github.com/oracle/terraform-provider-oci/internal/client"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/client"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 )
 
 func DemandSignalOccDemandSignalResource() *schema.Resource {

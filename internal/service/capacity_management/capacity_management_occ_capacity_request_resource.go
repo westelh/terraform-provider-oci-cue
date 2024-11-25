@@ -16,8 +16,8 @@ import (
 	oci_capacity_management "github.com/oracle/oci-go-sdk/v65/capacitymanagement"
 	oci_common "github.com/oracle/oci-go-sdk/v65/common"
 
-	"github.com/oracle/terraform-provider-oci/internal/client"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/client"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 )
 
 func CapacityManagementOccCapacityRequestResource() *schema.Resource {

@@ -3,7 +3,7 @@
 
 package log_analytics
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_log_analytics_log_analytics_categories_list", LogAnalyticsLogAnalyticsCategoriesListDataSource())

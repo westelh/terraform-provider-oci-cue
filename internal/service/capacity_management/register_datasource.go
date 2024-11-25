@@ -3,7 +3,7 @@
 
 package capacity_management
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_capacity_management_internal_namespace_occ_overviews", CapacityManagementInternalNamespaceOccOverviewsDataSource())

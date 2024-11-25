@@ -10,7 +10,7 @@ import (
 
 	"github.com/oracle/terraform-provider-oci/httpreplay"
 
-	"github.com/oracle/terraform-provider-oci/internal/acctest"
+	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
 )
 
 var (

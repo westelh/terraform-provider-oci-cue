@@ -6,12 +6,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
 	"github.com/hashicorp/terraform-exec/tfexec"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 
-	tf_client "github.com/oracle/terraform-provider-oci/internal/client"
+	tf_client "github.com/westelh/terraform-provider-oci-cue/internal/client"
 )
 
 type TerraformResourceGraph map[string][]TerraformResourceAssociation

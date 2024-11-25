@@ -9,7 +9,7 @@ import (
 	oci_common "github.com/oracle/oci-go-sdk/v65/common"
 	"github.com/stretchr/testify/assert"
 
-	"github.com/oracle/terraform-provider-oci/internal/globalvar"
+	"github.com/westelh/terraform-provider-oci-cue/internal/globalvar"
 )
 
 // issue-routing-tag: terraform/default

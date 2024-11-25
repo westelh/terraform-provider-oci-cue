@@ -6,11 +6,11 @@ package cloud_guard
 import (
 	"context"
 
-	"github.com/oracle/terraform-provider-oci/internal/client"
+	"github.com/westelh/terraform-provider-oci-cue/internal/client"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	oci_cloud_guard "github.com/oracle/oci-go-sdk/v65/cloudguard"
-	"github.com/oracle/terraform-provider-oci/internal/tfresource"
+	"github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 )
 
 func CloudGuardDataSourceEventsDataSource() *schema.Resource {

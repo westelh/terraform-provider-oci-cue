@@ -5,10 +5,10 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/oracle/terraform-provider-oci/internal/acctest"
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
-	"github.com/oracle/terraform-provider-oci/internal/resourcediscovery"
-	"github.com/oracle/terraform-provider-oci/internal/utils"
+	"github.com/westelh/terraform-provider-oci-cue/internal/acctest"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
+	"github.com/westelh/terraform-provider-oci-cue/internal/resourcediscovery"
+	"github.com/westelh/terraform-provider-oci-cue/internal/utils"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"

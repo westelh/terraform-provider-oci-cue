@@ -3,7 +3,7 @@
 
 package fleet_software_update
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_fleet_software_update_fsu_collection", FleetSoftwareUpdateFsuCollectionDataSource())

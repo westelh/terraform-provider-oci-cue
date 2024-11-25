@@ -3,7 +3,7 @@ package resource_scheduler
 import (
 	oci_resource_scheduler "github.com/oracle/oci-go-sdk/v65/resourcescheduler"
 
-	tf_export "github.com/oracle/terraform-provider-oci/internal/commonexport"
+	tf_export "github.com/westelh/terraform-provider-oci-cue/internal/commonexport"
 )
 
 func init() {

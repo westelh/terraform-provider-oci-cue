@@ -8,7 +8,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/oracle/terraform-provider-oci/internal/globalvar"
+	"github.com/westelh/terraform-provider-oci-cue/internal/globalvar"
 )
 
 var (

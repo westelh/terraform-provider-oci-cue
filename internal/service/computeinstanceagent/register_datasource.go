@@ -3,7 +3,7 @@
 
 package computeinstanceagent
 
-import "github.com/oracle/terraform-provider-oci/internal/tfresource"
+import "github.com/westelh/terraform-provider-oci-cue/internal/tfresource"
 
 func RegisterDatasource() {
 	tfresource.RegisterDatasource("oci_computeinstanceagent_instance_agent_plugin", ComputeinstanceagentInstanceAgentPluginDataSource())
