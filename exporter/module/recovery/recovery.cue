@@ -2,134 +2,120 @@ package recovery
 
 #resource: {
 	attributes: {
-		protected_database: {
-			policy_locked_date_time: string
-			health:                  string
-			state:                   string
-			time_updated:            string
-			time_created:            string
-			is_redo_logs_shipped?:   bool
-			vpc_user_name:           string
-			deletion_schedule?:      string
+		recovery_service_subnet: {
+			time_created: string
 			freeform_tags?: [_]: string
-			protection_policy_id!: string
-			database_id?:          string
-			subscription_id?:      string
-			db_unique_name!:       string
+			nsg_ids?: [...string]
+			system_tags: [_]: string
+			time_updated:    string
+			display_name!:   string
+			subnet_id?:      string
+			compartment_id!: string
+			vcn_id!:         string
 			defined_tags?: [_]: string
-			is_read_only_resource: bool
-			compartment_id!:       string
-			lifecycle_details:     string
+			lifecycle_details: string
+			subnets?: [...string]
+			state: string
+		}
+		protected_database: {
 			metrics: [...{
+				is_redo_logs_enabled:                bool
+				minimum_recovery_needed_in_days:     float
+				retention_period_in_days:            float
 				unprotected_window_in_seconds:       float
 				backup_space_estimate_in_gbs:        float
 				backup_space_used_in_gbs:            float
 				current_retention_period_in_seconds: float
 				db_size_in_gbs:                      float
-				is_redo_logs_enabled:                bool
-				minimum_recovery_needed_in_days:     float
-				retention_period_in_days:            float
 			}]
+			db_unique_name!: string
+			freeform_tags?: [_]: string
+			health:                  string
+			state:                   string
+			protection_policy_id!:   string
+			time_created:            string
+			health_details:          string
+			vpc_user_name:           string
+			policy_locked_date_time: string
+			database_id?:            string
+			lifecycle_details:       string
 			recovery_service_subnets!: [...{
-				recovery_service_subnet_id!: string
 				state:                       string
+				recovery_service_subnet_id!: string
 			}]
-			database_size?: string
-			health_details: string
-			display_name!:  string
-			password!:      string
+			is_redo_logs_shipped?: bool
+			time_updated:          string
+			deletion_schedule?:    string
+			is_read_only_resource: bool
+			compartment_id!:       string
 			system_tags: [_]: string
+			defined_tags?: [_]: string
+			database_size?:   string
+			display_name!:    string
+			password!:        string
+			subscription_id?: string
 		}
 		protection_policy: {
-			is_predefined_policy: bool
-			state:                string
-			time_created:         string
-			defined_tags?: [_]: string
-			policy_locked_date_time?: string
-			compartment_id!:          string
-			system_tags: [_]: string
 			time_updated:  string
 			display_name!: string
 			freeform_tags?: [_]: string
-			must_enforce_cloud_locality?:     bool
-			lifecycle_details:                string
-			backup_retention_period_in_days!: int
-		}
-		recovery_service_subnet: {
-			subnet_id?: string
-			subnets?: [...string]
-			lifecycle_details: string
-			state:             string
+			is_predefined_policy: bool
 			system_tags: [_]: string
-			time_created:    string
-			time_updated:    string
-			vcn_id!:         string
-			compartment_id!: string
-			nsg_ids?: [...string]
-			freeform_tags?: [_]: string
-			display_name!: string
+			time_created: string
 			defined_tags?: [_]: string
+			lifecycle_details:                string
+			must_enforce_cloud_locality?:     bool
+			compartment_id!:                  string
+			policy_locked_date_time?:         string
+			state:                            string
+			backup_retention_period_in_days!: int
 		}
 	}
 	arguments: {
+		recovery_service_subnet: {
+			compartment_id!: string
+			vcn_id!:         string
+			defined_tags?: [_]: string
+			freeform_tags?: [_]: string
+			display_name!: string
+			nsg_ids?: [...string]
+			subnet_id?: string
+			subnets?: [...string]
+		}
 		protected_database: {
-			db_unique_name!:       string
-			subscription_id?:      string
-			is_redo_logs_shipped?: bool
-			password!:             string
+			deletion_schedule?: string
+			display_name!:      string
+			password!:          string
+			db_unique_name!:    string
+			freeform_tags?: [_]: string
+			database_size?:        string
 			protection_policy_id!: string
 			database_id?:          string
-			database_size?:        string
-			compartment_id!:       string
-			display_name!:         string
 			recovery_service_subnets!: [...{
 				recovery_service_subnet_id!: string
 			}]
-			deletion_schedule?: string
-			freeform_tags?: [_]: string
+			subscription_id?: string
 			defined_tags?: [_]: string
+			is_redo_logs_shipped?: bool
+			compartment_id!:       string
 		}
 		protection_policy: {
-			freeform_tags?: [_]: string
-			must_enforce_cloud_locality?:     bool
-			backup_retention_period_in_days!: int
-			compartment_id!:                  string
-			defined_tags?: [_]: string
-			policy_locked_date_time?: string
-			display_name!:            string
-		}
-		recovery_service_subnet: {
-			freeform_tags?: [_]: string
-			nsg_ids?: [...string]
 			compartment_id!: string
 			defined_tags?: [_]: string
-			subnet_id?: string
-			subnets?: [...string]
-			display_name!: string
-			vcn_id!:       string
+			policy_locked_date_time?:         string
+			backup_retention_period_in_days!: int
+			display_name!:                    string
+			freeform_tags?: [_]: string
+			must_enforce_cloud_locality?: bool
 		}
 	}
 }
 #data: {
-	protection_policy: protection_policy_id!: string
-	recovery_service_subnet: recovery_service_subnet_id!: string
-	recovery_service_subnets: {
-		display_name?: string
-		id?:           string
-		state?:        string
-		vcn_id?:       string
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		compartment_id!: string
-	}
 	protected_database: protected_database_id!: string
 	protected_database_fetch_configuration: {
+		configuration_type?:    string
 		protected_database_id!: string
 		base64_encode_content?: *true | bool
-		configuration_type?:    string
 	}
 	protected_databases: {
 		display_name?:               string
@@ -145,8 +131,6 @@ package recovery
 		compartment_id!: string
 	}
 	protection_policies: {
-		compartment_id!:       string
-		display_name?:         string
 		owner?:                string
 		protection_policy_id?: string
 		state?:                string
@@ -155,6 +139,22 @@ package recovery
 			values!: [...string]
 			regex?: *false | bool
 		}]
+		compartment_id!: string
+		display_name?:   string
+	}
+	protection_policy: protection_policy_id!: string
+	recovery_service_subnet: recovery_service_subnet_id!: string
+	recovery_service_subnets: {
+		state?:  string
+		vcn_id?: string
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		compartment_id!: string
+		display_name?:   string
+		id?:             string
 	}
 }
 

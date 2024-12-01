@@ -2,80 +2,316 @@ package apigateway
 
 #resource: {
 	attributes: {
-		api: {
+		usage_plan: {
+			compartment_id!: string
+			time_updated:    string
 			defined_tags?: [_]: string
-			content?:     string
-			state:        string
-			time_updated: string
-			time_created: string
 			freeform_tags?: [_]: string
-			validation_results: [...{
-				name:   string
-				result: string
+			display_name?:     string
+			time_created:      string
+			lifecycle_details: string
+			state:             string
+			entitlements!: [...{
+				name!:        string
+				description?: string
+				quota?: [...{
+					unit!:                string
+					value!:               int
+					operation_on_breach!: string
+					reset_policy!:        string
+				}]
+				rate_limit?: [...{
+					unit!:  string
+					value!: int
+				}]
+				targets?: [...{
+					deployment_id!: string
+				}]
 			}]
-			display_name?:      string
-			lifecycle_details:  string
+		}
+		api: {
+			compartment_id!: string
+			defined_tags?: [_]: string
+			display_name?: string
+			freeform_tags?: [_]: string
 			specification_type: string
-			compartment_id!:    string
+			state:              string
+			validation_results: [...{
+				result: string
+				name:   string
+			}]
+			time_updated:      string
+			content?:          string
+			time_created:      string
+			lifecycle_details: string
 		}
 		certificate: {
-			time_created: string
-			certificate!: string
-			defined_tags?: [_]: string
-			intermediate_certificates?: string
-			lifecycle_details:          string
-			private_key!:               string
-			compartment_id!:            string
-			display_name?:              string
 			freeform_tags?: [_]: string
-			time_updated: string
-			state:        string
+			intermediate_certificates?: string
 			subject_names: [...string]
+			time_updated:    string
+			compartment_id!: string
+			defined_tags?: [_]: string
+			display_name?:        string
+			certificate!:         string
+			private_key!:         string
+			lifecycle_details:    string
+			state:                string
+			time_created:         string
 			time_not_valid_after: string
 		}
 		deployment: {
-			endpoint:          string
-			lifecycle_details: string
-			time_created:      string
-			state:             string
-			gateway_id!:       string
 			defined_tags?: [_]: string
+			freeform_tags?: [_]: string
+			endpoint:      string
+			time_updated:  string
+			path_prefix!:  string
+			display_name?: string
+			state:         string
 			specification!: [...{
 				request_policies?: [...{
+					cors?: [...{
+						allowed_headers?: [...string]
+						allowed_methods?: [...string]
+						exposed_headers?: [...string]
+						is_allow_credentials_enabled?: bool
+						max_age_in_seconds?:           int
+						allowed_origins!: [...string]
+					}]
+					dynamic_authentication?: [...{
+						authentication_servers!: [...{
+							authentication_server_detail!: [...{
+								function_id?: string
+								issuers?: [...string]
+								token_query_param?: string
+								validation_policy?: [...{
+									source_uri_details?: [...{
+										type!: string
+										uri?:  string
+									}]
+									uri?:  string
+									type!: string
+									additional_validation_policy?: [...{
+										audiences?: [...string]
+										issuers?: [...string]
+										verify_claims?: [...{
+											is_required?: bool
+											key?:         string
+											values?: [...string]
+										}]
+									}]
+									client_details?: [...{
+										type!:                         string
+										client_id?:                    string
+										client_secret_id?:             string
+										client_secret_version_number?: string
+									}]
+									is_ssl_verify_disabled?: bool
+									keys?: [...{
+										alg?: string
+										kty?: string
+										use?: string
+										key?: string
+										kid?: string
+										key_ops?: [...string]
+										n?:      string
+										format!: string
+										e?:      string
+									}]
+									max_cache_duration_in_hours?: int
+								}]
+								token_auth_scheme?: string
+								token_header?:      string
+								public_keys?: [...{
+									max_cache_duration_in_hours?: int
+									uri?:                         string
+									type!:                        string
+									is_ssl_verify_disabled?:      bool
+									keys?: [...{
+										n?: string
+										key_ops?: [...string]
+										key?:    string
+										use?:    string
+										format!: string
+										kty?:    string
+										kid?:    string
+										e?:      string
+										alg?:    string
+									}]
+								}]
+								cache_key?: [...string]
+								is_anonymous_access_allowed?: bool
+								parameters?: [_]: string
+								max_clock_skew_in_seconds?: float
+								verify_claims?: [...{
+									is_required?: bool
+									key?:         string
+									values?: [...string]
+								}]
+								validation_failure_policy?: [...{
+									fallback_redirect_path?:             string
+									max_expiry_duration_in_hours?:       int
+									response_code?:                      string
+									use_cookies_for_intermediate_steps?: bool
+									response_message?:                   string
+									source_uri_details?: [...{
+										uri?:  string
+										type!: string
+									}]
+									response_type?:           string
+									use_pkce?:                bool
+									use_cookies_for_session?: bool
+									client_details?: [...{
+										type!:                         string
+										client_id?:                    string
+										client_secret_id?:             string
+										client_secret_version_number?: string
+									}]
+									type!:        string
+									logout_path?: string
+									response_header_transformations?: [...{
+										filter_headers?: [...{
+											items?: [...{
+												name?: string
+											}]
+											type?: string
+										}]
+										rename_headers?: [...{
+											items?: [...{
+												to?: string, from?: string
+											}]
+										}]
+										set_headers?: [...{
+											items?: [...{
+												values?: [...string]
+												if_exists?: string, name?: string
+											}]
+										}]
+									}]
+									scopes?: [...string]
+								}]
+								type!: string
+								audiences?: [...string]
+							}]
+							key!: [...{
+								values?: [...string]
+								name!:       string
+								expression?: string
+								is_default?: bool
+								type?:       string
+							}]
+						}]
+						selection_source!: [...{
+							selector!: string
+							type!:     string
+						}]
+					}]
+					mutual_tls?: [...{
+						is_verified_certificate_required?: bool
+						allowed_sans?: [...string]
+					}]
+					rate_limiting?: [...{
+						rate_in_requests_per_second!: int
+						rate_key!:                    string
+					}]
+					usage_plans?: [...{
+						token_locations!: [...string]
+					}]
 					authentication?: [...{
+						audiences?: [...string]
+						max_clock_skew_in_seconds?: float
+						public_keys?: [...{
+							max_cache_duration_in_hours?: int
+							uri?:                         string
+							type!:                        string
+							is_ssl_verify_disabled?:      bool
+							keys?: [...{
+								n?:      string
+								use?:    string
+								key?:    string
+								alg?:    string
+								kid?:    string
+								kty?:    string
+								format!: string
+								key_ops?: [...string]
+								e?: string
+							}]
+						}]
+						token_query_param?: string
+						validation_policy?: [...{
+							uri?:  string
+							type!: string
+							additional_validation_policy?: [...{
+								audiences?: [...string]
+								issuers?: [...string]
+								verify_claims?: [...{
+									key?: string
+									values?: [...string]
+									is_required?: bool
+								}]
+							}]
+							client_details?: [...{
+								type!:                         string
+								client_id?:                    string
+								client_secret_id?:             string
+								client_secret_version_number?: string
+							}]
+							is_ssl_verify_disabled?: bool
+							keys?: [...{
+								key?: string
+								kid?: string
+								kty?: string
+								e?:   string
+								n?:   string
+								alg?: string
+								key_ops?: [...string]
+								use?:    string
+								format!: string
+							}]
+							max_cache_duration_in_hours?: int
+							source_uri_details?: [...{
+								uri?:  string
+								type!: string
+							}]
+						}]
 						verify_claims?: [...{
 							key?: string
 							values?: [...string]
 							is_required?: bool
 						}]
-						token_auth_scheme?: string
-						type!:              string
+						type!:                        string
+						is_anonymous_access_allowed?: bool
+						token_auth_scheme?:           string
+						token_header?:                string
+						cache_key?: [...string]
+						function_id?: string
+						parameters?: [_]: string
 						validation_failure_policy?: [...{
+							response_message?:                   string
+							response_code?:                      string
+							use_pkce?:                           bool
+							fallback_redirect_path?:             string
+							use_cookies_for_intermediate_steps?: bool
+							client_details?: [...{
+								type!:                         string
+								client_id?:                    string
+								client_secret_id?:             string
+								client_secret_version_number?: string
+							}]
 							source_uri_details?: [...{
 								type!: string
 								uri?:  string
 							}]
-							use_pkce?: bool
-							scopes?: [...string]
-							fallback_redirect_path?:             string
-							response_message?:                   string
-							use_cookies_for_intermediate_steps?: bool
-							logout_path?:                        string
-							max_expiry_duration_in_hours?:       int
-							client_details?: [...{
-								client_secret_version_number?: string
-								type!:                         string
-								client_id?:                    string
-								client_secret_id?:             string
-							}]
 							response_type?: string
-							response_code?: string
+							type!:          string
+							logout_path?:   string
+							scopes?: [...string]
 							response_header_transformations?: [...{
 								filter_headers?: [...{
-									type?: string
 									items?: [...{
 										name?: string
 									}]
+									type?: string
 								}]
 								rename_headers?: [...{
 									items?: [...{
@@ -88,218 +324,10 @@ package apigateway
 									}]
 								}]
 							}]
-							type!:                    string
-							use_cookies_for_session?: bool
+							max_expiry_duration_in_hours?: int
+							use_cookies_for_session?:      bool
 						}]
 						issuers?: [...string]
-						function_id?:                 string
-						is_anonymous_access_allowed?: bool
-						max_clock_skew_in_seconds?:   float
-						cache_key?: [...string]
-						parameters?: [_]: string
-						token_header?: string
-						validation_policy?: [...{
-							client_details?: [...{
-								client_id?:                    string
-								client_secret_id?:             string
-								client_secret_version_number?: string
-								type!:                         string
-							}]
-							is_ssl_verify_disabled?: bool
-							keys?: [...{
-								n?:      string
-								use?:    string
-								alg?:    string
-								e?:      string
-								format!: string
-								key_ops?: [...string]
-								kid?: string
-								kty?: string
-								key?: string
-							}]
-							max_cache_duration_in_hours?: int
-							source_uri_details?: [...{
-								type!: string
-								uri?:  string
-							}]
-							uri?:  string
-							type!: string
-							additional_validation_policy?: [...{
-								verify_claims?: [...{
-									key?: string
-									values?: [...string]
-									is_required?: bool
-								}]
-								audiences?: [...string]
-								issuers?: [...string]
-							}]
-						}]
-						public_keys?: [...{
-							type!:                   string
-							is_ssl_verify_disabled?: bool
-							keys?: [...{
-								use?: string
-								key?: string
-								alg?: string
-								key_ops?: [...string]
-								n?:      string
-								e?:      string
-								kid?:    string
-								kty?:    string
-								format!: string
-							}]
-							max_cache_duration_in_hours?: int
-							uri?:                         string
-						}]
-						audiences?: [...string]
-						token_query_param?: string
-					}]
-					cors?: [...{
-						max_age_in_seconds?: int
-						allowed_origins!: [...string]
-						allowed_headers?: [...string]
-						allowed_methods?: [...string]
-						exposed_headers?: [...string]
-						is_allow_credentials_enabled?: bool
-					}]
-					dynamic_authentication?: [...{
-						authentication_servers!: [...{
-							authentication_server_detail!: [...{
-								type!:                        string
-								token_query_param?:           string
-								token_header?:                string
-								max_clock_skew_in_seconds?:   float
-								is_anonymous_access_allowed?: bool
-								function_id?:                 string
-								token_auth_scheme?:           string
-								validation_policy?: [...{
-									type!: string
-									additional_validation_policy?: [...{
-										verify_claims?: [...{
-											is_required?: bool
-											key?:         string
-											values?: [...string]
-										}]
-										audiences?: [...string]
-										issuers?: [...string]
-									}]
-									client_details?: [...{
-										client_secret_id?:             string
-										client_secret_version_number?: string
-										type!:                         string
-										client_id?:                    string
-									}]
-									is_ssl_verify_disabled?: bool
-									keys?: [...{
-										key_ops?: [...string]
-										use?:    string
-										kid?:    string
-										n?:      string
-										alg?:    string
-										key?:    string
-										kty?:    string
-										format!: string
-										e?:      string
-									}]
-									max_cache_duration_in_hours?: int
-									source_uri_details?: [...{
-										type!: string
-										uri?:  string
-									}]
-									uri?: string
-								}]
-								cache_key?: [...string]
-								parameters?: [_]: string
-								validation_failure_policy?: [...{
-									client_details?: [...{
-										type!:                         string
-										client_id?:                    string
-										client_secret_id?:             string
-										client_secret_version_number?: string
-									}]
-									response_code?: string
-									response_header_transformations?: [...{
-										set_headers?: [...{
-											items?: [...{
-												name?: string, values?: [...string]
-												if_exists?: string
-											}]
-										}]
-										filter_headers?: [...{
-											items?: [...{
-												name?: string
-											}]
-											type?: string
-										}]
-										rename_headers?: [...{
-											items?: [...{
-												from?: string, to?: string
-											}]
-										}]
-									}]
-									use_cookies_for_session?:            bool
-									max_expiry_duration_in_hours?:       int
-									response_message?:                   string
-									fallback_redirect_path?:             string
-									use_pkce?:                           bool
-									response_type?:                      string
-									use_cookies_for_intermediate_steps?: bool
-									source_uri_details?: [...{
-										type!: string
-										uri?:  string
-									}]
-									type!: string
-									scopes?: [...string]
-									logout_path?: string
-								}]
-								public_keys?: [...{
-									max_cache_duration_in_hours?: int
-									uri?:                         string
-									type!:                        string
-									is_ssl_verify_disabled?:      bool
-									keys?: [...{
-										key?: string
-										use?: string
-										key_ops?: [...string]
-										kid?:    string
-										kty?:    string
-										n?:      string
-										alg?:    string
-										e?:      string
-										format!: string
-									}]
-								}]
-								verify_claims?: [...{
-									is_required?: bool
-									key?:         string
-									values?: [...string]
-								}]
-								issuers?: [...string]
-								audiences?: [...string]
-							}]
-							key!: [...{
-								name!:       string
-								expression?: string
-								is_default?: bool
-								type?:       string
-								values?: [...string]
-							}]
-						}]
-						selection_source!: [...{
-							selector!: string
-							type!:     string
-						}]
-					}]
-					mutual_tls?: [...{
-						allowed_sans?: [...string]
-						is_verified_certificate_required?: bool
-					}]
-					rate_limiting?: [...{
-						rate_key!:                    string
-						rate_in_requests_per_second!: int
-					}]
-					usage_plans?: [...{
-						token_locations!: [...string]
 					}]
 				}]
 				routes!: [...{
@@ -314,86 +342,22 @@ package apigateway
 					}]
 					methods?: [...string]
 					request_policies?: [...{
-						header_validations?: [...{
-							headers?: [...{
-								name!:     string
-								required?: bool
-							}]
-							validation_mode?: string
-						}]
-						query_parameter_transformations?: [...{
-							filter_query_parameters?: [...{
-								items!: [...{
-									name!: string
-								}]
-								type!: string
-							}]
-							rename_query_parameters?: [...{
-								items!: [...{
-									from!: string, to!: string
-								}]
-							}]
-							set_query_parameters?: [...{
-								items!: [...{
-									name!: string, values!: [...string]
-									if_exists?: string
-								}]
-							}]
-						}]
-						query_parameter_validations?: [...{
-							parameters?: [...{
-								name!:     string
-								required?: bool
-							}]
-							validation_mode?: string
-						}]
-						response_cache_lookup?: [...{
-							is_private_caching_enabled?: bool
-							type!:                       string
-							cache_key_additions?: [...string]
-							is_enabled?: bool
-						}]
-						authorization?: [...{
-							allowed_scope?: [...string]
-							type?: string
-						}]
 						body_validation?: [...{
-							required?:        bool
 							validation_mode?: string
 							content?: [...{
 								media_type!:      string
 								validation_type!: string
 							}]
+							required?: bool
 						}]
 						cors?: [...{
-							allowed_origins!: [...string]
-							allowed_headers?: [...string]
-							allowed_methods?: [...string]
 							exposed_headers?: [...string]
 							is_allow_credentials_enabled?: bool
 							max_age_in_seconds?:           int
+							allowed_origins!: [...string]
+							allowed_headers?: [...string]
+							allowed_methods?: [...string]
 						}]
-						header_transformations?: [...{
-							set_headers?: [...{
-								items!: [...{
-									name!: string, values!: [...string]
-									if_exists?: string
-								}]
-							}]
-							filter_headers?: [...{
-								type!: string
-								items!: [...{
-									name!: string
-								}]
-							}]
-							rename_headers?: [...{
-								items!: [...{
-									from!: string, to!: string
-								}]
-							}]
-						}]
-					}]
-					response_policies?: [...{
 						header_transformations?: [...{
 							rename_headers?: [...{
 								items!: [...{
@@ -413,55 +377,117 @@ package apigateway
 								type!: string
 							}]
 						}]
+						header_validations?: [...{
+							headers?: [...{
+								name!:     string
+								required?: bool
+							}]
+							validation_mode?: string
+						}]
+						query_parameter_transformations?: [...{
+							set_query_parameters?: [...{
+								items!: [...{
+									if_exists?: string, name!: string, values!: [...string]
+								}]
+							}]
+							filter_query_parameters?: [...{
+								type!: string
+								items!: [...{
+									name!: string
+								}]
+							}]
+							rename_query_parameters?: [...{
+								items!: [...{
+									from!: string, to!: string
+								}]
+							}]
+						}]
+						query_parameter_validations?: [...{
+							parameters?: [...{
+								required?: bool
+								name!:     string
+							}]
+							validation_mode?: string
+						}]
+						response_cache_lookup?: [...{
+							is_enabled?:                 bool
+							is_private_caching_enabled?: bool
+							type!:                       string
+							cache_key_additions?: [...string]
+						}]
+						authorization?: [...{
+							type?: string
+							allowed_scope?: [...string]
+						}]
+					}]
+					response_policies?: [...{
+						header_transformations?: [...{
+							filter_headers?: [...{
+								type!: string
+								items!: [...{
+									name!: string
+								}]
+							}]
+							rename_headers?: [...{
+								items!: [...{
+									from!: string, to!: string
+								}]
+							}]
+							set_headers?: [...{
+								items!: [...{
+									if_exists?: string, name!: string, values!: [...string]
+								}]
+							}]
+						}]
 						response_cache_store?: [...{
-							type!:                    string
 							time_to_live_in_seconds!: int
+							type!:                    string
 						}]
 					}]
 					backend!: [...{
-						body?: string
 						selection_source?: [...{
-							selector!: string
 							type!:     string
+							selector!: string
 						}]
-						send_timeout_in_seconds?:    float
-						connect_timeout_in_seconds?: float
-						post_logout_state?:          string
-						routing_backends?: [...{
-							key?: [...{
-								values?: [...string]
-								is_default?: bool
-								type!:       string
-								name!:       string
-								expression?: string
-							}]
-							backend?: [...{
-								connect_timeout_in_seconds?: float
-								function_id?:                string
-								is_ssl_verify_disabled?:     bool
-								status?:                     int
-								body?:                       string
-								headers: [...{
-									name?:  string
-									value?: string
-								}]
-								read_timeout_in_seconds?: float
-								url?:                     string
-								type!:                    string
-								send_timeout_in_seconds:  float
-							}]
-						}]
-						allowed_post_logout_uris?: [...string]
 						read_timeout_in_seconds?: float
-						function_id?:             string
+						post_logout_state?:       string
+						url?:                     string
+						body?:                    string
+						allowed_post_logout_uris?: [...string]
+						connect_timeout_in_seconds?: float
+						is_ssl_verify_disabled?:     bool
+						status?:                     int
 						headers?: [...{
 							name?:  string
 							value?: string
 						}]
-						type!:                   string
-						is_ssl_verify_disabled?: bool
-						status?:                 int
-						url?:                    string
+						routing_backends?: [...{
+							backend?: [...{
+								headers: [...{
+									name?:  string
+									value?: string
+								}]
+								send_timeout_in_seconds:     float
+								read_timeout_in_seconds?:    float
+								status?:                     int
+								url?:                        string
+								is_ssl_verify_disabled?:     bool
+								type!:                       string
+								body?:                       string
+								connect_timeout_in_seconds?: float
+								function_id?:                string
+							}]
+							key?: [...{
+								type!:       string
+								name!:       string
+								expression?: string
+								values?: [...string]
+								is_default?: bool
+							}]
+						}]
+						type!:                    string
+						send_timeout_in_seconds?: float
+						function_id?:             string
 					}]
 					path!: string
 				}]
@@ -475,71 +501,67 @@ package apigateway
 					}]
 				}]
 			}]
-			display_name?: string
-			freeform_tags?: [_]: string
-			time_updated:    string
-			compartment_id!: string
-			path_prefix!:    string
+			gateway_id!:       string
+			lifecycle_details: string
+			time_created:      string
+			compartment_id!:   string
 		}
 		gateway: {
-			time_created: string
-			state:        string
-			network_security_group_ids?: [...string]
-			lifecycle_details: string
-			endpoint_type!:    string
-			display_name?:     string
+			compartment_id!: string
+			time_created:    string
 			freeform_tags?: [_]: string
+			response_cache_details?: [...{
+				type!:                                 string
+				read_timeout_in_ms?:                   int
+				is_ssl_verify_disabled?:               bool
+				authentication_secret_id?:             string
+				authentication_secret_version_number?: string
+				connect_timeout_in_ms?:                int
+				is_ssl_enabled?:                       bool
+				send_timeout_in_ms?:                   int
+				servers?: [...{
+					host?: string
+					port?: int
+				}]
+			}]
+			lifecycle_details: string
+			defined_tags?: [_]: string
 			ip_addresses: [...{
 				ip_address: string
 			}]
+			display_name?:  string
+			subnet_id!:     string
+			endpoint_type!: string
 			ca_bundles?: [...{
 				type!:                     string
 				ca_bundle_id?:             string
 				certificate_authority_id?: string
 			}]
-			defined_tags?: [_]: string
-			certificate_id?: string
-			hostname:        string
-			response_cache_details?: [...{
-				type!:                                 string
-				read_timeout_in_ms?:                   int
-				authentication_secret_id?:             string
-				authentication_secret_version_number?: string
-				is_ssl_enabled?:                       bool
-				servers?: [...{
-					port?: int
-					host?: string
-				}]
-				connect_timeout_in_ms?:  int
-				send_timeout_in_ms?:     int
-				is_ssl_verify_disabled?: bool
-			}]
+			hostname: string
+			state:    string
+			network_security_group_ids?: [...string]
 			time_updated:    string
-			compartment_id!: string
-			subnet_id!:      string
+			certificate_id?: string
 		}
 		subscriber: {
-			time_created:      string
-			lifecycle_details: string
-			state:             string
-			usage_plans!: [...string]
 			clients!: [...{
 				name!:  string
 				token!: string
 			}]
+			usage_plans!: [...string]
+			defined_tags?: [_]: string
+			display_name?:   string
+			state:           string
 			time_updated:    string
 			compartment_id!: string
-			defined_tags?: [_]: string
-			display_name?: string
 			freeform_tags?: [_]: string
-		}
-		usage_plan: {
-			compartment_id!: string
-			defined_tags?: [_]: string
-			freeform_tags?: [_]: string
-			state:             string
 			lifecycle_details: string
 			time_created:      string
+		}
+	}
+	arguments: {
+		usage_plan: {
+			compartment_id!: string
 			entitlements!: [...{
 				targets?: [...{
 					deployment_id!: string
@@ -547,146 +569,84 @@ package apigateway
 				name!:        string
 				description?: string
 				quota?: [...{
+					operation_on_breach!: string
 					reset_policy!:        string
 					unit!:                string
 					value!:               int
-					operation_on_breach!: string
 				}]
 				rate_limit?: [...{
 					unit!:  string
 					value!: int
 				}]
 			}]
-			time_updated:  string
 			display_name?: string
-		}
-	}
-	arguments: {
-		api: {
-			compartment_id!: string
-			content?:        string
-			display_name?:   string
 			defined_tags?: [_]: string
 			freeform_tags?: [_]: string
+		}
+		api: {
+			content?: string
+			defined_tags?: [_]: string
+			display_name?: string
+			freeform_tags?: [_]: string
+			compartment_id!: string
 		}
 		certificate: {
-			certificate!:    string
-			compartment_id!: string
-			defined_tags?: [_]: string
-			display_name?: string
-			private_key!:  string
 			freeform_tags?: [_]: string
 			intermediate_certificates?: string
+			compartment_id!:            string
+			defined_tags?: [_]: string
+			certificate!:  string
+			private_key!:  string
+			display_name?: string
 		}
 		deployment: {
-			defined_tags?: [_]: string
-			display_name?: string
-			freeform_tags?: [_]: string
-			compartment_id!: string
 			gateway_id!:     string
 			path_prefix!:    string
+			display_name?:   string
+			compartment_id!: string
 			specification!: [...{
 				logging_policies?: [...{
 					access_log?: [...{
 						is_enabled?: bool
 					}]
 					execution_log?: [...{
-						is_enabled?: bool
 						log_level?:  string
+						is_enabled?: bool
 					}]
 				}]
 				request_policies?: [...{
 					cors?: [...{
+						allowed_methods?: [...string]
+						exposed_headers?: [...string]
 						is_allow_credentials_enabled?: bool
 						max_age_in_seconds?:           int
 						allowed_origins!: [...string]
 						allowed_headers?: [...string]
-						allowed_methods?: [...string]
-						exposed_headers?: [...string]
 					}]
 					dynamic_authentication?: [...{
 						authentication_servers!: [...{
 							authentication_server_detail!: [...{
-								public_keys?: [...{
-									is_ssl_verify_disabled?: bool
-									keys?: [...{
-										format!: string
-										key?:    string
-										alg?:    string
-										kid?:    string
-										kty?:    string
-										e?:      string
-										use?:    string
-										n?:      string
-										key_ops?: [...string]
-									}]
-									max_cache_duration_in_hours?: int
-									uri?:                         string
-									type!:                        string
-								}]
-								parameters?: [_]: string
-								function_id?:       string
-								token_auth_scheme?: string
-								token_header?:      string
-								verify_claims?: [...{
-									key?: string
-									values?: [...string]
-									is_required?: bool
-								}]
-								max_clock_skew_in_seconds?: float
-								issuers?: [...string]
-								type!: string
-								audiences?: [...string]
-								validation_policy?: [...{
-									max_cache_duration_in_hours?: int
-									source_uri_details?: [...{
-										type!: string
-										uri?:  string
-									}]
-									uri?:  string
-									type!: string
-									additional_validation_policy?: [...{
-										issuers?: [...string]
-										verify_claims?: [...{
-											values?: [...string]
-											is_required?: bool
-											key?:         string
-										}]
-										audiences?: [...string]
-									}]
+								validation_failure_policy?: [...{
+									use_cookies_for_session?:            bool
+									use_cookies_for_intermediate_steps?: bool
+									response_message?:                   string
 									client_details?: [...{
 										type!:                         string
 										client_id?:                    string
 										client_secret_id?:             string
 										client_secret_version_number?: string
 									}]
-									is_ssl_verify_disabled?: bool
-									keys?: [...{
-										key_ops?: [...string]
-										n?:      string
-										use?:    string
-										e?:      string
-										key?:    string
-										kid?:    string
-										alg?:    string
-										kty?:    string
-										format!: string
-									}]
-								}]
-								cache_key?: [...string]
-								is_anonymous_access_allowed?: bool
-								token_query_param?:           string
-								validation_failure_policy?: [...{
+									use_pkce?: bool
 									response_header_transformations?: [...{
 										filter_headers?: [...{
+											type?: string
 											items?: [...{
 												name?: string
 											}]
-											type?: string
 										}]
 										rename_headers?: [...{
 											items?: [...{
-												to?: string, from?: string
+												from?: string, to?: string
 											}]
 										}]
 										set_headers?: [...{
@@ -696,28 +656,87 @@ package apigateway
 											}]
 										}]
 									}]
-									use_pkce?:         bool
-									logout_path?:      string
-									response_message?: string
-									type!:             string
-									scopes?: [...string]
-									use_cookies_for_intermediate_steps?: bool
-									response_type?:                      string
-									client_details?: [...{
-										type!:                         string
-										client_id?:                    string
-										client_secret_id?:             string
-										client_secret_version_number?: string
-									}]
-									fallback_redirect_path?: string
-									response_code?:          string
+									fallback_redirect_path?:       string
+									response_type?:                string
+									type!:                         string
+									max_expiry_duration_in_hours?: int
+									response_code?:                string
 									source_uri_details?: [...{
 										type!: string
 										uri?:  string
 									}]
-									use_cookies_for_session?:      bool
-									max_expiry_duration_in_hours?: int
+									scopes?: [...string]
+									logout_path?: string
 								}]
+								public_keys?: [...{
+									keys?: [...{
+										format!: string
+										alg?:    string
+										kid?:    string
+										n?:      string
+										e?:      string
+										key?:    string
+										use?:    string
+										key_ops?: [...string]
+										kty?: string
+									}]
+									max_cache_duration_in_hours?: int
+									uri?:                         string
+									type!:                        string
+									is_ssl_verify_disabled?:      bool
+								}]
+								max_clock_skew_in_seconds?: float
+								issuers?: [...string]
+								token_query_param?: string
+								type!:              string
+								parameters?: [_]: string
+								verify_claims?: [...{
+									key?: string
+									values?: [...string]
+									is_required?: bool
+								}]
+								cache_key?: [...string]
+								is_anonymous_access_allowed?: bool
+								function_id?:                 string
+								token_auth_scheme?:           string
+								token_header?:                string
+								validation_policy?: [...{
+									client_details?: [...{
+										client_secret_version_number?: string
+										type!:                         string
+										client_id?:                    string
+										client_secret_id?:             string
+									}]
+									is_ssl_verify_disabled?: bool
+									keys?: [...{
+										alg?: string
+										n?:   string
+										e?:   string
+										kty?: string
+										kid?: string
+										key?: string
+										key_ops?: [...string]
+										use?:    string
+										format!: string
+									}]
+									max_cache_duration_in_hours?: int
+									source_uri_details?: [...{
+										type!: string
+										uri?:  string
+									}]
+									uri?:  string
+									type!: string
+									additional_validation_policy?: [...{
+										audiences?: [...string]
+										issuers?: [...string]
+										verify_claims?: [...{
+											is_required?: bool
+											key?:         string
+											values?: [...string]
+										}]
+									}]
+								}]
+								audiences?: [...string]
 							}]
 							key!: [...{
 								expression?: string
@@ -733,8 +752,8 @@ package apigateway
 						}]
 					}]
 					mutual_tls?: [...{
-						is_verified_certificate_required?: bool
 						allowed_sans?: [...string]
+						is_verified_certificate_required?: bool
 					}]
 					rate_limiting?: [...{
 						rate_in_requests_per_second!: int
@@ -744,94 +763,24 @@ package apigateway
 						token_locations!: [...string]
 					}]
 					authentication?: [...{
-						token_header?:      string
-						type!:              string
-						token_query_param?: string
+						token_header?: string
 						audiences?: [...string]
-						validation_policy?: [...{
-							keys?: [...{
-								use?:    string
-								format!: string
-								key_ops?: [...string]
-								alg?: string
-								key?: string
-								n?:   string
-								kid?: string
-								kty?: string
-								e?:   string
-							}]
-							max_cache_duration_in_hours?: int
-							source_uri_details?: [...{
-								type!: string
-								uri?:  string
-							}]
-							uri?:  string
-							type!: string
-							additional_validation_policy?: [...{
-								audiences?: [...string]
-								issuers?: [...string]
-								verify_claims?: [...{
-									is_required?: bool
-									key?:         string
-									values?: [...string]
-								}]
-							}]
-							client_details?: [...{
-								client_secret_version_number?: string
-								type!:                         string
-								client_id?:                    string
-								client_secret_id?:             string
-							}]
-							is_ssl_verify_disabled?: bool
-						}]
 						parameters?: [_]: string
-						function_id?:                 string
-						is_anonymous_access_allowed?: bool
-						public_keys?: [...{
-							uri?:                    string
-							type!:                   string
-							is_ssl_verify_disabled?: bool
-							keys?: [...{
-								key?: string
-								kid?: string
-								kty?: string
-								key_ops?: [...string]
-								e?:      string
-								n?:      string
-								use?:    string
-								format!: string
-								alg?:    string
-							}]
-							max_cache_duration_in_hours?: int
-						}]
-						token_auth_scheme?: string
+						cache_key?: [...string]
+						type!: string
 						validation_failure_policy?: [...{
-							max_expiry_duration_in_hours?:       int
-							response_type?:                      string
-							use_cookies_for_intermediate_steps?: bool
-							response_code?:                      string
-							use_cookies_for_session?:            bool
-							source_uri_details?: [...{
-								type!: string
-								uri?:  string
-							}]
-							scopes?: [...string]
-							response_message?: string
-							type!:             string
 							client_details?: [...{
 								type!:                         string
 								client_id?:                    string
 								client_secret_id?:             string
 								client_secret_version_number?: string
 							}]
-							use_pkce?:               bool
-							fallback_redirect_path?: string
-							logout_path?:            string
+							use_cookies_for_intermediate_steps?: bool
+							use_pkce?:                           bool
 							response_header_transformations?: [...{
 								set_headers?: [...{
 									items?: [...{
-										name?: string, values?: [...string]
-										if_exists?: string
+										if_exists?: string, name?: string, values?: [...string]
 									}]
 								}]
 								filter_headers?: [...{
@@ -846,18 +795,88 @@ package apigateway
 									}]
 								}]
 							}]
+							source_uri_details?: [...{
+								type!: string
+								uri?:  string
+							}]
+							type!:                         string
+							response_type?:                string
+							use_cookies_for_session?:      bool
+							logout_path?:                  string
+							response_code?:                string
+							max_expiry_duration_in_hours?: int
+							scopes?: [...string]
+							response_message?:       string
+							fallback_redirect_path?: string
 						}]
-						max_clock_skew_in_seconds?: float
+						validation_policy?: [...{
+							type!: string
+							additional_validation_policy?: [...{
+								verify_claims?: [...{
+									key?: string
+									values?: [...string]
+									is_required?: bool
+								}]
+								audiences?: [...string]
+								issuers?: [...string]
+							}]
+							client_details?: [...{
+								client_secret_id?:             string
+								client_secret_version_number?: string
+								type!:                         string
+								client_id?:                    string
+							}]
+							is_ssl_verify_disabled?: bool
+							keys?: [...{
+								e?:      string
+								key?:    string
+								n?:      string
+								use?:    string
+								format!: string
+								kid?:    string
+								kty?:    string
+								alg?:    string
+								key_ops?: [...string]
+							}]
+							max_cache_duration_in_hours?: int
+							source_uri_details?: [...{
+								type!: string
+								uri?:  string
+							}]
+							uri?: string
+						}]
 						verify_claims?: [...{
-							is_required?: bool
-							key?:         string
+							key?: string
 							values?: [...string]
+							is_required?: bool
 						}]
-						cache_key?: [...string]
+						token_auth_scheme?: string
+						token_query_param?: string
 						issuers?: [...string]
+						public_keys?: [...{
+							type!:                   string
+							is_ssl_verify_disabled?: bool
+							keys?: [...{
+								key?: string
+								kty?: string
+								use?: string
+								e?:   string
+								kid?: string
+								key_ops?: [...string]
+								n?:      string
+								alg?:    string
+								format!: string
+							}]
+							max_cache_duration_in_hours?: int
+							uri?:                         string
+						}]
+						max_clock_skew_in_seconds?:   float
+						is_anonymous_access_allowed?: bool
+						function_id?:                 string
 					}]
 				}]
 				routes!: [...{
+					path!: string
 					logging_policies?: [...{
 						access_log?: [...{
 							is_enabled?: bool
@@ -869,38 +888,12 @@ package apigateway
 					}]
 					methods?: [...string]
 					request_policies?: [...{
-						response_cache_lookup?: [...{
-							type!: string
-							cache_key_additions?: [...string]
-							is_enabled?:                 bool
-							is_private_caching_enabled?: bool
-						}]
-						authorization?: [...{
-							allowed_scope?: [...string]
-							type?: string
-						}]
-						body_validation?: [...{
-							validation_mode?: string
-							content?: [...{
-								media_type!:      string
-								validation_type!: string
-							}]
-							required?: bool
-						}]
-						cors?: [...{
-							allowed_origins!: [...string]
-							allowed_headers?: [...string]
-							allowed_methods?: [...string]
-							exposed_headers?: [...string]
-							is_allow_credentials_enabled?: bool
-							max_age_in_seconds?:           int
-						}]
 						header_transformations?: [...{
 							filter_headers?: [...{
-								type!: string
 								items!: [...{
 									name!: string
 								}]
+								type!: string
 							}]
 							rename_headers?: [...{
 								items!: [...{
@@ -909,25 +902,18 @@ package apigateway
 							}]
 							set_headers?: [...{
 								items!: [...{
-									name!: string, values!: [...string]
-									if_exists?: string
+									if_exists?: string, name!: string, values!: [...string]
 								}]
 							}]
 						}]
 						header_validations?: [...{
-							validation_mode?: string
 							headers?: [...{
-								name!:     string
 								required?: bool
+								name!:     string
 							}]
+							validation_mode?: string
 						}]
 						query_parameter_transformations?: [...{
-							set_query_parameters?: [...{
-								items!: [...{
-									name!: string, values!: [...string]
-									if_exists?: string
-								}]
-							}]
 							filter_query_parameters?: [...{
 								items!: [...{
 									name!: string
@@ -939,6 +925,12 @@ package apigateway
 									from!: string, to!: string
 								}]
 							}]
+							set_query_parameters?: [...{
+								items!: [...{
+									values!: [...string]
+									if_exists?: string, name!: string
+								}]
+							}]
 						}]
 						query_parameter_validations?: [...{
 							parameters?: [...{
@@ -947,22 +939,38 @@ package apigateway
 							}]
 							validation_mode?: string
 						}]
+						response_cache_lookup?: [...{
+							is_enabled?:                 bool
+							is_private_caching_enabled?: bool
+							type!:                       string
+							cache_key_additions?: [...string]
+						}]
+						authorization?: [...{
+							allowed_scope?: [...string]
+							type?: string
+						}]
+						body_validation?: [...{
+							content?: [...{
+								media_type!:      string
+								validation_type!: string
+							}]
+							required?:        bool
+							validation_mode?: string
+						}]
+						cors?: [...{
+							allowed_methods?: [...string]
+							exposed_headers?: [...string]
+							is_allow_credentials_enabled?: bool
+							max_age_in_seconds?:           int
+							allowed_origins!: [...string]
+							allowed_headers?: [...string]
+						}]
 					}]
 					response_policies?: [...{
-						response_cache_store?: [...{
-							type!:                    string
-							time_to_live_in_seconds!: int
-						}]
 						header_transformations?: [...{
-							filter_headers?: [...{
-								items!: [...{
-									name!: string
-								}]
-								type!: string
-							}]
 							rename_headers?: [...{
 								items!: [...{
-									to!: string, from!: string
+									from!: string, to!: string
 								}]
 							}]
 							set_headers?: [...{
@@ -971,169 +979,109 @@ package apigateway
 									if_exists?: string, name!: string
 								}]
 							}]
+							filter_headers?: [...{
+								items!: [...{
+									name!: string
+								}]
+								type!: string
+							}]
+						}]
+						response_cache_store?: [...{
+							time_to_live_in_seconds!: int
+							type!:                    string
 						}]
 					}]
 					backend!: [...{
-						url?:                     string
-						read_timeout_in_seconds?: float
-						function_id?:             string
-						routing_backends?: [...{
-							key?: [...{
-								values?: [...string]
-								is_default?: bool
-								type!:       string
-								name!:       string
-								expression?: string
-							}]
-							backend?: [...{
-								read_timeout_in_seconds?:    float
-								url?:                        string
-								connect_timeout_in_seconds?: float
-								function_id?:                string
-								is_ssl_verify_disabled?:     bool
-								status?:                     int
-								type!:                       string
-								body?:                       string
-							}]
-						}]
-						status?: int
-						body?:   string
-						allowed_post_logout_uris?: [...string]
 						headers?: [...{
 							name?:  string
 							value?: string
 						}]
 						post_logout_state?: string
-						type!:              string
-						selection_source?: [...{
-							selector!: string
-							type!:     string
+						status?:            int
+						routing_backends?: [...{
+							backend?: [...{
+								is_ssl_verify_disabled?:     bool
+								read_timeout_in_seconds?:    float
+								body?:                       string
+								type!:                       string
+								status?:                     int
+								url?:                        string
+								connect_timeout_in_seconds?: float
+								function_id?:                string
+							}]
+							key?: [...{
+								name!:       string
+								expression?: string
+								values?: [...string]
+								is_default?: bool
+								type!:       string
+							}]
 						}]
-						send_timeout_in_seconds?:    float
+						send_timeout_in_seconds?: float
+						selection_source?: [...{
+							type!:     string
+							selector!: string
+						}]
+						read_timeout_in_seconds?: float
+						is_ssl_verify_disabled?:  bool
+						url?:                     string
+						body?:                    string
+						allowed_post_logout_uris?: [...string]
 						connect_timeout_in_seconds?: float
-						is_ssl_verify_disabled?:     bool
+						type!:                       string
+						function_id?:                string
 					}]
-					path!: string
 				}]
 			}]
+			defined_tags?: [_]: string
+			freeform_tags?: [_]: string
 		}
 		gateway: {
-			endpoint_type!: string
 			ca_bundles?: [...{
-				type!:                     string
 				ca_bundle_id?:             string
 				certificate_authority_id?: string
+				type!:                     string
 			}]
+			defined_tags?: [_]: string
+			display_name?: string
+			freeform_tags?: [_]: string
+			endpoint_type!: string
 			response_cache_details?: [...{
-				is_ssl_verify_disabled?:               bool
 				authentication_secret_id?:             string
 				connect_timeout_in_ms?:                int
-				send_timeout_in_ms?:                   int
-				type!:                                 string
-				read_timeout_in_ms?:                   int
-				authentication_secret_version_number?: string
 				is_ssl_enabled?:                       bool
+				type!:                                 string
+				authentication_secret_version_number?: string
+				send_timeout_in_ms?:                   int
 				servers?: [...{
 					port?: int
 					host?: string
 				}]
+				read_timeout_in_ms?:     int
+				is_ssl_verify_disabled?: bool
 			}]
-			subnet_id!:      string
 			certificate_id?: string
-			display_name?:   string
-			network_security_group_ids?: [...string]
-			defined_tags?: [_]: string
+			subnet_id!:      string
 			compartment_id!: string
-			freeform_tags?: [_]: string
+			network_security_group_ids?: [...string]
 		}
 		subscriber: {
+			defined_tags?: [_]: string
+			freeform_tags?: [_]: string
 			clients!: [...{
 				name!:  string
 				token!: string
 			}]
+			compartment_id!: string
+			display_name?:   string
 			usage_plans!: [...string]
-			defined_tags?: [_]: string
-			display_name?: string
-			freeform_tags?: [_]: string
-			compartment_id!: string
-		}
-		usage_plan: {
-			display_name?: string
-			entitlements!: [...{
-				rate_limit?: [...{
-					unit!:  string
-					value!: int
-				}]
-				targets?: [...{
-					deployment_id!: string
-				}]
-				name!:        string
-				description?: string
-				quota?: [...{
-					operation_on_breach!: string
-					reset_policy!:        string
-					unit!:                string
-					value!:               int
-				}]
-			}]
-			defined_tags?: [_]: string
-			freeform_tags?: [_]: string
-			compartment_id!: string
 		}
 	}
 }
 #data: {
-	gateway: gateway_id!: string
-	subscriber: subscriber_id!: string
-	usage_plans: {
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		compartment_id!: string
-		display_name?:   string
-		state?:          string
-	}
-	api_content: api_id!: string
-	api_validation: api_id!: string
-	certificate: certificate_id!: string
-	usage_plan: usage_plan_id!: string
 	api: api_id!: string
-	api_deployment_specification: api_id!: string
-	apis: {
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		compartment_id!: string
-		display_name?:   string
-		state?:          string
-	}
+	certificate: certificate_id!: string
 	certificates: {
-		state?: string
-		filter?: [...{
-			regex?: *false | bool
-			name!:  string
-			values!: [...string]
-		}]
-		compartment_id!: string
-		display_name?:   string
-	}
-	deployment: deployment_id!: string
-	gateways: {
-		certificate_id?: string
-		compartment_id!: string
-		display_name?:   string
-		state?:          string
-		filter?: [...{
-			values!: [...string]
-			regex?: *false | bool
-			name!:  string
-		}]
-	}
-	subscribers: {
 		compartment_id!: string
 		display_name?:   string
 		state?:          string
@@ -1144,15 +1092,63 @@ package apigateway
 		}]
 	}
 	deployments: {
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
 		compartment_id!: string
 		display_name?:   string
 		gateway_id?:     string
 		state?:          string
+	}
+	subscribers: {
+		compartment_id!: string
+		display_name?:   string
+		state?:          string
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+	}
+	api_deployment_specification: api_id!: string
+	api_validation: api_id!: string
+	gateway: gateway_id!: string
+	gateways: {
+		state?: string
 		filter?: [...{
 			regex?: *false | bool
 			name!:  string
 			values!: [...string]
 		}]
+		certificate_id?: string
+		compartment_id!: string
+		display_name?:   string
+	}
+	usage_plan: usage_plan_id!: string
+	api_content: api_id!: string
+	apis: {
+		display_name?: string
+		state?:        string
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		compartment_id!: string
+	}
+	deployment: deployment_id!: string
+	subscriber: subscriber_id!: string
+	usage_plans: {
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		compartment_id!: string
+		display_name?:   string
+		state?:          string
 	}
 }
 

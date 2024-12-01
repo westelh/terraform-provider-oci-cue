@@ -6,9 +6,9 @@ package osub_subscription
 }
 #data: {
 	commitment: {
-		x_one_origin_region?:           string
 		commitment_id!:                 string
 		x_one_gateway_subscription_id?: string
+		x_one_origin_region?:           string
 	}
 	commitments: {
 		subscribed_service_id!:         string
@@ -22,6 +22,9 @@ package osub_subscription
 		compartment_id!: string
 	}
 	ratecards: {
+		compartment_id!:      string
+		part_number?:         string
+		subscription_id!:     string
 		time_from?:           string
 		time_to?:             string
 		x_one_origin_region?: string
@@ -30,23 +33,20 @@ package osub_subscription
 			values!: [...string]
 			regex?: *false | bool
 		}]
-		compartment_id!:  string
-		part_number?:     string
-		subscription_id!: string
 	}
 	subscriptions: {
-		buyer_email?:                   string
-		is_commit_info_required?:       bool
-		x_one_origin_region?:           string
-		compartment_id!:                string
-		plan_number?:                   string
-		subscription_id?:               string
-		x_one_gateway_subscription_id?: string
 		filter?: [...{
 			name!: string
 			values!: [...string]
 			regex?: *false | bool
 		}]
+		compartment_id!:                string
+		is_commit_info_required?:       bool
+		x_one_gateway_subscription_id?: string
+		buyer_email?:                   string
+		plan_number?:                   string
+		subscription_id?:               string
+		x_one_origin_region?:           string
 	}
 }
 

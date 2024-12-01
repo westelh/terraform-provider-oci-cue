@@ -7,8 +7,8 @@ package identity_data_plane
 		token:       string
 	}
 	arguments: generate_scoped_access_token: {
-		scope!:      string
 		public_key!: string
+		scope!:      string
 	}
 }
 #data: {}

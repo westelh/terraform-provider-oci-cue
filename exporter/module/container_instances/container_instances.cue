@@ -2,51 +2,38 @@ package container_instances
 
 #resource: {
 	attributes: container_instance: {
-		time_created:                          string
-		lifecycle_details:                     string
-		volume_count:                          int
-		compartment_id!:                       string
-		container_restart_policy?:             string
-		graceful_shutdown_timeout_in_seconds?: string
-		system_tags: [_]: string
-		state?: string
+		compartment_id!: string
+		fault_domain?:   string
 		containers!: [...{
-			arguments?: [...string]
+			availability_domain:   string
+			state:                 string
+			container_instance_id: string
+			exit_code:             int
+			time_terminated:       string
 			health_checks?: [...{
-				failure_threshold?: int
-				port?:              int
-				status?:            string
-				success_threshold?: int
+				status?:              string
+				interval_in_seconds?: int
+				timeout_in_seconds?:  int
 				headers?: [...{
 					name?:  string
 					value?: string
 				}]
-				status_details?:    string
-				health_check_type!: string
-				name?:              string
+				failure_action?: string
+				port?:           int
 				command?: [...string]
-				failure_action?:           string
-				path?:                     string
-				timeout_in_seconds?:       int
-				interval_in_seconds?:      int
+				failure_threshold?:        int
+				health_check_type!:        string
 				initial_delay_in_seconds?: int
+				path?:                     string
+				status_details?:           string
+				success_threshold?:        int
+				name?:                     string
 			}]
-			is_resource_principal_disabled?: bool
-			container_id:                    string
-			working_directory?:              string
-			availability_domain:             string
-			freeform_tags?: [_]: string
-			system_tags: [_]: string
-			time_updated:   string
 			compartment_id: string
-			volume_mounts?: [...{
-				volume_name!:  string
-				is_read_only?: bool
-				partition?:    int
-				sub_path?:     string
-				mount_path!:   string
-			}]
+			display_name?:  string
 			security_context?: [...{
+				run_as_user?:           int
+				security_context_type?: string
 				capabilities?: [...{
 					add_capabilities?: [...string]
 					drop_capabilities?: [...string]
@@ -54,107 +41,74 @@ package container_instances
 				is_non_root_user_check_enabled?: bool
 				is_root_file_system_readonly?:   bool
 				run_as_group?:                   int
-				run_as_user?:                    int
-				security_context_type?:          string
 			}]
-			container_instance_id: string
-			state:                 string
-			time_created:          string
-			fault_domain:          string
+			system_tags: [_]: string
+			time_created: string
+			volume_mounts?: [...{
+				mount_path!:   string
+				volume_name!:  string
+				is_read_only?: bool
+				partition?:    int
+				sub_path?:     string
+			}]
+			container_id:                    string
+			is_resource_principal_disabled?: bool
+			image_url!:                      string
+			arguments?: [...string]
+			command?: [...string]
+			defined_tags?: [_]: string
+			fault_domain:       string
+			working_directory?: string
+			lifecycle_details:  string
+			environment_variables?: [_]: string
+			freeform_tags?: [_]: string
+			time_updated: string
 			resource_config?: [...{
 				memory_limit_in_gbs?: float
 				vcpus_limit?:         float
 			}]
-			time_terminated: string
-			command?: [...string]
-			display_name?: string
-			environment_variables?: [_]: string
-			lifecycle_details: string
-			image_url!:        string
-			defined_tags?: [_]: string
-			exit_code: int
 		}]
-		defined_tags?: [_]: string
-		freeform_tags?: [_]: string
-		container_count: int
 		shape_config!: [...{
+			ocpus!:                       float
 			memory_in_gbs?:               float
 			networking_bandwidth_in_gbps: float
 			processor_description:        string
-			ocpus!:                       float
 		}]
-		fault_domain?: string
-		vnics!: [...{
-			subnet_id!: string
-			freeform_tags?: [_]: string
-			hostname_label?: string
-			defined_tags?: [_]: string
-			nsg_ids?: [...string]
-			skip_source_dest_check?: bool
-			display_name?:           string
-			private_ip?:             string
-			is_public_ip_assigned?:  bool
-			vnic_id:                 string
-		}]
-		time_updated:         string
+		freeform_tags?: [_]: string
+		state?:               string
 		availability_domain!: string
-		image_pull_secrets?: [...{
-			registry_endpoint!: string
-			secret_type!:       string
-			password?:          string
-			secret_id?:         string
-			username?:          string
-		}]
-		volumes?: [...{
-			backing_store?: string
-			configs?: [...{
-				data?:      string
-				file_name?: string
-				path?:      string
-			}]
-			name!:        string
-			volume_type!: string
-		}]
-		display_name?: string
-		shape!:        string
 		dns_config?: [...{
+			nameservers?: [...string]
 			options?: [...string]
 			searches?: [...string]
-			nameservers?: [...string]
-		}]
-	}
-	arguments: container_instance: {
-		container_restart_policy?: string
-		state?:                    string
-		shape_config!: [...{
-			ocpus!:         float
-			memory_in_gbs?: float
-		}]
-		vnics!: [...{
-			subnet_id!: string
-			freeform_tags?: [_]: string
-			hostname_label?:         string
-			skip_source_dest_check?: bool
-			nsg_ids?: [...string]
-			display_name?: string
-			private_ip?:   string
-			defined_tags?: [_]: string
-			is_public_ip_assigned?: bool
 		}]
 		defined_tags?: [_]: string
-		fault_domain?:                         string
 		graceful_shutdown_timeout_in_seconds?: string
 		shape!:                                string
-		display_name?:                         string
-		freeform_tags?: [_]: string
 		image_pull_secrets?: [...{
+			registry_endpoint!: string
+			secret_type!:       string
 			password?:          string
 			secret_id?:         string
 			username?:          string
-			registry_endpoint!: string
-			secret_type!:       string
 		}]
-		availability_domain!: string
+		time_created:      string
+		lifecycle_details: string
+		vnics!: [...{
+			vnic_id: string
+			freeform_tags?: [_]: string
+			is_public_ip_assigned?: bool
+			display_name?:          string
+			subnet_id!:             string
+			nsg_ids?: [...string]
+			private_ip?:             string
+			skip_source_dest_check?: bool
+			hostname_label?:         string
+			defined_tags?: [_]: string
+		}]
+		container_restart_policy?: string
+		display_name?:             string
+		time_updated:              string
 		volumes?: [...{
 			name!:          string
 			volume_type!:   string
@@ -165,64 +119,110 @@ package container_instances
 				path?:      string
 			}]
 		}]
-		dns_config?: [...{
-			nameservers?: [...string]
-			options?: [...string]
-			searches?: [...string]
+		container_count: int
+		system_tags: [_]: string
+		volume_count: int
+	}
+	arguments: container_instance: {
+		availability_domain!: string
+		fault_domain?:        string
+		volumes?: [...{
+			volume_type!:   string
+			backing_store?: string
+			configs?: [...{
+				path?:      string
+				data?:      string
+				file_name?: string
+			}]
+			name!: string
 		}]
 		containers!: [...{
-			health_checks?: [...{
-				timeout_in_seconds?: int
-				command?: [...string]
-				path?:              string
-				status_details?:    string
-				failure_threshold?: int
-				headers?: [...{
-					name?:  string
-					value?: string
-				}]
-				port?:                     int
-				failure_action?:           string
-				success_threshold?:        int
-				health_check_type!:        string
-				initial_delay_in_seconds?: int
-				name?:                     string
-				interval_in_seconds?:      int
-				status?:                   string
-			}]
-			image_url!: string
-			defined_tags?: [_]: string
-			environment_variables?: [_]: string
-			freeform_tags?: [_]: string
 			volume_mounts?: [...{
-				sub_path?:     string
-				mount_path!:   string
 				volume_name!:  string
 				is_read_only?: bool
 				partition?:    int
+				sub_path?:     string
+				mount_path!:   string
 			}]
-			display_name?: string
+			resource_config?: [...{
+				vcpus_limit?:         float
+				memory_limit_in_gbs?: float
+			}]
+			working_directory?: string
+			display_name?:      string
+			environment_variables?: [_]: string
+			freeform_tags?: [_]: string
+			health_checks?: [...{
+				failure_threshold?: int
+				success_threshold?: int
+				headers?: [...{
+					value?: string
+					name?:  string
+				}]
+				status_details?:           string
+				name?:                     string
+				status?:                   string
+				timeout_in_seconds?:       int
+				failure_action?:           string
+				initial_delay_in_seconds?: int
+				health_check_type!:        string
+				interval_in_seconds?:      int
+				port?:                     int
+				command?: [...string]
+				path?: string
+			}]
+			is_resource_principal_disabled?: bool
 			security_context?: [...{
-				is_non_root_user_check_enabled?: bool
-				is_root_file_system_readonly?:   bool
-				run_as_group?:                   int
-				run_as_user?:                    int
-				security_context_type?:          string
+				run_as_group?:          int
+				run_as_user?:           int
+				security_context_type?: string
 				capabilities?: [...{
 					drop_capabilities?: [...string]
 					add_capabilities?: [...string]
 				}]
+				is_non_root_user_check_enabled?: bool
+				is_root_file_system_readonly?:   bool
 			}]
-			command?: [...string]
-			working_directory?: string
+			image_url!: string
 			arguments?: [...string]
-			resource_config?: [...{
-				memory_limit_in_gbs?: float
-				vcpus_limit?:         float
-			}]
-			is_resource_principal_disabled?: bool
+			command?: [...string]
+			defined_tags?: [_]: string
 		}]
+		shape!: string
+		state?: string
+		freeform_tags?: [_]: string
 		compartment_id!: string
+		display_name?:   string
+		dns_config?: [...{
+			searches?: [...string]
+			nameservers?: [...string]
+			options?: [...string]
+		}]
+		shape_config!: [...{
+			ocpus!:         float
+			memory_in_gbs?: float
+		}]
+		vnics!: [...{
+			subnet_id!: string
+			defined_tags?: [_]: string
+			display_name?:   string
+			hostname_label?: string
+			freeform_tags?: [_]: string
+			is_public_ip_assigned?: bool
+			nsg_ids?: [...string]
+			skip_source_dest_check?: bool
+			private_ip?:             string
+		}]
+		defined_tags?: [_]: string
+		image_pull_secrets?: [...{
+			registry_endpoint!: string
+			secret_type!:       string
+			password?:          string
+			secret_id?:         string
+			username?:          string
+		}]
+		container_restart_policy?:             string
+		graceful_shutdown_timeout_in_seconds?: string
 	}
 }
 #data: {
@@ -233,23 +233,23 @@ package container_instances
 	}
 	container_instance_shapes: {
 		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		availability_domain?: string
-		compartment_id!:      string
-	}
-	container_instances: {
-		filter?: [...{
 			values!: [...string]
 			regex?: *false | bool
 			name!:  string
 		}]
 		availability_domain?: string
 		compartment_id!:      string
+	}
+	container_instances: {
+		availability_domain?: string
+		compartment_id!:      string
 		display_name?:        string
 		state?:               string
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
 	}
 }
 

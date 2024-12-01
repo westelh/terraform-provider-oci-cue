@@ -2,6 +2,33 @@ package bds
 
 #resource: {
 	attributes: {
+		bds_instance_metastore_config: {
+			metastore_type:          string
+			time_created:            string
+			time_updated:            string
+			bds_api_key_passphrase!: string
+			bds_instance_id!:        string
+			display_name?:           string
+			activate_trigger?:       int
+			metastore_id!:           string
+			state:                   string
+			cluster_admin_password!: string
+			bds_api_key_id!:         string
+		}
+		bds_instance_operation_certificate_managements_management: {
+			root_certificate?:       string
+			server_key_password?:    string
+			bds_instance_id!:        string
+			cluster_admin_password!: string
+			services!: [...string]
+			enable_operation_certificate_management!: bool
+			renew_operation_certificate_management!:  bool
+			host_cert_details?: [...{
+				host_name?:   string
+				private_key?: string
+				certificate?: string
+			}]
+		}
 		bds_instance_patch_action: {
 			bds_instance_id!:        string
 			cluster_admin_password!: string
@@ -14,202 +41,173 @@ package bds
 			}]
 		}
 		bds_instance_resource_principal_configuration: {
-			time_token_refreshed:                       string
-			time_created:                               string
-			time_token_expiry:                          string
-			force_refresh_resource_principal_trigger?:  int
-			state:                                      string
 			display_name!:                              string
+			session_token_life_span_duration_in_hours?: int
 			time_updated:                               string
 			bds_instance_id!:                           string
+			force_refresh_resource_principal_trigger?:  int
+			time_created:                               string
+			time_token_refreshed:                       string
 			cluster_admin_password!:                    string
-			session_token_life_span_duration_in_hours?: int
+			state:                                      string
+			time_token_expiry:                          string
 		}
 		bds_instance_os_patch_action: {
+			bds_instance_id!:        string
 			cluster_admin_password!: string
 			os_patch_version!:       string
 			patching_configs?: [...{
-				wait_time_between_domain_in_seconds?: int
 				patching_config_strategy!:            string
 				batch_size?:                          int
 				wait_time_between_batch_in_seconds?:  int
 				tolerance_threshold_per_batch?:       int
 				tolerance_threshold_per_domain?:      int
+				wait_time_between_domain_in_seconds?: int
 			}]
-			bds_instance_id!: string
 		}
 		auto_scaling_configuration: {
+			node_type!:   string
+			time_created: string
 			policy?: [...{
 				policy_type!: string
 				rules!: [...{
 					action!: string
 					metric!: [...{
+						metric_type!: string
 						threshold!: [...{
+							value!:               int
 							duration_in_minutes!: int
 							operator!:            string
-							value!:               int
 						}]
-						metric_type!: string
 					}]
 				}]
 			}]
-			time_created:     string
-			bds_instance_id!: string
-			is_enabled!:      bool
+			cluster_admin_password!: string
+			display_name?:           string
 			policy_details?: [...{
-				scale_in_config?: [...{
+				timezone?:    string
+				policy_type!: string
+				scale_up_config?: [...{
+					ocpu_step_size?:      int
+					max_memory_per_node?: int
+					max_ocpus_per_node?:  int
+					memory_step_size?:    int
 					metric?: [...{
-						metric_type?: string
 						threshold?: [...{
 							duration_in_minutes?: int
 							operator?:            string
 							value?:               int
 						}]
+						metric_type?: string
 					}]
+				}]
+				action_type:  string
+				trigger_type: string
+				scale_down_config?: [...{
+					min_ocpus_per_node?: int
+					ocpu_step_size?:     int
+					memory_step_size?:   int
+					metric?: [...{
+						metric_type?: string
+						threshold?: [...{
+							operator?:            string
+							value?:               int
+							duration_in_minutes?: int
+						}]
+					}]
+					min_memory_per_node?: int
+				}]
+				scale_in_config?: [...{
 					min_node_count?: int
 					step_size?:      int
+					metric?: [...{
+						metric_type?: string
+						threshold?: [...{
+							operator?:            string
+							value?:               int
+							duration_in_minutes?: int
+						}]
+					}]
 				}]
-				trigger_type: string
+				scale_out_config?: [...{
+					max_node_count?: int
+					metric?: [...{
+						threshold?: [...{
+							operator?:            string
+							value?:               int
+							duration_in_minutes?: int
+						}]
+						metric_type?: string
+					}]
+					step_size?: int
+				}]
 				schedule_details?: [...{
+					schedule_type?: string
+					time_and_horizontal_scaling_config?: [...{
+						target_node_count?: int
+						time_recurrence?:   string
+					}]
 					time_and_vertical_scaling_config?: [...{
 						target_memory_per_node?: int
 						target_ocpus_per_node?:  int
 						target_shape?:           string
 						time_recurrence?:        string
 					}]
-					schedule_type?: string
-					time_and_horizontal_scaling_config?: [...{
-						target_node_count?: int
-						time_recurrence?:   string
-					}]
 				}]
-				policy_type!: string
-				action_type:  string
-				scale_down_config?: [...{
-					memory_step_size?: int
-					metric?: [...{
-						threshold?: [...{
-							duration_in_minutes?: int
-							operator?:            string
-							value?:               int
-						}]
-						metric_type?: string
-					}]
-					min_memory_per_node?: int
-					min_ocpus_per_node?:  int
-					ocpu_step_size?:      int
-				}]
-				scale_out_config?: [...{
-					step_size?:      int
-					max_node_count?: int
-					metric?: [...{
-						metric_type?: string
-						threshold?: [...{
-							value?:               int
-							duration_in_minutes?: int
-							operator?:            string
-						}]
-					}]
-				}]
-				scale_up_config?: [...{
-					metric?: [...{
-						metric_type?: string
-						threshold?: [...{
-							value?:               int
-							duration_in_minutes?: int
-							operator?:            string
-						}]
-					}]
-					ocpu_step_size?:      int
-					max_memory_per_node?: int
-					max_ocpus_per_node?:  int
-					memory_step_size?:    int
-				}]
-				timezone?: string
 			}]
-			display_name?:           string
-			state:                   string
-			cluster_admin_password!: string
-			node_type!:              string
-			time_updated:            string
+			state:            string
+			time_updated:     string
+			bds_instance_id!: string
+			is_enabled!:      bool
 		}
 		bds_instance: {
-			util_node!: [...{
-				shape_config?: [...{
-					ocpus?:         int
-					nvmes?:         int
-					memory_in_gbs?: int
-				}]
-				shape!:                    string
-				subnet_id!:                string
-				block_volume_size_in_gbs?: string
-				number_of_nodes!:          int
-			}]
-			is_cloud_sql_configured?: bool
-			compartment_id!:          string
-			master_node!: [...{
-				shape!:                    string
-				subnet_id!:                string
-				block_volume_size_in_gbs?: string
-				number_of_nodes!:          int
-				shape_config?: [...{
-					memory_in_gbs?: int
-					ocpus?:         int
-					nvmes?:         int
-				}]
-			}]
-			time_created: string
-			is_secure!:   bool
-			ignore_existing_nodes_shape?: [...string]
-			is_kafka_configured?:  bool
-			is_high_availability!: bool
-			freeform_tags?: [_]: string
-			cluster_profile?: string
-			cluster_details: [...{
-				jupyter_hub_url:      string
-				time_refreshed:       string
-				csql_cell_version:    string
-				odh_version:          string
-				db_version:           string
-				bdm_version:          string
-				cloudera_manager_url: string
-				time_created:         string
-				hue_server_url:       string
-				bda_version:          string
-				os_version:           string
-				ambari_url:           string
-				big_data_manager_url: string
-				bd_cell_version:      string
-				bds_version:          string
-			}]
-			created_by: string
-			compute_only_worker_node?: [...{
-				shape_config?: [...{
-					ocpus?:         int
-					nvmes?:         int
-					memory_in_gbs?: int
-				}]
-				shape!:                    string
-				subnet_id!:                string
-				block_volume_size_in_gbs?: string
-				number_of_nodes!:          int
-			}]
+			is_force_stop_jobs?:  bool
+			time_created:         string
+			is_kafka_configured?: bool
 			network_config?: [...{
 				cidr_block?:              string
 				is_nat_gateway_required?: bool
 			}]
-			kafka_broker_node?: [...{
+			cluster_public_key!: string
+			ignore_existing_nodes_shape?: [...string]
+			state?:                   string
+			is_cloud_sql_configured?: bool
+			cluster_details: [...{
+				db_version:           string
+				bd_cell_version:      string
+				bda_version:          string
+				big_data_manager_url: string
+				os_version:           string
+				hue_server_url:       string
+				ambari_url:           string
+				time_created:         string
+				bdm_version:          string
+				csql_cell_version:    string
+				jupyter_hub_url:      string
+				odh_version:          string
+				time_refreshed:       string
+				cloudera_manager_url: string
+				bds_version:          string
+			}]
+			created_by:            string
+			bootstrap_script_url?: string
+			compartment_id!:       string
+			is_high_availability!: bool
+			cluster_version!:      string
+			display_name!:         string
+			time_updated:          string
+			edge_node?: [...{
 				subnet_id!:                string
 				block_volume_size_in_gbs?: string
-				number_of_kafka_nodes!:    int
+				number_of_nodes!:          int
 				shape_config?: [...{
-					ocpus?:         int
 					nvmes?:         int
 					memory_in_gbs?: int
+					ocpus?:         int
 				}]
 				shape!: string
 			}]
-			number_of_nodes_requiring_maintenance_reboot: int
+			freeform_tags?: [_]: string
 			cloud_sql_details?: [...{
 				nvmes:                                int
 				ocpus:                                int
@@ -223,8 +221,35 @@ package bds
 				block_volume_size_in_gbs: string
 				memory_in_gbs:            int
 			}]
-			cluster_admin_password!: string
-			is_force_stop_jobs?:     bool
+			os_patch_version?:                            string
+			number_of_nodes_requiring_maintenance_reboot: int
+			nodes: [...{
+				node_type:                     string
+				instance_id:                   string
+				os_version:                    string
+				availability_domain:           string
+				ip_address:                    string
+				nvmes:                         int
+				hostname:                      string
+				time_created:                  string
+				display_name:                  string
+				subnet_id:                     string
+				is_reboot_required:            bool
+				ssh_fingerprint:               string
+				image_id:                      string
+				local_disks_total_size_in_gbs: float
+				fault_domain:                  string
+				attached_block_volumes: [...{
+					volume_size_in_gbs:   string
+					volume_attachment_id: string
+				}]
+				time_maintenance_reboot_due: string
+				ocpus:                       int
+				memory_in_gbs:               int
+				shape:                       string
+				state:                       string
+			}]
+			kms_key_id?: string
 			worker_node!: [...{
 				shape!:                    string
 				subnet_id!:                string
@@ -236,84 +261,82 @@ package bds
 					memory_in_gbs?: int
 				}]
 			}]
-			time_updated: string
 			defined_tags?: [_]: string
-			edge_node?: [...{
-				number_of_nodes!: int
+			util_node!: [...{
 				shape_config?: [...{
+					memory_in_gbs?: int
 					ocpus?:         int
 					nvmes?:         int
-					memory_in_gbs?: int
 				}]
 				shape!:                    string
 				subnet_id!:                string
 				block_volume_size_in_gbs?: string
+				number_of_nodes!:          int
 			}]
-			kms_key_id?:          string
-			kerberos_realm_name?: string
-			cluster_public_key!:  string
-			display_name!:        string
-			number_of_nodes:      int
-			cluster_version!:     string
-			os_patch_version?:    string
-			nodes: [...{
-				os_version:                  string
-				shape:                       string
-				time_created:                string
-				availability_domain:         string
-				fault_domain:                string
-				image_id:                    string
-				ip_address:                  string
-				ssh_fingerprint:             string
-				hostname:                    string
-				time_maintenance_reboot_due: string
-				attached_block_volumes: [...{
-					volume_attachment_id: string
-					volume_size_in_gbs:   string
+			cluster_profile?: string
+			number_of_nodes:  int
+			is_secure!:       bool
+			master_node!: [...{
+				block_volume_size_in_gbs?: string
+				number_of_nodes!:          int
+				shape_config?: [...{
+					nvmes?:         int
+					memory_in_gbs?: int
+					ocpus?:         int
 				}]
-				local_disks_total_size_in_gbs: float
-				memory_in_gbs:                 int
-				state:                         string
-				node_type:                     string
-				is_reboot_required:            bool
-				display_name:                  string
-				subnet_id:                     string
-				ocpus:                         int
-				instance_id:                   string
-				nvmes:                         int
+				shape!:     string
+				subnet_id!: string
 			}]
-			state?:                string
-			bootstrap_script_url?: string
+			compute_only_worker_node?: [...{
+				block_volume_size_in_gbs?: string
+				number_of_nodes!:          int
+				shape_config?: [...{
+					nvmes?:         int
+					memory_in_gbs?: int
+					ocpus?:         int
+				}]
+				shape!:     string
+				subnet_id!: string
+			}]
+			kerberos_realm_name?:    string
+			cluster_admin_password!: string
+			kafka_broker_node?: [...{
+				subnet_id!:                string
+				block_volume_size_in_gbs?: string
+				number_of_kafka_nodes!:    int
+				shape_config?: [...{
+					memory_in_gbs?: int
+					ocpus?:         int
+					nvmes?:         int
+				}]
+				shape!: string
+			}]
 		}
 		bds_instance_api_key: {
+			pemfilepath:      string
+			bds_instance_id!: string
+			passphrase!:      string
+			key_alias!:       string
+			user_id!:         string
 			default_region?:  string
+			time_created:     string
 			fingerprint:      string
 			state:            string
 			tenant_id:        string
-			passphrase!:      string
-			time_created:     string
-			key_alias!:       string
-			user_id!:         string
-			pemfilepath:      string
-			bds_instance_id!: string
 		}
+	}
+	arguments: {
 		bds_instance_metastore_config: {
-			bds_api_key_passphrase!: string
-			cluster_admin_password!: string
-			metastore_id!:           string
-			display_name?:           string
 			activate_trigger?:       int
 			bds_api_key_id!:         string
-			metastore_type:          string
-			time_created:            string
-			state:                   string
+			metastore_id!:           string
+			bds_api_key_passphrase!: string
 			bds_instance_id!:        string
-			time_updated:            string
+			cluster_admin_password!: string
+			display_name?:           string
 		}
 		bds_instance_operation_certificate_managements_management: {
-			services!: [...string]
-			enable_operation_certificate_management!: bool
-			renew_operation_certificate_management!:  bool
+			renew_operation_certificate_management!: bool
 			host_cert_details?: [...{
 				certificate?: string
 				host_name?:   string
@@ -323,100 +346,99 @@ package bds
 			server_key_password?:    string
 			bds_instance_id!:        string
 			cluster_admin_password!: string
+			services!: [...string]
+			enable_operation_certificate_management!: bool
 		}
-	}
-	arguments: {
 		bds_instance_patch_action: {
+			bds_instance_id!:        string
+			cluster_admin_password!: string
+			version!:                string
 			patching_config?: [...{
 				wait_time_between_domain_in_seconds?: int
 				patching_config_strategy!:            string
 				batch_size?:                          int
 				wait_time_between_batch_in_seconds?:  int
 			}]
-			bds_instance_id!:        string
-			cluster_admin_password!: string
-			version!:                string
 		}
 		bds_instance_resource_principal_configuration: {
 			display_name!:                              string
+			session_token_life_span_duration_in_hours?: int
 			bds_instance_id!:                           string
 			cluster_admin_password!:                    string
-			session_token_life_span_duration_in_hours?: int
 			force_refresh_resource_principal_trigger?:  int
 		}
 		bds_instance_os_patch_action: {
-			bds_instance_id!:        string
 			cluster_admin_password!: string
 			os_patch_version!:       string
 			patching_configs?: [...{
+				batch_size?:                          int
+				wait_time_between_batch_in_seconds?:  int
 				tolerance_threshold_per_batch?:       int
 				tolerance_threshold_per_domain?:      int
 				wait_time_between_domain_in_seconds?: int
 				patching_config_strategy!:            string
-				batch_size?:                          int
-				wait_time_between_batch_in_seconds?:  int
 			}]
+			bds_instance_id!: string
 		}
 		auto_scaling_configuration: {
+			bds_instance_id!:        string
+			node_type!:              string
+			display_name?:           string
+			cluster_admin_password!: string
+			is_enabled!:             bool
 			policy?: [...{
+				policy_type!: string
 				rules!: [...{
 					action!: string
 					metric!: [...{
 						metric_type!: string
 						threshold!: [...{
+							duration_in_minutes!: int
 							operator!:            string
 							value!:               int
-							duration_in_minutes!: int
 						}]
 					}]
 				}]
-				policy_type!: string
 			}]
-			bds_instance_id!:        string
-			cluster_admin_password!: string
-			is_enabled!:             bool
-			node_type!:              string
-			display_name?:           string
 			policy_details?: [...{
-				scale_out_config?: [...{
-					step_size?:      int
-					max_node_count?: int
-					metric?: [...{
-						metric_type?: string
-						threshold?: [...{
-							operator?:            string
-							value?:               int
-							duration_in_minutes?: int
-						}]
-					}]
-				}]
-				scale_up_config?: [...{
-					max_ocpus_per_node?: int
-					memory_step_size?:   int
-					metric?: [...{
-						metric_type?: string
-						threshold?: [...{
-							duration_in_minutes?: int
-							operator?:            string
-							value?:               int
-						}]
-					}]
-					ocpu_step_size?:      int
-					max_memory_per_node?: int
-				}]
-				timezone?:    string
 				policy_type!: string
+				scale_down_config?: [...{
+					min_memory_per_node?: int
+					min_ocpus_per_node?:  int
+					ocpu_step_size?:      int
+					memory_step_size?:    int
+					metric?: [...{
+						threshold?: [...{
+							value?:               int
+							duration_in_minutes?: int
+							operator?:            string
+						}]
+						metric_type?: string
+					}]
+				}]
 				scale_in_config?: [...{
 					step_size?: int
 					metric?: [...{
 						metric_type?: string
 						threshold?: [...{
-							value?:               int
 							duration_in_minutes?: int
 							operator?:            string
+							value?:               int
 						}]
 					}]
 					min_node_count?: int
+				}]
+				scale_out_config?: [...{
+					metric?: [...{
+						threshold?: [...{
+							operator?:            string
+							value?:               int
+							duration_in_minutes?: int
+						}]
+						metric_type?: string
+					}]
+					step_size?:      int
+					max_node_count?: int
 				}]
 				schedule_details?: [...{
 					schedule_type?: string
@@ -431,7 +453,10 @@ package bds
 						target_ocpus_per_node?:  int
 					}]
 				}]
-				scale_down_config?: [...{
+				scale_up_config?: [...{
+					max_memory_per_node?: int
+					max_ocpus_per_node?:  int
+					memory_step_size?:    int
 					metric?: [...{
 						metric_type?: string
 						threshold?: [...{
@@ -440,21 +465,45 @@ package bds
 							value?:               int
 						}]
 					}]
-					min_memory_per_node?: int
-					min_ocpus_per_node?:  int
-					ocpu_step_size?:      int
-					memory_step_size?:    int
+					ocpu_step_size?: int
 				}]
+				timezone?: string
 			}]
 		}
 		bds_instance: {
-			is_secure!:            bool
-			is_high_availability!: bool
+			compartment_id!:         string
+			display_name!:           string
+			cluster_admin_password!: string
 			freeform_tags?: [_]: string
-			kafka_broker_node?: [...{
+			cluster_version!:     string
+			is_kafka_configured?: bool
+			network_config?: [...{
+				cidr_block?:              string
+				is_nat_gateway_required?: bool
+			}]
+			edge_node?: [...{
+				number_of_nodes!: int
+				shape_config?: [...{
+					memory_in_gbs?: int
+					ocpus?:         int
+					nvmes?:         int
+				}]
+				shape!:                    string
 				subnet_id!:                string
 				block_volume_size_in_gbs?: string
-				number_of_kafka_nodes!:    int
+			}]
+			cluster_public_key!: string
+			state?:              string
+			cloud_sql_details?: [...{
+				shape!: string
+			}]
+			os_patch_version?:    string
+			is_secure!:           bool
+			kerberos_realm_name?: string
+			compute_only_worker_node?: [...{
+				subnet_id!:                string
+				block_volume_size_in_gbs?: string
+				number_of_nodes!:          int
 				shape_config?: [...{
 					memory_in_gbs?: int
 					ocpus?:         int
@@ -462,14 +511,11 @@ package bds
 				}]
 				shape!: string
 			}]
-			cluster_profile?:     string
-			is_force_stop_jobs?:  bool
-			display_name!:        string
-			is_kafka_configured?: bool
-			compartment_id!:      string
-			master_node!: [...{
-				shape!:                    string
-				subnet_id!:                string
+			defined_tags?: [_]: string
+			is_cloud_sql_configured?: bool
+			bootstrap_script_url?:    string
+			kms_key_id?:              string
+			worker_node!: [...{
 				block_volume_size_in_gbs?: string
 				number_of_nodes!:          int
 				shape_config?: [...{
@@ -477,18 +523,12 @@ package bds
 					memory_in_gbs?: int
 					ocpus?:         int
 				}]
+				shape!:     string
+				subnet_id!: string
 			}]
-			kerberos_realm_name?: string
-			cloud_sql_details?: [...{
-				shape!: string
-			}]
-			network_config?: [...{
-				cidr_block?:              string
-				is_nat_gateway_required?: bool
-			}]
-			kms_key_id?: string
-			defined_tags?: [_]: string
-			util_node!: [...{
+			is_force_stop_jobs?: bool
+			cluster_profile?:    string
+			master_node!: [...{
 				block_volume_size_in_gbs?: string
 				number_of_nodes!:          int
 				shape_config?: [...{
@@ -500,21 +540,7 @@ package bds
 				subnet_id!: string
 			}]
 			ignore_existing_nodes_shape?: [...string]
-			edge_node?: [...{
-				number_of_nodes!: int
-				shape_config?: [...{
-					nvmes?:         int
-					memory_in_gbs?: int
-					ocpus?:         int
-				}]
-				shape!:                    string
-				subnet_id!:                string
-				block_volume_size_in_gbs?: string
-			}]
-			cluster_admin_password!: string
-			os_patch_version?:       string
-			compute_only_worker_node?: [...{
-				shape!:                    string
+			util_node!: [...{
 				subnet_id!:                string
 				block_volume_size_in_gbs?: string
 				number_of_nodes!:          int
@@ -523,85 +549,51 @@ package bds
 					ocpus?:         int
 					nvmes?:         int
 				}]
+				shape!: string
 			}]
-			state?:                   string
-			cluster_public_key!:      string
-			bootstrap_script_url?:    string
-			cluster_version!:         string
-			is_cloud_sql_configured?: bool
-			worker_node!: [...{
-				shape_config?: [...{
-					memory_in_gbs?: int
-					ocpus?:         int
-					nvmes?:         int
-				}]
+			is_high_availability!: bool
+			kafka_broker_node?: [...{
 				shape!:                    string
 				subnet_id!:                string
 				block_volume_size_in_gbs?: string
-				number_of_nodes!:          int
+				number_of_kafka_nodes!:    int
+				shape_config?: [...{
+					nvmes?:         int
+					memory_in_gbs?: int
+					ocpus?:         int
+				}]
 			}]
 		}
 		bds_instance_api_key: {
-			key_alias!:       string
-			passphrase!:      string
-			default_region?:  string
 			bds_instance_id!: string
+			passphrase!:      string
+			key_alias!:       string
 			user_id!:         string
-		}
-		bds_instance_metastore_config: {
-			bds_api_key_id!:         string
-			bds_instance_id!:        string
-			bds_api_key_passphrase!: string
-			cluster_admin_password!: string
-			metastore_id!:           string
-			display_name?:           string
-			activate_trigger?:       int
-		}
-		bds_instance_operation_certificate_managements_management: {
-			root_certificate?:       string
-			server_key_password?:    string
-			bds_instance_id!:        string
-			cluster_admin_password!: string
-			services!: [...string]
-			enable_operation_certificate_management!: bool
-			renew_operation_certificate_management!:  bool
-			host_cert_details?: [...{
-				certificate?: string
-				host_name?:   string
-				private_key?: string
-			}]
+			default_region?:  string
 		}
 	}
 }
 #data: {
-	bds_instance_api_key: {
-		api_key_id!:      string
-		bds_instance_id!: string
-	}
-	bds_instance_get_os_patch: {
-		bds_instance_id!:  string
-		os_patch_version!: string
-		filter?: [...{
-			values!: [...string]
-			regex?: *false | bool
-			name!:  string
-		}]
-	}
-	auto_scaling_configuration: {
-		bds_instance_id!:               string
-		auto_scaling_configuration_id!: string
-	}
-	bds_instance: bds_instance_id!: string
-	bds_instance_patch_histories: {
-		patch_version?: string
-		state?:         string
+	bds_instance_resource_principal_configurations: {
+		state?: string
 		filter?: [...{
 			name!: string
 			values!: [...string]
 			regex?: *false | bool
 		}]
 		bds_instance_id!: string
+		display_name?:    string
+	}
+	bds_instance_patch_histories: {
+		bds_instance_id!: string
 		patch_type?:      string
+		patch_version?:   string
+		state?:           string
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
 	}
 	bds_instance_patches: {
 		filter?: [...{
@@ -611,68 +603,61 @@ package bds
 		}]
 		bds_instance_id!: string
 	}
+	bds_instance_metastore_config: {
+		metastore_config_id!: string
+		bds_instance_id!:     string
+	}
 	bds_instance_resource_principal_configuration: {
 		bds_instance_id!:                     string
 		resource_principal_configuration_id!: string
 	}
 	bds_instances: {
-		display_name?: string
-		state?:        string
 		filter?: [...{
 			name!: string
 			values!: [...string]
 			regex?: *false | bool
 		}]
 		compartment_id!: string
+		display_name?:   string
+		state?:          string
 	}
-	auto_scaling_configurations: {
-		bds_instance_id!: string
-		compartment_id!:  string
-		display_name?:    string
-		state?:           string
+	auto_scaling_configuration: {
+		auto_scaling_configuration_id!: string
+		bds_instance_id!:               string
+	}
+	bds_instance_api_keys: {
+		display_name?: string
+		state?:        string
+		user_id?:      string
 		filter?: [...{
 			name!: string
 			values!: [...string]
 			regex?: *false | bool
 		}]
-	}
-	bds_instance_api_keys: {
 		bds_instance_id!: string
-		display_name?:    string
-		state?:           string
-		user_id?:         string
-		filter?: [...{
-			regex?: *false | bool
-			name!:  string
-			values!: [...string]
-		}]
-	}
-	bds_instance_resource_principal_configurations: {
-		filter?: [...{
-			values!: [...string]
-			regex?: *false | bool
-			name!:  string
-		}]
-		bds_instance_id!: string
-		display_name?:    string
-		state?:           string
-	}
-	bds_instance_metastore_config: {
-		metastore_config_id!: string
-		bds_instance_id!:     string
 	}
 	bds_instance_metastore_configs: {
-		display_name?:   string
-		metastore_id?:   string
-		metastore_type?: string
-		state?:          string
+		state?: string
 		filter?: [...{
+			name!: string
 			values!: [...string]
 			regex?: *false | bool
-			name!:  string
 		}]
 		bds_api_key_id?:  string
 		bds_instance_id!: string
+		display_name?:    string
+		metastore_id?:    string
+		metastore_type?:  string
+	}
+	bds_instance: bds_instance_id!: string
+	bds_instance_get_os_patch: {
+		filter?: [...{
+			regex?: *false | bool
+			name!:  string
+			values!: [...string]
+		}]
+		bds_instance_id!:  string
+		os_patch_version!: string
 	}
 	bds_instance_list_os_patches: {
 		filter?: [...{
@@ -681,6 +666,21 @@ package bds
 			values!: [...string]
 		}]
 		bds_instance_id!: string
+	}
+	auto_scaling_configurations: {
+		bds_instance_id!: string
+		compartment_id!:  string
+		display_name?:    string
+		state?:           string
+		filter?: [...{
+			regex?: *false | bool
+			name!:  string
+			values!: [...string]
+		}]
+	}
+	bds_instance_api_key: {
+		bds_instance_id!: string
+		api_key_id!:      string
 	}
 }
 

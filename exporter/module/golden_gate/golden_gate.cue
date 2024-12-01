@@ -2,124 +2,261 @@ package golden_gate
 
 #resource: {
 	attributes: {
-		connection: {
-			client_secret?:                      string
-			sas_token_secret_id?:                string
-			vault_id?:                           string
-			key_store_password?:                 string
-			port?:                               int
-			lifecycle_details:                   string
-			sas_token?:                          string
-			jndi_initial_context_factory?:       string
-			time_updated:                        string
-			trust_store_secret_id?:              string
-			key_store_secret_id?:                string
-			secret_access_key?:                  string
-			should_validate_server_certificate?: bool
-			database_name?:                      string
-			ssl_cert?:                           string
-			freeform_tags?: [_]: string
-			trigger_refresh?:                    bool
-			connection_factory?:                 string
-			user_id?:                            string
-			db_system_id?:                       string
-			private_key_passphrase_secret_id?:   string
-			ssl_key_password_secret_id?:         string
-			ssl_server_certificate?:             string
-			account_name?:                       string
-			service_account_key_file_secret_id?: string
-			account_key?:                        string
-			client_id?:                          string
+		deployment: {
+			cpu_core_count!:          int
+			is_auto_scaling_enabled!: bool
 			ingress_ips: [...{
 				ingress_ip: string
 			}]
-			connection_string?:            string
-			jndi_provider_url?:            string
-			should_use_jndi?:              bool
-			security_protocol?:            string
-			client_secret_secret_id?:      string
-			description?:                  string
-			technology_type!:              string
-			ssl_client_keystoredb?:        string
-			redis_cluster_id?:             string
-			host?:                         string
-			core_site_xml?:                string
-			producer_properties?:          string
-			password?:                     string
-			azure_tenant_id?:              string
-			key_store_password_secret_id?: string
+			time_updated:             string
+			time_of_next_maintenance: string
+			deployment_backup_id?:    string
+			private_ip_address:       string
+			is_healthy:               bool
+			fqdn?:                    string
+			locks?: [...{
+				message?:            string
+				related_resource_id: string
+				time_created:        string
+				type!:               string
+			}]
+			state?:                                string
+			deployment_type!:                      string
+			is_storage_utilization_limit_exceeded: bool
+			system_tags: [_]: string
+			nsg_ids?: [...string]
+			defined_tags?: [_]: string
+			time_upgrade_required:        string
+			next_maintenance_action_type: string
+			maintenance_configuration?: [...{
+				security_patch_upgrade_period_in_days?:   int
+				bundle_release_upgrade_period_in_days?:   int
+				interim_release_upgrade_period_in_days?:  int
+				is_interim_release_auto_upgrade_enabled?: bool
+				major_release_upgrade_period_in_days?:    int
+			}]
+			category:          string
+			public_ip_address: string
+			environment_type?: string
+			deployment_diagnostic_data: [...{
+				object:                string
+				time_diagnostic_end:   string
+				time_diagnostic_start: string
+				bucket:                string
+				diagnostic_state:      string
+				namespace:             string
+			}]
+			license_model!: string
+			maintenance_window?: [...{
+				day!:        string
+				start_hour!: int
+			}]
+			time_ogg_version_supported_until: string
+			freeform_tags?: [_]: string
+			display_name!: string
+			ogg_data?: [...{
+				deployment_name!: string
+				admin_password?:  string
+				admin_username?:  string
+				group_to_roles_mapping?: [...{
+					security_group_id!:      string
+					administrator_group_id?: string
+					operator_group_id?:      string
+					user_group_id?:          string
+				}]
+				key?:                string
+				certificate?:        string
+				credential_store?:   string
+				password_secret_id?: string
+				identity_domain_id?: string
+				ogg_version?:        string
+			}]
+			subnet_id!:                   string
+			description?:                 string
+			is_public?:                   bool
+			next_maintenance_description: string
+			storage_utilization_in_bytes: string
+			deployment_url:               string
+			time_created:                 string
+			is_latest_version:            bool
+			compartment_id!:              string
+			is_lock_override?:            bool
+			lifecycle_details:            string
+			lifecycle_sub_state:          string
+			load_balancer_subnet_id?:     string
+			load_balancer_id:             string
+		}
+		deployment_backup: {
+			compartment_id!: string
+			system_tags: [_]: string
+			time_created:         string
+			time_backup_finished: string
+			freeform_tags?: [_]: string
+			time_of_backup: string
+			namespace!:     string
+			display_name!:  string
+			defined_tags?: [_]: string
+			deployment_type: string
+			time_updated:    string
+			ogg_version:     string
+			size_in_bytes:   float
+			bucket!:         string
+			backup_type:     string
+			state:           string
+			object!:         string
 			locks?: [...{
 				type!:               string
 				message?:            string
 				related_resource_id: string
 				time_created:        string
 			}]
-			wallet_secret_id?:          string
-			jndi_security_credentials?: string
-			jndi_security_principal?:   string
-			url?:                       string
-			session_mode?:              string
-			access_key_id?:             string
-			fingerprint?:               string
-			ssl_mode?:                  string
-			public_key_fingerprint?:    string
-			region?:                    string
-			servers?:                   string
-			stream_pool_id?:            string
-			nsg_ids?: [...string]
-			account_key_secret_id?: string
+			is_automatic:      bool
+			lifecycle_details: string
+			deployment_id!:    string
+			is_metadata_only?: bool
+			is_lock_override?: bool
+		}
+		deployment_certificate: {
+			public_key_size:      string
+			state:                string
+			time_created:         string
+			deployment_id!:       string
+			time_valid_to:        string
+			authority_key_id:     string
+			serial:               string
+			is_ca:                bool
+			public_key:           string
+			is_lock_override?:    bool
+			issuer:               string
+			key!:                 string
+			subject_key_id:       string
+			version:              string
+			public_key_algorithm: string
+			time_valid_from:      string
+			subject:              string
+			md5hash:              string
+			is_self_signed:       bool
+			sha1hash:             string
+			certificate_content!: string
+		}
+		connection: {
+			secret_access_key?:          string
+			key_id?:                     string
+			client_id?:                  string
+			subnet_id?:                  string
+			jndi_provider_url?:          string
+			private_key_file_secret_id?: string
+			compartment_id!:             string
 			defined_tags?: [_]: string
-			compartment_id!:                      string
-			trust_store?:                         string
-			private_ip?:                          string
-			consumer_properties?:                 string
-			database_id?:                         string
-			wallet?:                              string
-			key_store?:                           string
-			display_name!:                        string
-			secret_access_key_secret_id?:         string
-			jndi_connection_factory?:             string
-			private_key_passphrase?:              string
-			ssl_client_keystoredb_secret_id?:     string
-			jndi_security_credentials_secret_id?: string
-			system_tags: [_]: string
-			ssl_crl?:                       string
-			ssl_client_keystash?:           string
-			authentication_type?:           string
-			private_key_file?:              string
-			service_account_key_file?:      string
-			key_id?:                        string
-			ssl_key_password?:              string
-			connection_type!:               string
-			routing_method?:                string
-			ssl_key?:                       string
-			ssl_client_keystash_secret_id?: string
-			authentication_mode?:           string
-			deployment_id?:                 string
-			username?:                      string
-			time_created:                   string
-			password_secret_id?:            string
-			endpoint?:                      string
-			ssl_ca?:                        string
-			trust_store_password?:          string
+			technology_type!:        string
+			authentication_type?:    string
+			ssl_mode?:               string
+			public_key_fingerprint?: string
+			db_system_id?:           string
+			user_id?:                string
+			producer_properties?:    string
+			ssl_key?:                string
+			endpoint?:               string
+			connection_factory?:     string
 			bootstrap_servers?: [...{
-				host?:       string
 				port?:       int
 				private_ip?: string
+				host?:       string
 			}]
-			subnet_id?:                      string
-			private_key_file_secret_id?:     string
-			tenancy_id?:                     string
-			ssl_key_secret_id?:              string
-			is_lock_override?:               bool
-			connection_url?:                 string
+			does_use_secret_ids?:       bool
+			wallet_secret_id?:          string
+			time_created:               string
+			ssl_ca?:                    string
+			client_secret?:             string
+			routing_method?:            string
+			private_ip?:                string
+			jndi_security_credentials?: string
+			database_id?:               string
+			description?:               string
+			ingress_ips: [...{
+				ingress_ip: string
+			}]
+			region?:                  string
+			sas_token?:               string
+			ssl_crl?:                 string
+			jndi_connection_factory?: string
+			freeform_tags?: [_]: string
+			username?:                            string
+			should_validate_server_certificate?:  bool
+			session_mode?:                        string
+			ssl_server_certificate?:              string
+			jndi_security_credentials_secret_id?: string
+			ssl_client_keystash?:                 string
+			ssl_client_keystash_secret_id?:       string
+			core_site_xml?:                       string
+			jndi_initial_context_factory?:        string
+			stream_pool_id?:                      string
+			ssl_client_keystoredb_secret_id?:     string
+			fingerprint?:                         string
+			should_use_jndi?:                     bool
+			sas_token_secret_id?:                 string
+			account_name?:                        string
+			host?:                                string
+			access_key_id?:                       string
+			ssl_key_secret_id?:                   string
+			client_secret_secret_id?:             string
+			trust_store_secret_id?:               string
+			ssl_client_keystoredb?:               string
+			deployment_id?:                       string
+			password?:                            string
+			service_account_key_file?:            string
+			ssl_cert?:                            string
+			connection_string?:                   string
+			trust_store?:                         string
+			ssl_key_password?:                    string
+			servers?:                             string
+			private_key_passphrase?:              string
+			jndi_security_principal?:             string
+			vault_id?:                            string
+			key_store_password_secret_id?:        string
+			connection_type!:                     string
+			key_store?:                           string
+			private_key_passphrase_secret_id?:    string
+			account_key?:                         string
+			nsg_ids?: [...string]
 			trust_store_password_secret_id?: string
-			state:                           string
-			additional_attributes?: [...{
-				name?:  string
-				value?: string
+			is_lock_override?:               bool
+			locks?: [...{
+				time_created:        string
+				type!:               string
+				message?:            string
+				related_resource_id: string
 			}]
-			does_use_secret_ids?: bool
+			system_tags: [_]: string
+			account_key_secret_id?:       string
+			security_protocol?:           string
+			trigger_refresh?:             bool
+			key_store_secret_id?:         string
+			wallet?:                      string
+			connection_url?:              string
+			secret_access_key_secret_id?: string
+			private_key_file?:            string
+			database_name?:               string
+			url?:                         string
+			state:                        string
+			lifecycle_details:            string
+			trust_store_password?:        string
+			time_updated:                 string
+			ssl_key_password_secret_id?:  string
+			tenancy_id?:                  string
+			display_name!:                string
+			additional_attributes?: [...{
+				value?: string
+				name?:  string
+			}]
+			azure_tenant_id?:                    string
+			port?:                               int
+			service_account_key_file_secret_id?: string
+			consumer_properties?:                string
+			authentication_mode?:                string
+			redis_cluster_id?:                   string
+			password_secret_id?:                 string
+			key_store_password?:                 string
 		}
 		connection_assignment: {
 			time_created:      string
@@ -132,279 +269,216 @@ package golden_gate
 			state:             string
 		}
 		database_registration: {
-			time_updated:       string
-			connection_string?: string
-			lifecycle_details:  string
-			rce_private_ip:     string
-			system_tags: [_]: string
-			description?:    string
-			username!:       string
-			state:           string
-			time_created:    string
-			alias_name!:     string
-			compartment_id!: string
-			wallet?:         string
-			defined_tags?: [_]: string
-			session_mode?: string
-			display_name!: string
+			wallet?:       string
 			subnet_id?:    string
-			secret_id:     string
+			fqdn!:         string
+			display_name!: string
 			freeform_tags?: [_]: string
-			database_id?:           string
+			session_mode?:          string
+			time_created:           string
+			lifecycle_details:      string
+			time_updated:           string
+			description?:           string
 			ip_address?:            string
-			key_id?:                string
-			vault_id?:              string
-			fqdn!:                  string
-			password!:              string
+			state:                  string
+			database_id?:           string
 			secret_compartment_id?: string
-		}
-		deployment: {
-			environment_type?:            string
-			next_maintenance_description: string
-			ingress_ips: [...{
-				ingress_ip: string
-			}]
-			is_storage_utilization_limit_exceeded: bool
-			load_balancer_id:                      string
-			time_upgrade_required:                 string
-			subnet_id!:                            string
-			is_auto_scaling_enabled!:              bool
-			is_latest_version:                     bool
-			deployment_diagnostic_data: [...{
-				diagnostic_state:      string
-				namespace:             string
-				object:                string
-				time_diagnostic_end:   string
-				time_diagnostic_start: string
-				bucket:                string
-			}]
-			license_model!:           string
-			time_of_next_maintenance: string
-			public_ip_address:        string
-			deployment_type!:         string
-			ogg_data?: [...{
-				credential_store?: string
-				group_to_roles_mapping?: [...{
-					administrator_group_id?: string
-					operator_group_id?:      string
-					user_group_id?:          string
-					security_group_id!:      string
-				}]
-				password_secret_id?: string
-				admin_password?:     string
-				certificate?:        string
-				identity_domain_id?: string
-				key?:                string
-				ogg_version?:        string
-				deployment_name!:    string
-				admin_username?:     string
-			}]
-			deployment_url:        string
-			lifecycle_details:     string
-			fqdn?:                 string
-			deployment_backup_id?: string
-			is_lock_override?:     bool
-			state?:                string
-			time_created:          string
-			description?:          string
-			is_healthy:            bool
-			category:              string
-			is_public?:            bool
 			system_tags: [_]: string
-			nsg_ids?: [...string]
-			load_balancer_subnet_id?:         string
-			storage_utilization_in_bytes:     string
-			lifecycle_sub_state:              string
-			time_updated:                     string
-			time_ogg_version_supported_until: string
-			private_ip_address:               string
-			compartment_id!:                  string
+			rce_private_ip: string
+			key_id?:        string
+			password!:      string
 			defined_tags?: [_]: string
-			freeform_tags?: [_]: string
-			maintenance_window?: [...{
-				start_hour!: int
-				day!:        string
-			}]
-			cpu_core_count!: int
-			maintenance_configuration?: [...{
-				bundle_release_upgrade_period_in_days?:   int
-				interim_release_upgrade_period_in_days?:  int
-				is_interim_release_auto_upgrade_enabled?: bool
-				major_release_upgrade_period_in_days?:    int
-				security_patch_upgrade_period_in_days?:   int
-			}]
-			next_maintenance_action_type: string
-			display_name!:                string
-			locks?: [...{
-				type!:               string
-				message?:            string
-				related_resource_id: string
-				time_created:        string
-			}]
-		}
-		deployment_backup: {
-			compartment_id!:      string
-			namespace!:           string
-			ogg_version:          string
-			time_backup_finished: string
-			defined_tags?: [_]: string
-			freeform_tags?: [_]: string
-			system_tags: [_]: string
-			deployment_id!:    string
-			is_lock_override?: bool
-			time_of_backup:    string
-			time_updated:      string
-			object!:           string
-			deployment_type:   string
-			locks?: [...{
-				type!:               string
-				message?:            string
-				related_resource_id: string
-				time_created:        string
-			}]
-			state:             string
-			time_created:      string
-			bucket!:           string
-			is_metadata_only?: bool
-			lifecycle_details: string
-			size_in_bytes:     float
-			backup_type:       string
-			is_automatic:      bool
-			display_name!:     string
-		}
-		deployment_certificate: {
-			subject:              string
-			deployment_id!:       string
-			key!:                 string
-			is_lock_override?:    bool
-			certificate_content!: string
-			public_key_algorithm: string
-			sha1hash:             string
-			is_self_signed:       bool
-			time_created:         string
-			version:              string
-			issuer:               string
-			public_key_size:      string
-			subject_key_id:       string
-			time_valid_to:        string
-			authority_key_id:     string
-			state:                string
-			time_valid_from:      string
-			md5hash:              string
-			public_key:           string
-			serial:               string
-			is_ca:                bool
+			connection_string?: string
+			username!:          string
+			secret_id:          string
+			vault_id?:          string
+			compartment_id!:    string
+			alias_name!:        string
 		}
 	}
 	arguments: {
-		connection: {
-			trigger_refresh?:                    bool
-			is_lock_override?:                   bool
-			database_name?:                      string
-			subnet_id?:                          string
-			private_key_file_secret_id?:         string
-			private_key_file?:                   string
-			username?:                           string
-			display_name!:                       string
-			ssl_server_certificate?:             string
-			consumer_properties?:                string
-			service_account_key_file_secret_id?: string
-			vault_id?:                           string
-			sas_token_secret_id?:                string
-			trust_store_password_secret_id?:     string
-			ssl_client_keystoredb_secret_id?:    string
-			jndi_security_principal?:            string
-			wallet?:                             string
-			ssl_client_keystoredb?:              string
-			trust_store_secret_id?:              string
-			key_id?:                             string
-			key_store_secret_id?:                string
-			connection_url?:                     string
-			ssl_client_keystash_secret_id?:      string
+		deployment: {
+			subnet_id!:        string
+			description?:      string
+			license_model!:    string
+			is_lock_override?: bool
 			freeform_tags?: [_]: string
-			azure_tenant_id?: string
+			load_balancer_subnet_id?: string
+			deployment_backup_id?:    string
+			is_public?:               bool
+			defined_tags?: [_]: string
+			is_auto_scaling_enabled!: bool
+			environment_type?:        string
+			cpu_core_count!:          int
+			compartment_id!:          string
+			deployment_type!:         string
+			display_name!:            string
+			fqdn?:                    string
+			locks?: [...{
+				message?: string
+				type!:    string
+			}]
+			maintenance_window?: [...{
+				day!:        string
+				start_hour!: int
+			}]
+			state?: string
+			maintenance_configuration?: [...{
+				is_interim_release_auto_upgrade_enabled?: bool
+				major_release_upgrade_period_in_days?:    int
+				security_patch_upgrade_period_in_days?:   int
+				bundle_release_upgrade_period_in_days?:   int
+				interim_release_upgrade_period_in_days?:  int
+			}]
+			nsg_ids?: [...string]
+			ogg_data?: [...{
+				ogg_version?:        string
+				admin_username?:     string
+				password_secret_id?: string
+				admin_password?:     string
+				credential_store?:   string
+				group_to_roles_mapping?: [...{
+					user_group_id?:          string
+					security_group_id!:      string
+					administrator_group_id?: string
+					operator_group_id?:      string
+				}]
+				identity_domain_id?: string
+				key?:                string
+				deployment_name!:    string
+				certificate?:        string
+			}]
+		}
+		deployment_backup: {
+			deployment_id!: string
+			freeform_tags?: [_]: string
+			namespace!:        string
+			bucket!:           string
+			object!:           string
+			is_metadata_only?: bool
+			locks?: [...{
+				type!:    string
+				message?: string
+			}]
+			is_lock_override?: bool
+			compartment_id!:   string
+			display_name!:     string
+			defined_tags?: [_]: string
+		}
+		deployment_certificate: {
+			certificate_content!: string
+			key!:                 string
+			deployment_id!:       string
+			is_lock_override?:    bool
+		}
+		connection: {
+			key_store_password_secret_id?: string
+			defined_tags?: [_]: string
+			username?:                      string
+			trust_store_secret_id?:         string
+			authentication_type?:           string
+			endpoint?:                      string
+			private_key_file?:              string
+			service_account_key_file?:      string
+			ssl_client_keystash_secret_id?: string
+			locks?: [...{
+				message?: string
+				type!:    string
+			}]
+			connection_url?:                 string
+			security_protocol?:              string
+			access_key_id?:                  string
+			private_ip?:                     string
+			trust_store?:                    string
+			deployment_id?:                  string
+			trust_store_password_secret_id?: string
+			database_name?:                  string
+			ssl_crl?:                        string
+			jndi_security_principal?:        string
+			freeform_tags?: [_]: string
+			fingerprint?: string
+			wallet?:      string
 			bootstrap_servers?: [...{
 				port?:       int
 				private_ip?: string
 				host?:       string
 			}]
-			private_ip?:                       string
-			authentication_mode?:              string
-			description?:                      string
-			redis_cluster_id?:                 string
-			trust_store?:                      string
-			routing_method?:                   string
-			secret_access_key_secret_id?:      string
-			deployment_id?:                    string
-			ssl_ca?:                           string
-			connection_factory?:               string
-			should_use_jndi?:                  bool
-			url?:                              string
-			ssl_key_secret_id?:                string
-			private_key_passphrase_secret_id?: string
-			key_store_password_secret_id?:     string
-			producer_properties?:              string
-			fingerprint?:                      string
-			jndi_security_credentials?:        string
-			user_id?:                          string
-			database_id?:                      string
-			wallet_secret_id?:                 string
-			authentication_type?:              string
-			client_secret_secret_id?:          string
-			technology_type!:                  string
+			key_store_secret_id?:              string
 			client_secret?:                    string
+			client_secret_secret_id?:          string
+			private_key_passphrase_secret_id?: string
+			ssl_server_certificate?:           string
+			ssl_ca?:                           string
+			database_id?:                      string
+			ssl_client_keystoredb_secret_id?:  string
+			secret_access_key?:                string
+			key_store?:                        string
+			client_id?:                        string
+			jndi_provider_url?:                string
+			routing_method?:                   string
+			authentication_mode?:              string
+			region?:                           string
+			public_key_fingerprint?:           string
+			connection_factory?:               string
+			private_key_passphrase?:           string
+			ssl_client_keystash?:              string
+			jndi_security_credentials?:        string
+			account_name?:                     string
+			key_store_password?:               string
 			ssl_mode?:                         string
+			sas_token?:                        string
+			core_site_xml?:                    string
+			sas_token_secret_id?:              string
+			jndi_initial_context_factory?:     string
+			password_secret_id?:               string
+			stream_pool_id?:                   string
+			consumer_properties?:              string
+			does_use_secret_ids?:              bool
+			session_mode?:                     string
+			technology_type!:                  string
+			key_id?:                           string
+			password?:                         string
+			port?:                             int
+			private_key_file_secret_id?:       string
+			url?:                              string
 			additional_attributes?: [...{
-				name?:  string
 				value?: string
+				name?:  string
 			}]
-			jndi_initial_context_factory?: string
-			trust_store_password?:         string
-			service_account_key_file?:     string
-			ssl_key_password_secret_id?:   string
-			private_key_passphrase?:       string
-			region?:                       string
-			db_system_id?:                 string
-			port?:                         int
-			jndi_connection_factory?:      string
-			ssl_cert?:                     string
-			tenancy_id?:                   string
-			jndi_provider_url?:            string
-			stream_pool_id?:               string
-			access_key_id?:                string
-			core_site_xml?:                string
-			ssl_key_password?:             string
-			key_store?:                    string
-			client_id?:                    string
-			ssl_client_keystash?:          string
-			servers?:                      string
-			endpoint?:                     string
-			account_name?:                 string
-			locks?: [...{
-				type!:    string
-				message?: string
-			}]
-			ssl_key?:           string
-			security_protocol?: string
-			defined_tags?: [_]: string
-			account_key?:                        string
-			does_use_secret_ids?:                bool
-			connection_type!:                    string
-			secret_access_key?:                  string
-			account_key_secret_id?:              string
-			key_store_password?:                 string
-			ssl_crl?:                            string
-			public_key_fingerprint?:             string
-			should_validate_server_certificate?: bool
-			connection_string?:                  string
-			compartment_id!:                     string
-			session_mode?:                       string
-			nsg_ids?: [...string]
-			password?:                            string
-			sas_token?:                           string
-			jndi_security_credentials_secret_id?: string
-			password_secret_id?:                  string
+			is_lock_override?:                    bool
+			service_account_key_file_secret_id?:  string
+			account_key_secret_id?:               string
+			secret_access_key_secret_id?:         string
+			tenancy_id?:                          string
+			ssl_key?:                             string
+			wallet_secret_id?:                    string
+			redis_cluster_id?:                    string
+			user_id?:                             string
+			ssl_cert?:                            string
 			host?:                                string
+			compartment_id!:                      string
+			connection_string?:                   string
+			jndi_connection_factory?:             string
+			description?:                         string
+			ssl_key_password?:                    string
+			connection_type!:                     string
+			account_key?:                         string
+			should_validate_server_certificate?:  bool
+			azure_tenant_id?:                     string
+			trigger_refresh?:                     bool
+			subnet_id?:                           string
+			jndi_security_credentials_secret_id?: string
+			trust_store_password?:                string
+			producer_properties?:                 string
+			display_name!:                        string
+			should_use_jndi?:                     bool
+			servers?:                             string
+			nsg_ids?: [...string]
+			db_system_id?:               string
+			ssl_key_secret_id?:          string
+			vault_id?:                   string
+			ssl_client_keystoredb?:      string
+			ssl_key_password_secret_id?: string
 		}
 		connection_assignment: {
 			connection_id!:    string
@@ -412,231 +486,39 @@ package golden_gate
 			is_lock_override?: bool
 		}
 		database_registration: {
+			fqdn!:     string
+			password!: string
+			defined_tags?: [_]: string
 			alias_name!:            string
-			password!:              string
-			connection_string?:     string
-			fqdn!:                  string
-			database_id?:           string
-			description?:           string
-			session_mode?:          string
+			username!:              string
+			ip_address?:            string
 			secret_compartment_id?: string
+			vault_id?:              string
+			description?:           string
 			freeform_tags?: [_]: string
-			key_id?:       string
-			wallet?:       string
-			display_name!: string
-			username!:     string
-			defined_tags?: [_]: string
-			subnet_id?:      string
-			ip_address?:     string
-			vault_id?:       string
-			compartment_id!: string
-		}
-		deployment: {
-			cpu_core_count!:   int
-			environment_type?: string
-			is_lock_override?: bool
-			description?:      string
-			nsg_ids?: [...string]
-			defined_tags?: [_]: string
-			maintenance_configuration?: [...{
-				security_patch_upgrade_period_in_days?:   int
-				bundle_release_upgrade_period_in_days?:   int
-				interim_release_upgrade_period_in_days?:  int
-				is_interim_release_auto_upgrade_enabled?: bool
-				major_release_upgrade_period_in_days?:    int
-			}]
-			state?:           string
-			is_public?:       bool
-			subnet_id!:       string
-			deployment_type!: string
-			ogg_data?: [...{
-				password_secret_id?: string
-				group_to_roles_mapping?: [...{
-					security_group_id!:      string
-					administrator_group_id?: string
-					operator_group_id?:      string
-					user_group_id?:          string
-				}]
-				identity_domain_id?: string
-				key?:                string
-				admin_password?:     string
-				ogg_version?:        string
-				deployment_name!:    string
-				admin_username?:     string
-				certificate?:        string
-				credential_store?:   string
-			}]
-			freeform_tags?: [_]: string
-			maintenance_window?: [...{
-				day!:        string
-				start_hour!: int
-			}]
-			fqdn?:                    string
-			load_balancer_subnet_id?: string
-			deployment_backup_id?:    string
-			display_name!:            string
-			is_auto_scaling_enabled!: bool
-			license_model!:           string
-			locks?: [...{
-				type!:    string
-				message?: string
-			}]
-			compartment_id!: string
-		}
-		deployment_backup: {
-			locks?: [...{
-				message?: string
-				type!:    string
-			}]
-			bucket!: string
-			freeform_tags?: [_]: string
-			defined_tags?: [_]: string
-			is_metadata_only?: bool
-			compartment_id!:   string
-			display_name!:     string
-			is_lock_override?: bool
-			deployment_id!:    string
-			namespace!:        string
-			object!:           string
-		}
-		deployment_certificate: {
-			key!:                 string
-			is_lock_override?:    bool
-			deployment_id!:       string
-			certificate_content!: string
+			key_id?:            string
+			display_name!:      string
+			compartment_id!:    string
+			connection_string?: string
+			database_id?:       string
+			session_mode?:      string
+			wallet?:            string
+			subnet_id?:         string
 		}
 	}
 }
 #data: {
-	connection: connection_id!: string
 	connection_assignments: {
 		connection_id?: string
 		deployment_id?: string
 		name?:          string
 		state?:         string
 		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		compartment_id!: string
-	}
-	deployment_certificates: {
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		deployment_id!: string
-		state?:         string
-	}
-	deployment_types: {
-		display_name?: string
-		ogg_version?:  string
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		compartment_id!:  string
-		deployment_type?: string
-	}
-	deployments: {
-		assignable_connection_id?:  string
-		supported_connection_type?: string
-		display_name?:              string
-		fqdn?:                      string
-		lifecycle_sub_state?:       string
-		state?:                     string
-		assigned_connection_id?:    string
-		compartment_id!:            string
-		filter?: [...{
-			values!: [...string]
-			regex?: *false | bool
-			name!:  string
-		}]
-	}
-	database_registrations: {
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		compartment_id!: string
-		display_name?:   string
-		state?:          string
-	}
-	deployment_certificate: {
-		certificate_key!: string
-		deployment_id!:   string
-	}
-	deployment_environments: {
-		filter?: [...{
 			values!: [...string]
 			regex?: *false | bool
 			name!:  string
 		}]
 		compartment_id!: string
-	}
-	deployment_upgrade: deployment_upgrade_id!: string
-	message: deployment_id!: string
-	trail_files: {
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		deployment_id!: string
-		display_name?:  string
-		trail_file_id!: string
-	}
-	trail_sequences: {
-		display_name!:      string
-		trail_file_id!:     string
-		trail_sequence_id!: string
-		filter?: [...{
-			regex?: *false | bool
-			name!:  string
-			values!: [...string]
-		}]
-		deployment_id!: string
-	}
-	database_registration: database_registration_id!: string
-	deployment_backups: {
-		compartment_id!: string
-		deployment_id?:  string
-		display_name?:   string
-		state?:          string
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-	}
-	deployment_type: {
-		display_name?:   string
-		compartment_id!: string
-	}
-	deployment_upgrades: {
-		compartment_id!: string
-		deployment_id?:  string
-		display_name?:   string
-		state?:          string
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-	}
-	deployment_versions: {
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		compartment_id!:  string
-		deployment_id?:   string
-		deployment_type?: string
 	}
 	messages: {
 		deployment_id!: string
@@ -651,29 +533,147 @@ package golden_gate
 		display_name?:  string
 		trail_file_id!: string
 	}
+	connection_assignment: connection_assignment_id!: string
+	deployment_type: {
+		display_name?:   string
+		compartment_id!: string
+	}
+	deployment_types: {
+		display_name?: string
+		ogg_version?:  string
+		filter?: [...{
+			values!: [...string]
+			regex?: *false | bool
+			name!:  string
+		}]
+		compartment_id!:  string
+		deployment_type?: string
+	}
+	deployment_upgrade: deployment_upgrade_id!: string
+	trail_files: {
+		deployment_id!: string
+		display_name?:  string
+		trail_file_id!: string
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+	}
 	trail_sequence: {
 		trail_sequence_id!: string
 		deployment_id!:     string
 		display_name!:      string
 		trail_file_id!:     string
 	}
-	connection_assignment: connection_assignment_id!: string
-	connections: {
-		assignable_deployment_type?: string
-		display_name?:               string
-		compartment_id!:             string
-		connection_type?: [...string]
-		state?:                    string
-		assignable_deployment_id?: string
-		assigned_deployment_id?:   string
+	database_registrations: {
+		display_name?: string
+		state?:        string
 		filter?: [...{
 			values!: [...string]
 			regex?: *false | bool
 			name!:  string
 		}]
-		technology_type?: [...string]
+		compartment_id!: string
 	}
 	deployment: deployment_id!: string
+	deployment_certificate: {
+		deployment_id!:   string
+		certificate_key!: string
+	}
+	deployment_certificates: {
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		deployment_id!: string
+		state?:         string
+	}
+	deployment_versions: {
+		deployment_id?:   string
+		deployment_type?: string
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		compartment_id!: string
+	}
+	deployment_environments: {
+		filter?: [...{
+			values!: [...string]
+			regex?: *false | bool
+			name!:  string
+		}]
+		compartment_id!: string
+	}
+	deployment_upgrades: {
+		display_name?: string
+		state?:        string
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		compartment_id!: string
+		deployment_id?:  string
+	}
+	deployments: {
+		filter?: [...{
+			regex?: *false | bool
+			name!:  string
+			values!: [...string]
+		}]
+		fqdn?:                      string
+		supported_connection_type?: string
+		compartment_id!:            string
+		state?:                     string
+		lifecycle_sub_state?:       string
+		assignable_connection_id?:  string
+		assigned_connection_id?:    string
+		display_name?:              string
+	}
+	connection: connection_id!: string
+	connections: {
+		technology_type?: [...string]
+		filter?: [...{
+			regex?: *false | bool
+			name!:  string
+			values!: [...string]
+		}]
+		assignable_deployment_type?: string
+		connection_type?: [...string]
+		display_name?:             string
+		assigned_deployment_id?:   string
+		compartment_id!:           string
+		state?:                    string
+		assignable_deployment_id?: string
+	}
+	database_registration: database_registration_id!: string
 	deployment_backup: deployment_backup_id!: string
+	deployment_backups: {
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		compartment_id!: string
+		deployment_id?:  string
+		display_name?:   string
+		state?:          string
+	}
+	message: deployment_id!: string
+	trail_sequences: {
+		trail_sequence_id!: string
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		deployment_id!: string
+		display_name!:  string
+		trail_file_id!: string
+	}
 }
 

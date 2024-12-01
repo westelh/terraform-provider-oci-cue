@@ -2,37 +2,16 @@ package demand_signal
 
 #resource: {
 	attributes: occ_demand_signal: {
-		patch_operations?: [...{
-			selected_item?: string
-			from!:          string
-			operation!:     string
-			selection!:     string
-			value!:         _|_
-			position?:      string
-		}]
-		time_updated: string
-		occ_demand_signals!: [...{
-			units!: string
-			values!: [...{
-				comments?:      string
-				time_expected!: string
-				value!:         float
-			}]
-			resource_type!: string
-		}]
+		lifecycle_details:     string
+		state:                 string
+		time_created:          string
+		time_updated:          string
+		occ_demand_signal_id?: string
+		freeform_tags?: [_]: string
 		defined_tags?: [_]: string
 		display_name?: string
-		time_created:  string
-		freeform_tags?: [_]: string
-		lifecycle_details: string
-		state:             string
 		system_tags: [_]: string
-		compartment_id!:       string
-		occ_demand_signal_id?: string
-		is_active!:            bool
-	}
-	arguments: occ_demand_signal: {
-		occ_demand_signal_id?: string
+		is_active!: bool
 		occ_demand_signals!: [...{
 			resource_type!: string
 			units!:         string
@@ -42,19 +21,40 @@ package demand_signal
 				comments?:      string
 			}]
 		}]
-		defined_tags?: [_]: string
-		display_name?:   string
 		compartment_id!: string
-		freeform_tags?: [_]: string
 		patch_operations?: [...{
+			value!:         _
+			position?:      string
 			selected_item?: string
 			from!:          string
 			operation!:     string
 			selection!:     string
-			value!:         _|_
+		}]
+	}
+	arguments: occ_demand_signal: {
+		occ_demand_signal_id?: string
+		freeform_tags?: [_]: string
+		patch_operations?: [...{
+			operation!:     string
+			selection!:     string
+			value!:         _
 			position?:      string
+			selected_item?: string
+			from!:          string
 		}]
 		is_active!: bool
+		occ_demand_signals!: [...{
+			resource_type!: string
+			units!:         string
+			values!: [...{
+				value!:         float
+				comments?:      string
+				time_expected!: string
+			}]
+		}]
+		defined_tags?: [_]: string
+		display_name?:   string
+		compartment_id!: string
 	}
 }
 #data: {
@@ -62,9 +62,9 @@ package demand_signal
 	occ_demand_signals: {
 		state?: string
 		filter?: [...{
-			name!: string
 			values!: [...string]
 			regex?: *false | bool
+			name!:  string
 		}]
 		compartment_id?: string
 		display_name?:   string

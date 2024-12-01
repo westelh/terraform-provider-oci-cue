@@ -3,184 +3,184 @@ package vn_monitoring
 #resource: {
 	attributes: {
 		path_analysi: {
-			type!: string
-			destination_endpoint?: [...{
-				network_load_balancer_id?: string
-				vnic_id?:                  string
-				instance_id?:              string
-				subnet_id?:                string
-				state:                     string
-				vlan_id?:                  string
-				address?:                  string
-				listener_id?:              string
-				type!:                     string
-				load_balancer_id?:         string
-			}]
-			compartment_id?:        string
+			type!:                  string
 			path_analyzer_test_id?: string
-			protocol?:              int
-			query_options?: [...{
-				is_bi_directional_analysis?: bool
-			}]
 			protocol_parameters?: [...{
+				type!:             string
 				destination_port?: int
 				icmp_code?:        int
 				icmp_type?:        int
 				source_port?:      int
-				type!:             string
-			}]
-			source_endpoint?: [...{
-				vnic_id?:                  string
-				type!:                     string
-				subnet_id?:                string
-				state:                     string
-				listener_id?:              string
-				load_balancer_id?:         string
-				network_load_balancer_id?: string
-				vlan_id?:                  string
-				address?:                  string
-				instance_id?:              string
 			}]
 			cache_control?: string
-		}
-		path_analyzer_test: {
+			destination_endpoint?: [...{
+				type!:                     string
+				network_load_balancer_id?: string
+				vnic_id?:                  string
+				listener_id?:              string
+				load_balancer_id?:         string
+				subnet_id?:                string
+				state:                     string
+				address?:                  string
+				instance_id?:              string
+				vlan_id?:                  string
+			}]
+			protocol?: int
 			query_options?: [...{
 				is_bi_directional_analysis?: bool
 			}]
-			freeform_tags?: [_]: string
-			protocol!: int
+			source_endpoint?: [...{
+				state:                     string
+				type!:                     string
+				instance_id?:              string
+				subnet_id?:                string
+				load_balancer_id?:         string
+				listener_id?:              string
+				network_load_balancer_id?: string
+				vnic_id?:                  string
+				address?:                  string
+				vlan_id?:                  string
+			}]
+			compartment_id?: string
+		}
+		path_analyzer_test: {
+			defined_tags?: [_]: string
+			query_options?: [...{
+				is_bi_directional_analysis?: bool
+			}]
 			system_tags: [_]: string
-			display_name?: string
-			state:         string
-			time_created:  string
+			destination_endpoint!: [...{
+				listener_id?:              string
+				load_balancer_id?:         string
+				vnic_id?:                  string
+				type!:                     string
+				instance_id?:              string
+				address?:                  string
+				vlan_id?:                  string
+				network_load_balancer_id?: string
+				state:                     string
+				subnet_id?:                string
+			}]
+			protocol!: int
 			source_endpoint!: [...{
 				load_balancer_id?:         string
+				instance_id?:              string
 				subnet_id?:                string
-				address?:                  string
-				network_load_balancer_id?: string
 				vlan_id?:                  string
-				vnic_id?:                  string
+				state:                     string
 				type!:                     string
 				listener_id?:              string
-				instance_id?:              string
-				state:                     string
-			}]
-			defined_tags?: [_]: string
-			time_updated:    string
-			compartment_id!: string
-			destination_endpoint!: [...{
-				vlan_id?:                  string
+				network_load_balancer_id?: string
 				vnic_id?:                  string
 				address?:                  string
-				listener_id?:              string
-				type!:                     string
-				network_load_balancer_id?: string
-				subnet_id?:                string
-				instance_id?:              string
-				load_balancer_id?:         string
-				state:                     string
 			}]
+			freeform_tags?: [_]: string
+			state:         string
+			time_created:  string
+			time_updated:  string
+			display_name?: string
 			protocol_parameters?: [...{
+				source_port?:      int
 				type!:             string
 				destination_port?: int
 				icmp_code?:        int
 				icmp_type?:        int
-				source_port?:      int
 			}]
+			compartment_id!: string
 		}
 	}
 	arguments: {
 		path_analysi: {
-			destination_endpoint?: [...{
-				type!:                     string
-				address?:                  string
-				load_balancer_id?:         string
-				listener_id?:              string
-				network_load_balancer_id?: string
-				vlan_id?:                  string
-				subnet_id?:                string
-				vnic_id?:                  string
-				instance_id?:              string
-			}]
+			type!:           string
+			compartment_id?: string
 			protocol_parameters?: [...{
-				icmp_type?:        int
-				source_port?:      int
 				type!:             string
 				destination_port?: int
 				icmp_code?:        int
+				icmp_type?:        int
+				source_port?:      int
 			}]
-			compartment_id?: string
+			protocol?: int
 			query_options?: [...{
 				is_bi_directional_analysis?: bool
 			}]
-			type!: string
 			source_endpoint?: [...{
-				instance_id?:              string
-				load_balancer_id?:         string
 				network_load_balancer_id?: string
-				address?:                  string
-				listener_id?:              string
-				vlan_id?:                  string
 				vnic_id?:                  string
 				type!:                     string
+				load_balancer_id?:         string
+				vlan_id?:                  string
+				address?:                  string
 				subnet_id?:                string
+				instance_id?:              string
+				listener_id?:              string
 			}]
-			cache_control?:         string
 			path_analyzer_test_id?: string
-			protocol?:              int
+			cache_control?:         string
+			destination_endpoint?: [...{
+				instance_id?:              string
+				type!:                     string
+				address?:                  string
+				network_load_balancer_id?: string
+				load_balancer_id?:         string
+				subnet_id?:                string
+				vlan_id?:                  string
+				vnic_id?:                  string
+				listener_id?:              string
+			}]
 		}
 		path_analyzer_test: {
-			destination_endpoint!: [...{
-				vlan_id?:                  string
+			source_endpoint!: [...{
 				type!:                     string
 				listener_id?:              string
-				instance_id?:              string
-				address?:                  string
-				network_load_balancer_id?: string
-				subnet_id?:                string
-				vnic_id?:                  string
 				load_balancer_id?:         string
+				vlan_id?:                  string
+				network_load_balancer_id?: string
+				vnic_id?:                  string
+				address?:                  string
+				instance_id?:              string
+				subnet_id?:                string
 			}]
-			freeform_tags?: [_]: string
-			defined_tags?: [_]: string
+			display_name?: string
+			destination_endpoint!: [...{
+				vlan_id?:                  string
+				vnic_id?:                  string
+				type!:                     string
+				instance_id?:              string
+				load_balancer_id?:         string
+				subnet_id?:                string
+				address?:                  string
+				listener_id?:              string
+				network_load_balancer_id?: string
+			}]
+			query_options?: [...{
+				is_bi_directional_analysis?: bool
+			}]
 			protocol_parameters?: [...{
+				type!:             string
 				destination_port?: int
 				icmp_code?:        int
 				icmp_type?:        int
 				source_port?:      int
-				type!:             string
 			}]
-			source_endpoint!: [...{
-				load_balancer_id?:         string
-				vlan_id?:                  string
-				vnic_id?:                  string
-				address?:                  string
-				instance_id?:              string
-				network_load_balancer_id?: string
-				subnet_id?:                string
-				type!:                     string
-				listener_id?:              string
-			}]
-			protocol!:       int
-			display_name?:   string
 			compartment_id!: string
-			query_options?: [...{
-				is_bi_directional_analysis?: bool
-			}]
+			protocol!:       int
+			freeform_tags?: [_]: string
+			defined_tags?: [_]: string
 		}
 	}
 }
 #data: {
 	path_analyzer_test: path_analyzer_test_id!: string
 	path_analyzer_tests: {
-		compartment_id!: string
-		display_name?:   string
-		state?:          string
+		display_name?: string
+		state?:        string
 		filter?: [...{
+			name!: string
 			values!: [...string]
 			regex?: *false | bool
-			name!:  string
 		}]
+		compartment_id!: string
 	}
 }
 

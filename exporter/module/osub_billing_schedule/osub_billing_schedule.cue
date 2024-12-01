@@ -6,11 +6,10 @@ package osub_billing_schedule
 }
 #data: {
 	billing_schedules: {
-		filter?: [...{
-			name!: string, values!: [...string]
-			regex?: *false | bool
+		subscription_id!: string, x_one_origin_region?: string, filter?: [...{
+					regex?:                       *false | bool, name!: string, values!: [...string]
 		}]
-		compartment_id!: string, subscribed_service_id?: string, subscription_id!: string, x_one_origin_region?: string
+		compartment_id!: string, subscribed_service_id?: string
 	}
 }
 

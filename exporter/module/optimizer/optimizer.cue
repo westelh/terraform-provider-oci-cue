@@ -2,212 +2,179 @@ package optimizer
 
 #resource: {
 	attributes: {
-		enrollment_status: {
-			status_reason:         string
-			time_created:          string
-			time_updated:          string
-			enrollment_status_id!: string
-			status!:               string
-			compartment_id:        string
-			state:                 string
-		}
-		profile: {
-			target_compartments?: [...{
-				items!: [...string]
-			}]
-			description!:                  string
-			name!:                         string
-			aggregation_interval_in_days?: int
-			state:                         string
-			compartment_id!:               string
-			system_tags: [_]: string
-			target_tags?: [...{
-				items!: [...{
-					tag_definition_name!: string, tag_namespace_name!: string, tag_value_type!: string, tag_values?: [...string]
-				}]
-			}]
-			time_created: string
-			time_updated: string
-			defined_tags?: [_]: string
-			freeform_tags?: [_]: string
-			levels_configuration!: [...{
-				items?: [...{
-					level?: string, recommendation_id?: string
-				}]
-			}]
-		}
 		recommendation: {
-			time_updated: string
+			recommendation_id!:    string
+			state:                 string
+			status!:               string
+			time_status_begin:     string
+			estimated_cost_saving: float
+			description:           string
+			importance:            string
+			resource_counts: [...{
+				status: string
+				count:  int
+			}]
+			name: string
 			supported_levels: [...{
 				items: [...{
 					name: string
 				}]
 			}]
-			resource_counts: [...{
-				status: string
-				count:  int
-			}]
-			state:                 string
-			recommendation_id!:    string
-			time_created:          string
-			status!:               string
-			time_status_end?:      string
-			category_id:           string
-			description:           string
-			estimated_cost_saving: float
+			time_status_end?: string
+			time_created:     string
+			compartment_id:   string
 			extended_metadata: [_]: string
-			time_status_begin: string
-			importance:        string
-			compartment_id:    string
-			name:              string
+			time_updated: string
+			category_id:  string
 		}
 		resource_action: {
-			time_status_begin: string
-			category_id:       string
+			estimated_cost_saving: float
+			status!:               string
+			extended_metadata: [_]: string
+			compartment_name:    string
+			name:                string
+			resource_action_id!: string
+			resource_id:         string
+			resource_type:       string
+			time_status_begin:   string
+			time_status_end?:    string
+			category_id:         string
+			compartment_id:      string
 			action: [...{
 				description: string
 				type:        string
 				url:         string
 			}]
-			compartment_id:        string
-			status!:               string
-			compartment_name:      string
-			resource_id:           string
-			resource_action_id!:   string
-			recommendation_id:     string
-			state:                 string
-			time_status_end?:      string
-			estimated_cost_saving: float
-			time_updated:          string
+			state:             string
+			recommendation_id: string
+			time_updated:      string
+			time_created:      string
 			metadata: [_]: string
-			name:          string
-			resource_type: string
-			extended_metadata: [_]: string
+		}
+		enrollment_status: {
+			compartment_id:        string
+			state:                 string
+			status_reason:         string
+			time_created:          string
+			time_updated:          string
+			enrollment_status_id!: string
+			status!:               string
+		}
+		profile: {
+			description!: string
+			name!:        string
+			levels_configuration!: [...{
+				items?: [...{
+					level?: string, recommendation_id?: string
+				}]
+			}]
+			aggregation_interval_in_days?: int
+			freeform_tags?: [_]: string
+			target_tags?: [...{
+				items!: [...{
+					tag_definition_name!: string, tag_namespace_name!: string, tag_value_type!: string, tag_values?: [...string]
+				}]
+			}]
+			state:        string
 			time_created: string
+			time_updated: string
+			target_compartments?: [...{
+				items!: [...string]
+			}]
+			compartment_id!: string
+			defined_tags?: [_]: string
+			system_tags: [_]: string
 		}
 	}
 	arguments: {
+		recommendation: {
+			recommendation_id!: string
+			time_status_end?:   string
+			status!:            string
+		}
+		resource_action: {
+			resource_action_id!: string
+			time_status_end?:    string
+			status!:             string
+		}
 		enrollment_status: {
-			status!:               string
 			enrollment_status_id!: string
+			status!:               string
 		}
 		profile: {
-			defined_tags?: [_]: string
+			description!: string
+			name!:        string
 			freeform_tags?: [_]: string
+			target_tags?: [...{
+				items!: [...{
+					tag_definition_name!: string, tag_namespace_name!: string, tag_value_type!: string, tag_values?: [...string]
+				}]
+			}]
+			target_compartments?: [...{
+				items!: [...string]
+			}]
 			compartment_id!: string
 			levels_configuration!: [...{
 				items?: [...{
 					level?: string, recommendation_id?: string
 				}]
 			}]
-			description!:                  string
-			name!:                         string
 			aggregation_interval_in_days?: int
-			target_compartments?: [...{
-				items!: [...string]
-			}]
-			target_tags?: [...{
-				items!: [...{
-					tag_definition_name!: string, tag_namespace_name!: string, tag_value_type!: string, tag_values?: [...string]
-				}]
-			}]
-		}
-		recommendation: {
-			recommendation_id!: string
-			status!:            string
-			time_status_end?:   string
-		}
-		resource_action: {
-			resource_action_id!: string
-			status!:             string
-			time_status_end?:    string
+			defined_tags?: [_]: string
 		}
 	}
 }
 #data: {
-	profile: profile_id!: string
-	recommendation_strategy: {
-		compartment_id_in_subtree!: bool
-		name?:                      string
-		recommendation_name?:       string
-		compartment_id!:            string
-	}
 	recommendations: {
-		compartment_id!:       string
-		include_organization?: bool
-		state?:                string
+		name?:          string
+		category_id?:   string
+		category_name?: string
 		child_tenancy_ids?: [...string]
-		compartment_id_in_subtree!: bool
-		name?:                      string
 		status?:                    string
-		category_name?:             string
+		compartment_id_in_subtree!: bool
+		include_organization?:      bool
+		state?:                     string
+		compartment_id!:            string
 		filter?: [...{
-			regex?: *false | bool
-			name!:  string
+			name!: string
 			values!: [...string]
+			regex?: *false | bool
 		}]
-		category_id?: string
 	}
 	resource_action: {
 		resource_action_id!:        string
 		include_resource_metadata?: bool
 	}
 	resource_actions: {
-		include_resource_metadata?: bool
-		recommendation_name?:       string
-		recommendation_id?:         string
-		state?:                     string
-		compartment_id_in_subtree!: bool
 		include_organization?:      bool
-		child_tenancy_ids?: [...string]
-		compartment_id!: string
-		name?:           string
-		resource_type?:  string
+		recommendation_id?:         string
+		recommendation_name?:       string
+		include_resource_metadata?: bool
+		name?:                      string
+		state?:                     string
+		status?:                    string
+		compartment_id!:            string
+		compartment_id_in_subtree!: bool
+		resource_type?:             string
 		filter?: [...{
-			name!: string
-			values!: [...string]
 			regex?: *false | bool
+			name!:  string
+			values!: [...string]
 		}]
-		status?: string
+		child_tenancy_ids?: [...string]
 	}
 	enrollment_status: enrollment_status_id!: string
 	enrollment_statuses: {
+		state?:  string
 		status?: string
 		filter?: [...{
-			name!: string
 			values!: [...string]
 			regex?: *false | bool
+			name!:  string
 		}]
 		compartment_id!: string
-		state?:          string
 	}
-	histories: {
-		filter?: [...{
-			regex?: *false | bool
-			name!:  string
-			values!: [...string]
-		}]
-		compartment_id!:            string
-		recommendation_id?:         string
-		compartment_id_in_subtree!: bool
-		status?:                    string
-		state?:                     string
-		name?:                      string
-		resource_type?:             string
-		recommendation_name?:       string
-		include_resource_metadata?: bool
-	}
-	profile_levels: {
-		compartment_id!:            string
-		compartment_id_in_subtree!: bool
-		name?:                      string
-		recommendation_name?:       string
-		filter?: [...{
-			values!: [...string]
-			regex?: *false | bool
-			name!:  string
-		}]
-	}
+	profile: profile_id!: string
 	recommendation_strategies: {
 		compartment_id!:            string
 		compartment_id_in_subtree!: bool
@@ -219,36 +186,69 @@ package optimizer
 			regex?: *false | bool
 		}]
 	}
-	categories: {
-		name?:  string
-		state?: string
+	recommendation_strategy: {
+		recommendation_name?:       string
+		compartment_id!:            string
+		compartment_id_in_subtree!: bool
+		name?:                      string
+	}
+	histories: {
+		filter?: [...{
+			values!: [...string]
+			regex?: *false | bool
+			name!:  string
+		}]
+		recommendation_id?:         string
+		state?:                     string
+		status?:                    string
+		compartment_id!:            string
+		compartment_id_in_subtree!: bool
+		resource_type?:             string
+		include_resource_metadata?: bool
+		name?:                      string
+		recommendation_name?:       string
+	}
+	profile_level: {
+		recommendation_name?:       string
+		compartment_id!:            string
+		compartment_id_in_subtree!: bool
+		name?:                      string
+	}
+	profile_levels: {
 		filter?: [...{
 			name!: string
 			values!: [...string]
 			regex?: *false | bool
 		}]
-		child_tenancy_ids?: [...string]
-		compartment_id!:            string
-		compartment_id_in_subtree!: bool
-		include_organization?:      bool
-	}
-	profile_level: {
 		compartment_id!:            string
 		compartment_id_in_subtree!: bool
 		name?:                      string
 		recommendation_name?:       string
 	}
 	profiles: {
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
 		compartment_id!: string
 		name?:           string
 		state?:          string
+	}
+	recommendation: recommendation_id!: string
+	categories: {
+		compartment_id_in_subtree!: bool
+		include_organization?:      bool
+		name?:                      string
+		state?:                     string
 		filter?: [...{
+			values!: [...string]
 			regex?: *false | bool
 			name!:  string
-			values!: [...string]
 		}]
+		child_tenancy_ids?: [...string]
+		compartment_id!: string
 	}
 	category: category_id!: string
-	recommendation: recommendation_id!: string
 }
 

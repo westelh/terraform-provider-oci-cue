@@ -3,118 +3,163 @@ package database_migration
 #resource: {
 	attributes: {
 		connection: {
-			nsg_ids?: [...string]
-			database_id?:          string
-			ssl_cert?:             string
-			replication_username?: string
-			database_name?:        string
-			defined_tags?: [_]: string
-			ssl_crl?:  string
-			username!: string
-			system_tags: [_]: string
-			connection_string?: string
-			ssh_key?:           string
-			password!:          string
-			additional_attributes?: [...{
-				value?: string
-				name?:  string
-			}]
-			replication_password?: string
-			private_endpoint_id:   string
+			db_system_id?:         string
 			wallet?:               string
+			ssh_host?:             string
+			key_id!:               string
+			replication_username?: string
+			password!:             string
+			username!:             string
+			additional_attributes?: [...{
+				name?:  string
+				value?: string
+			}]
+			defined_tags?: [_]: string
+			system_tags: [_]: string
+			description?:  string
+			display_name!: string
 			freeform_tags?: [_]: string
+			subnet_id?:            string
+			ssh_user?:             string
+			replication_password?: string
+			ssh_key?:              string
+			host?:                 string
+			compartment_id!:       string
+			nsg_ids?: [...string]
+			ssl_crl?:     string
+			time_created: string
+			time_updated: string
+			ssl_key?:     string
 			ingress_ips: [...{
 				ingress_ip: string
 			}]
-			ssh_host?:          string
-			time_created:       string
-			subnet_id?:         string
-			state:              string
-			vault_id!:          string
-			secret_id:          string
-			host?:              string
-			key_id!:            string
-			lifecycle_details:  string
-			time_updated:       string
-			db_system_id?:      string
-			security_protocol?: string
-			ssh_user?:          string
-			compartment_id!:    string
-			ssl_mode?:          string
-			description?:       string
-			connection_type!:   string
-			ssl_ca?:            string
-			ssl_key?:           string
-			port?:              int
-			ssh_sudo_location?: string
-			display_name!:      string
-			technology_type!:   string
+			ssl_cert?:           string
+			database_name?:      string
+			connection_string?:  string
+			ssl_ca?:             string
+			ssl_mode?:           string
+			lifecycle_details:   string
+			secret_id:           string
+			connection_type!:    string
+			security_protocol?:  string
+			ssh_sudo_location?:  string
+			state:               string
+			vault_id!:           string
+			port?:               int
+			private_endpoint_id: string
+			technology_type!:    string
+			database_id?:        string
 		}
 		job: {
-			freeform_tags?: [_]: string
+			defined_tags?: [_]: string
 			unsupported_objects: [...{
-				type:   string
 				object: string
 				owner:  string
+				type:   string
 			}]
 			time_created: string
+			freeform_tags?: [_]: string
+			state:             string
+			time_updated:      string
+			job_id!:           string
+			type:              string
+			lifecycle_details: string
 			progress: [...{
 				current_phase:  string
 				current_status: string
 				phases: [...{
-					editable_parameter_files: [...string]
+					issue:          string
+					progress:       int
+					duration_in_ms: int
 					extract: [...{
 						message: string
 						type:    string
 					}]
-					issue: string
+					status: string
+					editable_parameter_files: [...string]
+					is_advisor_report_available: bool
 					log_location: [...{
-						bucket:    string
 						namespace: string
 						object:    string
+						bucket:    string
 					}]
-					action:                      string
-					is_suspend_available:        bool
-					name:                        string
-					status:                      string
-					duration_in_ms:              int
-					is_advisor_report_available: bool
-					progress:                    int
+					name:                 string
+					action:               string
+					is_suspend_available: bool
 				}]
 			}]
 			system_tags: [_]: string
-			lifecycle_details: string
+			suspend_trigger?: int
 			parameter_file_versions: [...{
 				defined_tags: [_]: string
-				time_created: string
-				is_factory:   bool
-				is_current:   bool
-				name:         string
-				system_tags: [_]: string
-				freeform_tags: [_]: string
-				kind:        string
 				description: string
+				name:        string
+				system_tags: [_]: string
+				is_current:   bool
+				is_factory:   bool
+				kind:         string
+				time_created: string
+				freeform_tags: [_]: string
 			}]
-			job_id!:       string
-			state:         string
-			type:          string
-			display_name?: string
 			migration_id:  string
-			defined_tags?: [_]: string
-			suspend_trigger?: int
-			time_updated:     string
+			display_name?: string
 		}
 		migration: {
-			lifecycle_details: string
-			wait_after:        string
-			time_updated:      string
-			defined_tags?: [_]: string
+			type!: string
+			data_transfer_medium_details?: [...{
+				access_key_id?: string
+				object_storage_bucket?: [...{
+					bucket?:    string
+					namespace?: string
+				}]
+				region?: string
+				target?: [...{
+					wallet_location?: string
+					kind!:            string
+					oci_home?:        string
+				}]
+				type!:              string
+				secret_access_key?: string
+				source?: [...{
+					oci_home?:        string
+					wallet_location?: string
+					kind!:            string
+				}]
+				name?:                           string
+				shared_storage_mount_target_id?: string
+			}]
+			exclude_objects?: [...{
+				type?:                                    string
+				object!:                                  string
+				is_omit_excluded_table_from_replication?: bool
+				owner?:                                   string
+				schema?:                                  string
+			}]
+			bulk_include_exclude_data?: string
 			freeform_tags?: [_]: string
+			include_objects?: [...{
+				owner?:                                   string
+				schema?:                                  string
+				type?:                                    string
+				object!:                                  string
+				is_omit_excluded_table_from_replication?: bool
+			}]
+			database_combination!: string
+			description?:          string
+			executing_job_id:      string
+			defined_tags?: [_]: string
+			advisor_settings?: [...{
+				is_ignore_errors?: bool
+				is_skip_advisor?:  bool
+			}]
+			display_name?: string
+			state:         string
+			time_created:  string
 			ggs_details?: [...{
 				acceptable_lag?: int
 				extract?: [...{
-					performance_profile?: string
 					long_trans_duration?: int
+					performance_profile?: string
 				}]
 				replicat?: [...{
 					performance_profile?: string
@@ -124,24 +169,131 @@ package database_migration
 					ggs_admin_credentials_secret_id: string
 				}]
 			}]
-			target_database_connection_id!: string
-			include_objects?: [...{
-				owner?:                                   string
-				schema?:                                  string
-				type?:                                    string
-				object!:                                  string
-				is_omit_excluded_table_from_replication?: bool
-			}]
-			description?:                   string
-			display_name?:                  string
-			time_last_migration:            string
-			source_database_connection_id!: string
-			compartment_id!:                string
 			hub_details?: [...{
+				compute_id?: string
+				extract?: [...{
+					long_trans_duration?: int
+					performance_profile?: string
+				}]
+				replicat?: [...{
+					performance_profile?: string
+				}]
+				key_id!: string
+				rest_admin_credentials!: [...{
+					password!: string
+					username!: string
+				}]
 				url!:            string
 				vault_id!:       string
 				acceptable_lag?: int
-				compute_id?:     string
+			}]
+			time_updated:                             string
+			wait_after:                               string
+			source_container_database_connection_id?: string
+			target_database_connection_id!:           string
+			system_tags: [_]: string
+			compartment_id!: string
+			initial_load_settings?: [...{
+				import_directory_object?: [...{
+					path?: string
+					name?: string
+				}]
+				is_consistent?:             bool
+				is_tz_utc?:                 bool
+				handle_grant_errors?:       string
+				primary_key_compatibility?: string
+				data_pump_parameters?: [...{
+					import_parallelism_degree?: int
+					is_cluster?:                bool
+					table_exists_action?:       string
+					estimate?:                  string
+					exclude_parameters?: [...string]
+					export_parallelism_degree?: int
+				}]
+				metadata_remaps?: [...{
+					type?:      string
+					new_value?: string
+					old_value?: string
+				}]
+				job_mode!: string
+				export_directory_object?: [...{
+					name?: string
+					path?: string
+				}]
+				is_ignore_existing_objects?: bool
+				tablespace_details?: [...{
+					block_size_in_kbs?:  string
+					extend_size_in_mbs?: int
+					is_auto_create?:     bool
+					is_big_file?:        bool
+					remap_target?:       string
+					target_type!:        string
+				}]
+				compatibility?: [...string]
+			}]
+			time_last_migration:            string
+			lifecycle_details:              string
+			source_database_connection_id!: string
+			advanced_parameters?: [...{
+				data_type?: string
+				name?:      string
+				value?:     string
+			}]
+		}
+	}
+	arguments: {
+		connection: {
+			connection_type!: string
+			nsg_ids?: [...string]
+			connection_string?: string
+			database_id?:       string
+			freeform_tags?: [_]: string
+			subnet_id?:         string
+			ssl_ca?:            string
+			vault_id!:          string
+			ssh_user?:          string
+			compartment_id!:    string
+			db_system_id?:      string
+			description?:       string
+			ssl_cert?:          string
+			host?:              string
+			database_name?:     string
+			ssh_key?:           string
+			display_name!:      string
+			ssl_crl?:           string
+			ssh_sudo_location?: string
+			ssl_key?:           string
+			technology_type!:   string
+			wallet?:            string
+			ssh_host?:          string
+			key_id!:            string
+			additional_attributes?: [...{
+				name?:  string
+				value?: string
+			}]
+			defined_tags?: [_]: string
+			port?:                 int
+			ssl_mode?:             string
+			username!:             string
+			security_protocol?:    string
+			replication_username?: string
+			replication_password?: string
+			password!:             string
+		}
+		job: {
+			job_id!: string
+			freeform_tags?: [_]: string
+			defined_tags?: [_]: string
+			display_name?:    string
+			suspend_trigger?: int
+		}
+		migration: {
+			advanced_parameters?: [...{
+				data_type?: string
+				name?:      string
+				value?:     string
+			}]
+			hub_details?: [...{
 				extract?: [...{
 					performance_profile?: string
 					long_trans_duration?: int
@@ -154,19 +306,69 @@ package database_migration
 					password!: string
 					username!: string
 				}]
+				url!:            string
+				vault_id!:       string
+				acceptable_lag?: int
+				compute_id?:     string
 			}]
-			initial_load_settings?: [...{
-				import_directory_object?: [...{
-					name?: string
-					path?: string
+			compartment_id!: string
+			defined_tags?: [_]: string
+			freeform_tags?: [_]: string
+			include_objects?: [...{
+				is_omit_excluded_table_from_replication?: bool
+				owner?:                                   string
+				schema?:                                  string
+				type?:                                    string
+				object!:                                  string
+			}]
+			database_combination!:          string
+			description?:                   string
+			source_database_connection_id!: string
+			data_transfer_medium_details?: [...{
+				secret_access_key?:              string
+				access_key_id?:                  string
+				name?:                           string
+				shared_storage_mount_target_id?: string
+				source?: [...{
+					kind!:            string
+					oci_home?:        string
+					wallet_location?: string
 				}]
-				tablespace_details?: [...{
-					is_auto_create?:     bool
-					is_big_file?:        bool
-					remap_target?:       string
-					target_type!:        string
-					block_size_in_kbs?:  string
-					extend_size_in_mbs?: int
+				target?: [...{
+					kind!:            string
+					oci_home?:        string
+					wallet_location?: string
+				}]
+				object_storage_bucket?: [...{
+					bucket?:    string
+					namespace?: string
+				}]
+				region?: string
+				type!:   string
+			}]
+			advisor_settings?: [...{
+				is_ignore_errors?: bool
+				is_skip_advisor?:  bool
+			}]
+			display_name?: string
+			exclude_objects?: [...{
+				type?:                                    string
+				object!:                                  string
+				is_omit_excluded_table_from_replication?: bool
+				owner?:                                   string
+				schema?:                                  string
+			}]
+			target_database_connection_id!: string
+			type!:                          string
+			bulk_include_exclude_data?:     string
+			initial_load_settings?: [...{
+				data_pump_parameters?: [...{
+					estimate?: string
+					exclude_parameters?: [...string]
+					export_parallelism_degree?: int
+					import_parallelism_degree?: int
+					is_cluster?:                bool
+					table_exists_action?:       string
 				}]
 				handle_grant_errors?: string
 				metadata_remaps?: [...{
@@ -175,181 +377,29 @@ package database_migration
 					type?:      string
 				}]
 				primary_key_compatibility?: string
-				job_mode!:                  string
-				data_pump_parameters?: [...{
-					exclude_parameters?: [...string]
-					export_parallelism_degree?: int
-					import_parallelism_degree?: int
-					is_cluster?:                bool
-					table_exists_action?:       string
-					estimate?:                  string
-				}]
+				compatibility?: [...string]
+				job_mode!: string
 				export_directory_object?: [...{
+					path?: string
+					name?: string
+				}]
+				import_directory_object?: [...{
 					path?: string
 					name?: string
 				}]
 				is_consistent?:              bool
 				is_ignore_existing_objects?: bool
 				is_tz_utc?:                  bool
-				compatibility?: [...string]
-			}]
-			bulk_include_exclude_data?:               string
-			executing_job_id:                         string
-			source_container_database_connection_id?: string
-			exclude_objects?: [...{
-				schema?:                                  string
-				type?:                                    string
-				object!:                                  string
-				is_omit_excluded_table_from_replication?: bool
-				owner?:                                   string
-			}]
-			state: string
-			data_transfer_medium_details?: [...{
-				target?: [...{
-					kind!:            string
-					oci_home?:        string
-					wallet_location?: string
-				}]
-				region?: string
-				object_storage_bucket?: [...{
-					bucket?:    string
-					namespace?: string
-				}]
-				secret_access_key?: string
-				source?: [...{
-					wallet_location?: string
-					kind!:            string
-					oci_home?:        string
-				}]
-				access_key_id?:                  string
-				name?:                           string
-				shared_storage_mount_target_id?: string
-				type!:                           string
-			}]
-			database_combination!: string
-			time_created:          string
-			advisor_settings?: [...{
-				is_ignore_errors?: bool
-				is_skip_advisor?:  bool
-			}]
-			system_tags: [_]: string
-			advanced_parameters?: [...{
-				data_type?: string
-				name?:      string
-				value?:     string
-			}]
-			type!: string
-		}
-	}
-	arguments: {
-		connection: {
-			defined_tags?: [_]: string
-			database_id?:          string
-			description?:          string
-			ssh_user?:             string
-			ssh_host?:             string
-			port?:                 int
-			ssl_cert?:             string
-			replication_password?: string
-			ssl_ca?:               string
-			additional_attributes?: [...{
-				name?:  string
-				value?: string
-			}]
-			connection_string?: string
-			security_protocol?: string
-			host?:              string
-			freeform_tags?: [_]: string
-			password!: string
-			ssl_crl?:  string
-			key_id!:   string
-			nsg_ids?: [...string]
-			connection_type!:      string
-			database_name?:        string
-			ssh_sudo_location?:    string
-			display_name!:         string
-			username!:             string
-			ssl_key?:              string
-			vault_id!:             string
-			compartment_id!:       string
-			subnet_id?:            string
-			replication_username?: string
-			ssl_mode?:             string
-			db_system_id?:         string
-			wallet?:               string
-			technology_type!:      string
-			ssh_key?:              string
-		}
-		job: {
-			job_id!:          string
-			suspend_trigger?: int
-			display_name?:    string
-			defined_tags?: [_]: string
-			freeform_tags?: [_]: string
-		}
-		migration: {
-			database_combination!: string
-			data_transfer_medium_details?: [...{
-				target?: [...{
-					kind!:            string
-					oci_home?:        string
-					wallet_location?: string
-				}]
-				type!: string
-				object_storage_bucket?: [...{
-					bucket?:    string
-					namespace?: string
-				}]
-				region?:            string
-				secret_access_key?: string
-				source?: [...{
-					wallet_location?: string
-					kind!:            string
-					oci_home?:        string
-				}]
-				shared_storage_mount_target_id?: string
-				access_key_id?:                  string
-				name?:                           string
-			}]
-			compartment_id!: string
-			initial_load_settings?: [...{
-				is_ignore_existing_objects?: bool
-				primary_key_compatibility?:  string
-				compatibility?: [...string]
-				handle_grant_errors?: string
-				is_consistent?:       bool
-				data_pump_parameters?: [...{
-					is_cluster?:          bool
-					table_exists_action?: string
-					estimate?:            string
-					exclude_parameters?: [...string]
-					export_parallelism_degree?: int
-					import_parallelism_degree?: int
-				}]
-				import_directory_object?: [...{
-					path?: string
-					name?: string
-				}]
-				is_tz_utc?: bool
-				export_directory_object?: [...{
-					name?: string
-					path?: string
-				}]
-				metadata_remaps?: [...{
-					new_value?: string
-					old_value?: string
-					type?:      string
-				}]
 				tablespace_details?: [...{
+					extend_size_in_mbs?: int
 					is_auto_create?:     bool
 					is_big_file?:        bool
 					remap_target?:       string
 					target_type!:        string
 					block_size_in_kbs?:  string
-					extend_size_in_mbs?: int
 				}]
-				job_mode!: string
 			}]
+			source_container_database_connection_id?: string
 			ggs_details?: [...{
 				replicat?: [...{
 					performance_profile?: string
@@ -360,72 +410,33 @@ package database_migration
 					performance_profile?: string
 				}]
 			}]
-			advisor_settings?: [...{
-				is_ignore_errors?: bool
-				is_skip_advisor?:  bool
-			}]
-			source_database_connection_id!: string
-			hub_details?: [...{
-				replicat?: [...{
-					performance_profile?: string
-				}]
-				key_id!: string
-				rest_admin_credentials!: [...{
-					password!: string
-					username!: string
-				}]
-				url!:            string
-				vault_id!:       string
-				acceptable_lag?: int
-				compute_id?:     string
-				extract?: [...{
-					long_trans_duration?: int
-					performance_profile?: string
-				}]
-			}]
-			bulk_include_exclude_data?: string
-			description?:               string
-			freeform_tags?: [_]: string
-			advanced_parameters?: [...{
-				data_type?: string
-				name?:      string
-				value?:     string
-			}]
-			type!:         string
-			display_name?: string
-			exclude_objects?: [...{
-				schema?:                                  string
-				type?:                                    string
-				object!:                                  string
-				is_omit_excluded_table_from_replication?: bool
-				owner?:                                   string
-			}]
-			include_objects?: [...{
-				owner?:                                   string
-				schema?:                                  string
-				type?:                                    string
-				object!:                                  string
-				is_omit_excluded_table_from_replication?: bool
-			}]
-			defined_tags?: [_]: string
-			source_container_database_connection_id?: string
-			target_database_connection_id!:           string
 		}
 	}
 }
 #data: {
-	connection: connection_id!: string
-	job: job_id!: string
-	migration: migration_id!: string
-	migration_object_types: {
-		connection_type!: string
+	jobs: {
 		filter?: [...{
+			name!: string
 			values!: [...string]
 			regex?: *false | bool
-			name!:  string
 		}]
+		display_name?: string
+		migration_id!: string
+		state?:        string
 	}
+	migration_object_types: {
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		connection_type!: string
+	}
+	connection: connection_id!: string
 	connections: {
+		compartment_id!: string
+		connection_type?: [...string]
+		display_name?:         string
 		source_connection_id?: string
 		state?:                string
 		technology_type?: [...string]
@@ -434,22 +445,11 @@ package database_migration
 			values!: [...string]
 			regex?: *false | bool
 		}]
-		compartment_id!: string
-		connection_type?: [...string]
-		display_name?: string
 	}
+	job: job_id!: string
 	job_advisor_report: job_id!: string
 	job_output: job_id!: string
-	jobs: {
-		state?: string
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		display_name?: string
-		migration_id!: string
-	}
+	migration: migration_id!: string
 	migrations: migration_id!: string
 }
 

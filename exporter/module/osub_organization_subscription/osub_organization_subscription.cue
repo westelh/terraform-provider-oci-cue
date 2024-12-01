@@ -7,8 +7,8 @@ package osub_organization_subscription
 #data: {
 	organization_subscriptions: {
 		filter?: [...{
-			values!: [...string]
-			regex?: *false | bool, name!: string
+			name!: string, values!: [...string]
+			regex?: *false | bool
 		}]
 		compartment_id!: string, subscription_ids!: string, x_one_origin_region?: string
 	}

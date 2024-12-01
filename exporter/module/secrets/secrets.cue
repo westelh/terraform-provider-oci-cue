@@ -6,16 +6,16 @@ package secrets
 }
 #data: {
 	secretbundle: {
-		version_number?:      string
 		secret_id!:           string
-		secret_version_name?: string
 		stage?:               string
+		secret_version_name?: string
+		version_number?:      string
 	}
 	secretbundle_versions: {
 		filter?: [...{
-			name!: string
 			values!: [...string]
 			regex?: *false | bool
+			name!:  string
 		}]
 		secret_id!: string
 	}

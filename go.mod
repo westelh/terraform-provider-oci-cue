@@ -10,7 +10,7 @@ require (
 	github.com/hashicorp/terraform-exec v0.21.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.35.0
 	github.com/stretchr/testify v1.9.0
-	github.com/westelh/tfprovider-cue v0.4.1
+	github.com/westelh/tfprovider-cue v0.4.2
 	golang.org/x/mod v0.21.0
 	gopkg.in/yaml.v2 v2.3.0
 )

@@ -13,9 +13,9 @@ package audit
 #data: {
 	events: {
 		filter?: [...{
-			name!: string
-			values!: [...string]
 			regex?: *false | bool
+			name!:  string
+			values!: [...string]
 		}]
 		compartment_id!: string
 		end_time!:       string

@@ -11,18 +11,17 @@ package computeinstanceagent
 		plugin_name!:      string
 	}
 	instance_agent_plugins: {
-		name?:   string
-		status?: string
 		filter?: [...{
-			values!: [...string]
 			regex?: *false | bool
 			name!:  string
+			values!: [...string]
 		}]
 		instanceagent_id!: string
 		compartment_id!:   string
+		name?:             string
+		status?:           string
 	}
 	instance_available_plugins: {
-		os_version!: string
 		filter?: [...{
 			name!: string
 			values!: [...string]
@@ -31,6 +30,7 @@ package computeinstanceagent
 		name?:           string
 		compartment_id!: string
 		os_name!:        string
+		os_version!:     string
 	}
 }
 

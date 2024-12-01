@@ -2,269 +2,186 @@ package cloud_guard
 
 #resource: {
 	attributes: {
-		detector_recipe: {
-			defined_tags?: [_]: string
-			source_detector_recipe_id?: string
-			compartment_id!:            string
-			time_created:               string
-			effective_detector_rules: [...{
-				state: string
-				candidate_responder_rules: [...{
-					display_name: string
-					id:           string
-					is_preferred: bool
-				}]
-				detector:     string
-				display_name: string
-				managed_list_types: [...string]
-				data_source_id:   string
-				detector_rule_id: string
-				entities_mappings: [...{
-					display_name: string
-					entity_type:  string
-					query_field:  string
-				}]
-				time_created:      string
-				time_updated:      string
-				recommendation:    string
-				resource_type:     string
-				lifecycle_details: string
-				description:       string
-				details: [...{
-					configurations: [...{
-						value: string
-						values: [...{
-							list_type:         string
-							managed_list_type: string
-							value:             string
-						}]
-						config_key: string
-						data_type:  string
-						name:       string
-					}]
-					labels: [...string]
-					is_configuration_allowed: bool
-					is_enabled:               bool
-					recommendation:           string
-					risk_level:               string
-					condition:                string
-					data_source_id:           string
-					entities_mappings: [...{
-						entity_type:  string
-						query_field:  string
-						display_name: string
-					}]
-					description: string
-				}]
-				service_type: string
-			}]
-			description?:         string
-			detector_recipe_type: string
-			target_ids: [...string]
-			detector_rules?: [...{
-				detector_rule_id!: string
-				managed_list_types: [...string]
-				details!: [...{
-					risk_level!:  string
-					description?: string
-					is_enabled!:  bool
-					entities_mappings?: [...{
-						display_name?: string
-						entity_type?:  string
-						query_field!:  string
-					}]
-					labels?: [...string]
-					is_configuration_allowed: bool
-					data_source_id?:          string
-					configurations?: [...{
-						config_key!: string
-						name!:       string
-						data_type?:  string
-						value?:      string
-						values?: [...{
-							list_type!:         string
-							managed_list_type!: string
-							value!:             string
-						}]
-					}]
-					recommendation?: string
-					condition?:      string
-				}]
-				recommendation: string
-				time_updated:   string
-				description:    string
-				detector:       string
-				data_source_id: string
-				entities_mappings: [...{
-					display_name: string
-					entity_type:  string
-					query_field:  string
-				}]
-				time_created:  string
-				resource_type: string
-				service_type:  string
-				display_name:  string
-				candidate_responder_rules: [...{
-					display_name: string
-					id:           string
-					is_preferred: bool
-				}]
-				lifecycle_details: string
-				state:             string
-			}]
-			time_updated: string
-			state:        string
-			system_tags: [_]: string
-			display_name!: string
-			owner:         string
-			freeform_tags?: [_]: string
-			detector?: string
-		}
-		responder_recipe: {
-			source_responder_recipe_id!: string
-			responder_rules?: [...{
-				details!: [...{
-					configurations: [...{
-						config_key: string
-						name:       string
-						value:      string
-					}]
-					mode:        string
-					is_enabled!: bool
-					condition:   string
-				}]
-				responder_rule_id!: string
-				state:              string
-				supported_modes: [...string]
-				display_name:      string
-				lifecycle_details: string
-				policies: [...string]
-				type:            string
-				time_created:    string
-				time_updated:    string
-				compartment_id?: string
-				description:     string
-			}]
-			lifecycle_details: string
-			defined_tags?: [_]: string
-			time_created:  string
-			display_name!: string
-			state:         string
-			system_tags: [_]: string
-			compartment_id!: string
-			effective_responder_rules: [...{
-				responder_rule_id: string
-				time_updated:      string
-				state:             string
-				time_created:      string
-				description:       string
-				details: [...{
-					is_enabled: bool
-					mode:       string
-					condition:  string
-					configurations: [...{
-						config_key: string
-						name:       string
-						value:      string
-					}]
-				}]
-				type: string
-				policies: [...string]
-				compartment_id?:   string
-				display_name:      string
-				lifecycle_details: string
-				supported_modes: [...string]
-			}]
-			description?: string
-			time_updated: string
-			freeform_tags?: [_]: string
-			owner: string
-		}
-		security_recipe: {
-			state:        string
-			time_updated: string
-			security_policies!: [...string]
-			freeform_tags?: [_]: string
-			lifecycle_details: string
-			display_name!:     string
+		saved_query: {
+			state:  string
+			query!: string
 			defined_tags?: [_]: string
 			time_created:    string
+			time_updated:    string
 			compartment_id!: string
-			owner:           string
+			display_name!:   string
 			description?:    string
+			system_tags: [_]: string
+			freeform_tags?: [_]: string
 		}
 		security_zone: {
-			display_name!: string
-			time_created:  string
-			defined_tags?: [_]: string
-			freeform_tags?: [_]: string
-			lifecycle_details: string
-			description?:      string
-			inherited_by_compartments: [...string]
-			time_updated:             string
-			compartment_id!:          string
-			security_zone_target_id:  string
-			state:                    string
+			display_name!:            string
 			security_zone_recipe_id!: string
+			inherited_by_compartments: [...string]
+			lifecycle_details: string
+			state:             string
+			compartment_id!:   string
+			time_created:      string
+			time_updated:      string
+			defined_tags?: [_]: string
+			description?: string
+			freeform_tags?: [_]: string
+			security_zone_target_id: string
 		}
 		target: {
-			time_updated:  string
-			display_name!: string
-			description?:  string
-			inherited_by_compartments: [...string]
-			recipe_count: int
-			target_detector_recipes?: [...{
-				state:                string
-				detector_recipe_id!:  string
-				detector:             string
-				detector_recipe_type: string
-				owner:                string
-				time_created:         string
-				display_name:         string
-				effective_detector_rules: [...{
+			lifecyle_details: string
+			compartment_id!:  string
+			system_tags: [_]: string
+			recipe_count:        int
+			target_resource_id!: string
+			freeform_tags?: [_]: string
+			target_responder_recipes?: [...{
+				time_updated: string
+				display_name: string
+				effective_responder_rules: [...{
+					policies: [...string]
+					description:  string
+					display_name: string
+					type:         string
+					supported_modes: [...string]
+					time_created:      string
+					time_updated:      string
+					responder_rule_id: string
+					compartment_id:    string
 					state:             string
-					data_source_id:    string
+					details: [...{
+						condition: string
+						configurations: [...{
+							config_key: string
+							name:       string
+							value:      string
+						}]
+						is_enabled: bool
+						mode:       string
+					}]
 					lifecycle_details: string
+				}]
+				id:                   string
+				time_created:         string
+				responder_recipe_id!: string
+				description:          string
+				compartment_id:       string
+				responder_rules?: [...{
+					compartment_id:    string
+					lifecycle_details: string
+					supported_modes: [...string]
+					details!: [...{
+						is_enabled: bool
+						condition?: string
+						configurations?: [...{
+							name!:       string
+							value!:      string
+							config_key!: string
+						}]
+						mode?: string
+					}]
+					responder_rule_id!: string
+					display_name:       string
+					policies: [...string]
+					time_created: string
+					state:        string
+					time_updated: string
+					description:  string
+					type:         string
+				}]
+				owner: string
+			}]
+			state?: string
+			inherited_by_compartments: [...string]
+			target_details: [...{
+				security_zone_id:     string
+				target_resource_type: string
+				target_security_zone_recipes: [...{
+					owner: string
+					security_policies: [...string]
+					time_created:   string
+					compartment_id: string
+					state:          string
+					time_updated:   string
+					defined_tags: [_]: string
+					id: string
+					system_tags: [_]: string
 					description:       string
-					managed_list_types: [...string]
-					recommendation:   string
-					service_type:     string
-					time_updated:     string
-					detector_rule_id: string
-					resource_type:    string
-					display_name:     string
-					detector:         string
+					display_name:      string
+					lifecycle_details: string
+					freeform_tags: [_]: string
+				}]
+				security_zone_display_name: string
+			}]
+			time_created: string
+			defined_tags?: [_]: string
+			description?:          string
+			display_name!:         string
+			time_updated:          string
+			target_resource_type!: string
+			target_detector_recipes?: [...{
+				detector_recipe_type: string
+				effective_detector_rules: [...{
+					data_source_id: string
+					recommendation: string
+					state:          string
+					time_created:   string
+					time_updated:   string
+					description:    string
+					resource_type:  string
+					display_name:   string
+					service_type:   string
 					entities_mappings: [...{
+						query_field:  string
 						display_name: string
 						entity_type:  string
-						query_field:  string
 					}]
-					time_created: string
+					managed_list_types: [...string]
+					detector_rule_id:  string
+					detector:          string
+					lifecycle_details: string
 					details: [...{
+						risk_level: string
 						condition_groups: [...{
 							compartment_id: string
 							condition:      string
 						}]
 						configurations: [...{
-							config_key: string
-							data_type:  string
-							name:       string
-							value:      string
+							name:  string
+							value: string
 							values: [...{
-								value:             string
 								list_type:         string
 								managed_list_type: string
+								value:             string
 							}]
+							config_key: string
+							data_type:  string
 						}]
 						is_configuration_allowed: bool
 						is_enabled:               bool
 						labels: [...string]
-						risk_level: string
 					}]
 				}]
+				id:           string
+				state:        string
+				time_updated: string
 				detector_rules?: [...{
-					display_name: string
+					state:        string
+					time_updated: string
+					description:  string
+					managed_list_types: [...string]
+					time_created: string
+					entities_mappings: [...{
+						query_field:  string
+						display_name: string
+						entity_type:  string
+					}]
+					lifecycle_details: string
+					recommendation:    string
+					service_type:      string
 					details!: [...{
+						labels: [...string]
+						risk_level: string
 						condition_groups?: [...{
 							compartment_id!: string
 							condition!:      string
@@ -282,145 +199,35 @@ package cloud_guard
 						}]
 						is_configuration_allowed: bool
 						is_enabled:               bool
-						labels: [...string]
-						risk_level: string
 					}]
-					service_type:      string
-					detector:          string
 					detector_rule_id!: string
-					time_updated:      string
-					data_source_id:    string
-					entities_mappings: [...{
-						display_name: string
-						entity_type:  string
-						query_field:  string
-					}]
+					detector:          string
+					display_name:      string
 					resource_type:     string
-					lifecycle_details: string
-					managed_list_types: [...string]
-					recommendation: string
-					state:          string
-					time_created:   string
-					description:    string
+					data_source_id:    string
 				}]
-				compartment_id: string
-				description:    string
-				time_updated:   string
-				id:             string
+				display_name:        string
+				detector_recipe_id!: string
+				compartment_id:      string
+				description:         string
+				detector:            string
+				time_created:        string
+				owner:               string
 			}]
-			system_tags: [_]: string
-			lifecyle_details: string
-			target_details: [...{
-				target_security_zone_recipes: [...{
-					compartment_id: string
-					state:          string
-					description:    string
-					time_created:   string
-					system_tags: [_]: string
-					id:                string
-					lifecycle_details: string
-					owner:             string
-					security_policies: [...string]
-					defined_tags: [_]: string
-					display_name: string
-					freeform_tags: [_]: string
-					time_updated: string
-				}]
-				security_zone_display_name: string
-				security_zone_id:           string
-				target_resource_type:       string
-			}]
-			freeform_tags?: [_]: string
-			state?: string
-			defined_tags?: [_]: string
-			target_responder_recipes?: [...{
-				responder_rules?: [...{
-					display_name:   string
-					compartment_id: string
-					description:    string
-					time_created:   string
-					policies: [...string]
-					state: string
-					details!: [...{
-						is_enabled: bool
-						condition?: string
-						configurations?: [...{
-							config_key!: string
-							name!:       string
-							value!:      string
-						}]
-						mode?: string
-					}]
-					supported_modes: [...string]
-					time_updated:       string
-					type:               string
-					responder_rule_id!: string
-					lifecycle_details:  string
-				}]
-				effective_responder_rules: [...{
-					state:        string
-					time_created: string
-					description:  string
-					display_name: string
-					supported_modes: [...string]
-					compartment_id: string
-					details: [...{
-						configurations: [...{
-							config_key: string
-							name:       string
-							value:      string
-						}]
-						is_enabled: bool
-						mode:       string
-						condition:  string
-					}]
-					lifecycle_details: string
-					time_updated:      string
-					policies: [...string]
-					responder_rule_id: string
-					type:              string
-				}]
-				id:                   string
-				owner:                string
-				responder_recipe_id!: string
-				time_updated:         string
-				display_name:         string
-				compartment_id:       string
-				description:          string
-				time_created:         string
-			}]
-			target_resource_id!:   string
-			target_resource_type!: string
-			time_created:          string
-			compartment_id!:       string
 		}
-		adhoc_query: {
-			error_message: string
-			freeform_tags?: [_]: string
-			time_created: string
-			defined_tags?: [_]: string
-			system_tags: [_]: string
-			time_updated:    string
+		wlp_agent: {
 			compartment_id!: string
-			adhoc_query_details!: [...{
-				adhoc_query_resources!: [...{
-					resource_ids?: [...string]
-					resource_type?: string
-					region?:        string
-				}]
-				query!: string
-			}]
-			adhoc_query_regional_details: [...{
-				expired_count:   string
-				failed_count:    string
-				region:          string
-				regional_error:  string
-				regional_status: string
-				succeeded_count: string
-				expected_count:  string
-			}]
-			state:  string
-			status: string
+			os_info!:        string
+			freeform_tags?: [_]: string
+			agent_version!:              string
+			certificate_id:              string
+			time_created:                string
+			tenant_id:                   string
+			certificate_signed_request!: string
+			host_id:                     string
+			defined_tags?: [_]: string
+			time_updated: string
+			system_tags: [_]: string
 		}
 		cloud_guard_configuration: {
 			status!:                string
@@ -429,221 +236,424 @@ package cloud_guard
 			reporting_region!:      string
 		}
 		data_mask_rule: {
-			description?:     string
-			lifecyle_details: string
-			time_created:     string
-			display_name!:    string
-			compartment_id!:  string
+			compartment_id!: string
 			freeform_tags?: [_]: string
 			defined_tags?: [_]: string
-			system_tags: [_]: string
-			state?:                 string
 			data_mask_rule_status?: string
-			time_updated:           string
-			iam_group_id!:          string
+			system_tags: [_]: string
+			time_updated:     string
+			lifecyle_details: string
+			time_created:     string
+			description?:     string
+			display_name!:    string
+			iam_group_id!:    string
 			target_selected!: [...{
-				values?: [...string]
 				kind!: string
+				values?: [...string]
 			}]
 			data_mask_categories!: [...string]
+			state?: string
 		}
-		data_source: {
+		managed_list: {
+			feed_provider:           string
+			time_created:            string
+			source_managed_list_id?: string
+			state:                   string
+			list_items?: [...string]
+			list_type?:   string
+			description?: string
 			freeform_tags?: [_]: string
-			data_source_detector_mapping_info: [...{
-				detector_rule_id:   string
-				detector_recipe_id: string
+			system_tags: [_]: string
+			time_updated:     string
+			display_name!:    string
+			compartment_id!:  string
+			is_editable:      bool
+			lifecyle_details: string
+			defined_tags?: [_]: string
+		}
+		responder_recipe: {
+			state:         string
+			display_name!: string
+			description?:  string
+			freeform_tags?: [_]: string
+			lifecycle_details: string
+			owner:             string
+			system_tags: [_]: string
+			time_updated:                string
+			source_responder_recipe_id!: string
+			responder_rules?: [...{
+				state: string
+				supported_modes: [...string]
+				time_updated: string
+				display_name: string
+				policies: [...string]
+				description: string
+				details!: [...{
+					is_enabled!: bool
+					condition:   string
+					configurations: [...{
+						config_key: string
+						name:       string
+						value:      string
+					}]
+					mode: string
+				}]
+				responder_rule_id!: string
+				time_created:       string
+				type:               string
+				lifecycle_details:  string
+				compartment_id?:    string
+			}]
+			defined_tags?: [_]: string
+			compartment_id!: string
+			time_created:    string
+			effective_responder_rules: [...{
+				state:        string
+				type:         string
+				time_updated: string
+				display_name: string
+				policies: [...string]
+				description:       string
+				responder_rule_id: string
+				time_created:      string
+				compartment_id?:   string
+				details: [...{
+					mode:      string
+					condition: string
+					configurations: [...{
+						name:       string
+						value:      string
+						config_key: string
+					}]
+					is_enabled: bool
+				}]
+				supported_modes: [...string]
+				lifecycle_details: string
+			}]
+		}
+		security_recipe: {
+			lifecycle_details: string
+			description?:      string
+			time_updated:      string
+			compartment_id!:   string
+			display_name!:     string
+			owner:             string
+			time_created:      string
+			security_policies!: [...string]
+			state: string
+			defined_tags?: [_]: string
+			freeform_tags?: [_]: string
+		}
+		adhoc_query: {
+			compartment_id!: string
+			error_message:   string
+			state:           string
+			adhoc_query_regional_details: [...{
+				region:          string
+				regional_error:  string
+				regional_status: string
+				succeeded_count: string
+				expected_count:  string
+				expired_count:   string
+				failed_count:    string
 			}]
 			time_created: string
 			time_updated: string
 			defined_tags?: [_]: string
 			system_tags: [_]: string
-			display_name!: string
-			region_status_detail: [...{
-				region: string
-				status: string
+			status: string
+			adhoc_query_details!: [...{
+				query!: string
+				adhoc_query_resources!: [...{
+					resource_type?: string
+					region?:        string
+					resource_ids?: [...string]
+				}]
 			}]
-			data_source_feed_provider!: string
+			freeform_tags?: [_]: string
+		}
+		data_source: {
+			time_created: string
+			time_updated: string
 			data_source_details?: [...{
-				interval_in_minutes?:       int
-				interval_in_seconds?:       int
 				additional_entities_count?: int
+				query?:                     string
+				interval_in_seconds?:       int
+				logging_query_type?:        string
+				regions?: [...string]
+				threshold?:           int
+				interval_in_minutes?: int
+				logging_query_details?: [...{
+					logging_query_type!: string
+					key_entities_count?: int
+				}]
 				scheduled_query_scope_details?: [...{
 					resource_type?: string
 					region?:        string
 					resource_ids?: [...string]
 				}]
-				threshold?:          int
-				description?:        string
-				logging_query_type?: string
-				operator?:           string
-				query_start_time?: [...{
-					query_start_time?:  string
-					start_policy_type!: string
-				}]
-				regions?: [...string]
-				logging_query_details?: [...{
-					logging_query_type!: string
-					key_entities_count?: int
-				}]
-				query?:                     string
 				data_source_feed_provider!: string
+				operator?:                  string
+				query_start_time?: [...{
+					start_policy_type!: string
+					query_start_time?:  string
+				}]
+				description?: string
 			}]
-			status?:         string
-			state:           string
-			compartment_id!: string
-		}
-		managed_list: {
-			time_updated:            string
-			source_managed_list_id?: string
-			system_tags: [_]: string
-			compartment_id!:  string
-			feed_provider:    string
-			lifecyle_details: string
-			list_items?: [...string]
-			state:         string
+			data_source_detector_mapping_info: [...{
+				detector_rule_id:   string
+				detector_recipe_id: string
+			}]
 			display_name!: string
-			freeform_tags?: [_]: string
-			description?: string
-			is_editable:  bool
-			list_type?:   string
-			defined_tags?: [_]: string
-			time_created: string
-		}
-		saved_query: {
-			display_name!: string
-			defined_tags?: [_]: string
-			freeform_tags?: [_]: string
-			time_created: string
-			state:        string
+			status?:       string
+			region_status_detail: [...{
+				region: string
+				status: string
+			}]
+			state: string
 			system_tags: [_]: string
-			time_updated:    string
 			compartment_id!: string
-			query!:          string
-			description?:    string
-		}
-		wlp_agent: {
-			os_info!: string
 			defined_tags?: [_]: string
 			freeform_tags?: [_]: string
-			system_tags: [_]: string
-			time_created:                string
-			certificate_signed_request!: string
-			time_updated:                string
-			agent_version!:              string
-			tenant_id:                   string
-			compartment_id!:             string
-			certificate_id:              string
-			host_id:                     string
+			data_source_feed_provider!: string
 		}
-	}
-	arguments: {
 		detector_recipe: {
-			description?:               string
-			detector?:                  string
-			source_detector_recipe_id?: string
-			compartment_id!:            string
-			defined_tags?: [_]: string
+			compartment_id!:      string
+			detector_recipe_type: string
+			time_created:         string
+			detector?:            string
+			time_updated:         string
+			description?:         string
 			detector_rules?: [...{
+				candidate_responder_rules: [...{
+					id:           string
+					is_preferred: bool
+					display_name: string
+				}]
 				details!: [...{
-					data_source_id?: string
-					description?:    string
-					is_enabled!:     bool
-					risk_level!:     string
 					condition?:      string
+					is_enabled!:     bool
+					description?:    string
+					risk_level!:     string
+					data_source_id?: string
+					labels?: [...string]
+					is_configuration_allowed: bool
+					entities_mappings?: [...{
+						query_field!:  string
+						display_name?: string
+						entity_type?:  string
+					}]
+					recommendation?: string
 					configurations?: [...{
-						config_key!: string
-						name!:       string
-						data_type?:  string
-						value?:      string
 						values?: [...{
 							list_type!:         string
 							managed_list_type!: string
 							value!:             string
 						}]
+						config_key!: string
+						name!:       string
+						data_type?:  string
+						value?:      string
 					}]
-					entities_mappings?: [...{
-						display_name?: string
-						entity_type?:  string
-						query_field!:  string
-					}]
-					labels?: [...string]
-					recommendation?: string
 				}]
 				detector_rule_id!: string
-			}]
-			display_name!: string
-			freeform_tags?: [_]: string
-		}
-		responder_recipe: {
-			compartment_id!:             string
-			source_responder_recipe_id!: string
-			description?:                string
-			responder_rules?: [...{
-				compartment_id?:    string
-				responder_rule_id!: string
-				details!: [...{
-					is_enabled!: bool
+				time_created:      string
+				entities_mappings: [...{
+					entity_type:  string
+					query_field:  string
+					display_name: string
 				}]
+				managed_list_types: [...string]
+				resource_type:     string
+				time_updated:      string
+				service_type:      string
+				state:             string
+				detector:          string
+				data_source_id:    string
+				lifecycle_details: string
+				recommendation:    string
+				display_name:      string
+				description:       string
 			}]
+			target_ids: [...string]
 			display_name!: string
 			defined_tags?: [_]: string
+			state: string
+			effective_detector_rules: [...{
+				candidate_responder_rules: [...{
+					display_name: string
+					id:           string
+					is_preferred: bool
+				}]
+				details: [...{
+					condition:  string
+					is_enabled: bool
+					labels: [...string]
+					is_configuration_allowed: bool
+					recommendation:           string
+					risk_level:               string
+					entities_mappings: [...{
+						display_name: string
+						entity_type:  string
+						query_field:  string
+					}]
+					data_source_id: string
+					configurations: [...{
+						config_key: string
+						data_type:  string
+						name:       string
+						value:      string
+						values: [...{
+							value:             string
+							list_type:         string
+							managed_list_type: string
+						}]
+					}]
+					description: string
+				}]
+				time_created:     string
+				description:      string
+				service_type:     string
+				data_source_id:   string
+				recommendation:   string
+				detector_rule_id: string
+				display_name:     string
+				entities_mappings: [...{
+					display_name: string
+					entity_type:  string
+					query_field:  string
+				}]
+				managed_list_types: [...string]
+				resource_type:     string
+				lifecycle_details: string
+				time_updated:      string
+				state:             string
+				detector:          string
+			}]
 			freeform_tags?: [_]: string
+			source_detector_recipe_id?: string
+			system_tags: [_]: string
+			owner: string
 		}
-		security_recipe: {
-			defined_tags?: [_]: string
-			description?:  string
-			display_name!: string
-			security_policies!: [...string]
-			freeform_tags?: [_]: string
-			compartment_id!: string
-		}
-		security_zone: {
-			freeform_tags?: [_]: string
-			security_zone_recipe_id!: string
+	}
+	arguments: {
+		saved_query: {
 			defined_tags?: [_]: string
 			description?:    string
 			compartment_id!: string
 			display_name!:   string
+			freeform_tags?: [_]: string
+			query!: string
+		}
+		security_zone: {
+			security_zone_recipe_id!: string
+			defined_tags?: [_]: string
+			description?: string
+			freeform_tags?: [_]: string
+			compartment_id!: string
+			display_name!:   string
 		}
 		target: {
-			compartment_id!: string
+			target_resource_type!: string
+			defined_tags?: [_]: string
+			state?: string
 			target_responder_recipes?: [...{
 				responder_recipe_id!: string
 				responder_rules?: [...{
 					details!: [...{
-						condition?: string
 						configurations?: [...{
 							config_key!: string
 							name!:       string
 							value!:      string
 						}]
-						mode?: string
+						mode?:      string
+						condition?: string
 					}]
 					responder_rule_id!: string
 				}]
 			}]
-			description?:          string
-			target_resource_type!: string
-			defined_tags?: [_]: string
-			display_name!: string
+			compartment_id!: string
 			freeform_tags?: [_]: string
-			state?: string
+			display_name!:       string
+			target_resource_id!: string
+			description?:        string
 			target_detector_recipes?: [...{
 				detector_recipe_id!: string
 				detector_rules?: [...{
+					detector_rule_id!: string
 					details!: [...{
 						condition_groups?: [...{
-							compartment_id!: string, condition!: string
+							condition!: string, compartment_id!: string
 						}]
 					}]
-					detector_rule_id!: string
 				}]
 			}]
-			target_resource_id!: string
 		}
-		adhoc_query: {
+		wlp_agent: {
+			freeform_tags?: [_]: string
+			agent_version!: string
+			defined_tags?: [_]: string
+			certificate_signed_request!: string
+			compartment_id!:             string
+			os_info!:                    string
+		}
+		cloud_guard_configuration: {
+			compartment_id!:        string
+			reporting_region!:      string
+			status!:                string
+			self_manage_resources?: bool
+		}
+		data_mask_rule: {
+			data_mask_categories!: [...string]
+			iam_group_id!: string
+			target_selected!: [...{
+				kind!: string
+				values?: [...string]
+			}]
+			description?:  string
+			state?:        string
+			display_name!: string
+			defined_tags?: [_]: string
+			data_mask_rule_status?: string
+			compartment_id!:        string
+			freeform_tags?: [_]: string
+		}
+		managed_list: {
+			list_items?: [...string]
+			defined_tags?: [_]: string
+			list_type?:              string
+			source_managed_list_id?: string
+			display_name!:           string
+			compartment_id!:         string
+			description?:            string
+			freeform_tags?: [_]: string
+		}
+		responder_recipe: {
+			compartment_id!:             string
+			source_responder_recipe_id!: string
+			display_name!:               string
+			description?:                string
+			freeform_tags?: [_]: string
+			responder_rules?: [...{
+				details!: [...{
+					is_enabled!: bool
+				}]
+				responder_rule_id!: string
+				compartment_id?:    string
+			}]
+			defined_tags?: [_]: string
+		}
+		security_recipe: {
+			display_name!: string
 			defined_tags?: [_]: string
 			freeform_tags?: [_]: string
+			security_policies!: [...string]
+			description?:    string
+			compartment_id!: string
+		}
+		adhoc_query: {
+			compartment_id!: string
+			defined_tags?: [_]: string
 			adhoc_query_details!: [...{
 				adhoc_query_resources!: [...{
 					region?: string
@@ -652,50 +662,28 @@ package cloud_guard
 				}]
 				query!: string
 			}]
-			compartment_id!: string
-		}
-		cloud_guard_configuration: {
-			self_manage_resources?: bool
-			compartment_id!:        string
-			reporting_region!:      string
-			status!:                string
-		}
-		data_mask_rule: {
-			defined_tags?: [_]: string
-			target_selected!: [...{
-				kind!: string
-				values?: [...string]
-			}]
 			freeform_tags?: [_]: string
-			iam_group_id!:          string
-			data_mask_rule_status?: string
-			state?:                 string
-			data_mask_categories!: [...string]
-			description?:    string
-			display_name!:   string
-			compartment_id!: string
 		}
 		data_source: {
-			defined_tags?: [_]: string
-			freeform_tags?: [_]: string
-			display_name!:              string
-			status?:                    string
-			compartment_id!:            string
-			data_source_feed_provider!: string
+			status?:       string
+			display_name!: string
 			data_source_details?: [...{
-				logging_query_details?: [...{
-					logging_query_type!: string
-					key_entities_count?: int
-				}]
-				query?:                     string
-				threshold?:                 int
-				data_source_feed_provider!: string
-				interval_in_minutes?:       int
-				interval_in_seconds?:       int
-				logging_query_type?:        string
+				operator?: string
 				query_start_time?: [...{
 					start_policy_type!: string
 					query_start_time?:  string
+				}]
+				additional_entities_count?: int
+				interval_in_minutes?:       int
+				query?:                     string
+				logging_query_type?:        string
+				interval_in_seconds?:       int
+				regions?: [...string]
+				threshold?:                 int
+				data_source_feed_provider!: string
+				logging_query_details?: [...{
+					key_entities_count?: int
+					logging_query_type!: string
 				}]
 				scheduled_query_scope_details?: [...{
 					region?: string
@@ -703,120 +691,65 @@ package cloud_guard
 					resource_type?: string
 				}]
 				description?: string
-				operator?:    string
-				regions?: [...string]
-				additional_entities_count?: int
 			}]
-		}
-		managed_list: {
-			list_items?: [...string]
-			source_managed_list_id?: string
-			display_name!:           string
-			freeform_tags?: [_]: string
-			description?:    string
-			compartment_id!: string
-			list_type?:      string
-			defined_tags?: [_]: string
-		}
-		saved_query: {
-			freeform_tags?: [_]: string
-			query!:          string
-			description?:    string
-			compartment_id!: string
-			display_name!:   string
-			defined_tags?: [_]: string
-		}
-		wlp_agent: {
-			certificate_signed_request!: string
-			compartment_id!:             string
-			agent_version!:              string
-			os_info!:                    string
 			defined_tags?: [_]: string
 			freeform_tags?: [_]: string
+			compartment_id!:            string
+			data_source_feed_provider!: string
+		}
+		detector_recipe: {
+			defined_tags?: [_]: string
+			description?: string
+			freeform_tags?: [_]: string
+			detector?: string
+			detector_rules?: [...{
+				details!: [...{
+					description?:    string
+					risk_level!:     string
+					data_source_id?: string
+					labels?: [...string]
+					is_enabled!: bool
+					condition?:  string
+					configurations?: [...{
+						config_key!: string
+						name!:       string
+						data_type?:  string
+						value?:      string
+						values?: [...{
+							value!:             string
+							list_type!:         string
+							managed_list_type!: string
+						}]
+					}]
+					entities_mappings?: [...{
+						query_field!:  string
+						display_name?: string
+						entity_type?:  string
+					}]
+					recommendation?: string
+				}]
+				detector_rule_id!: string
+			}]
+			source_detector_recipe_id?: string
+			compartment_id!:            string
+			display_name!:              string
 		}
 	}
 }
 #data: {
-	wlp_agents: {
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		compartment_id!: string
-	}
-	adhoc_query: adhoc_query_id!: string
-	data_source_event: {
-		data_source_id!: string
-		region?:         string
-	}
-	managed_list: managed_list_id!: string
-	security_recipe: security_recipe_id!: string
-	security_recipes: {
-		id?:    string
-		state?: string
-		filter?: [...{
-			values!: [...string]
-			regex?: *false | bool
-			name!:  string
-		}]
-		compartment_id!: string
-		display_name?:   string
-	}
-	data_source: data_source_id!: string
-	security_policies: {
-		compartment_id!: string
-		display_name?:   string
-		id?:             string
-		state?:          string
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-	}
-	security_zone: security_zone_id!: string
-	wlp_agent: wlp_agent_id!: string
-	saved_query: saved_query_id!: string
 	security_policy: security_policy_id!: string
-	adhoc_queries: {
-		filter?: [...{
-			regex?: *false | bool
-			name!:  string
-			values!: [...string]
-		}]
-		access_level?:                    string
-		adhoc_query_status?:              string
-		compartment_id!:                  string
-		compartment_id_in_subtree?:       bool
-		time_ended_filter_query_param?:   string
-		time_started_filter_query_param?: string
-	}
-	responder_recipes: {
-		state?: string
-		filter?: [...{
-			values!: [...string]
-			regex?: *false | bool
-			name!:  string
-		}]
-		access_level?:              string
-		compartment_id!:            string
-		compartment_id_in_subtree?: bool
-		display_name?:              string
-		resource_metadata_only?:    bool
-	}
 	security_zones: {
-		filter?: [...{
-			regex?: *false | bool
-			name!:  string
-			values!: [...string]
-		}]
-		compartment_id!:                        string
-		display_name?:                          string
-		id?:                                    string
 		is_required_security_zones_in_subtree?: bool
 		security_recipe_id?:                    string
 		state?:                                 string
+		filter?: [...{
+			values!: [...string]
+			regex?: *false | bool
+			name!:  string
+		}]
+		compartment_id!: string
+		display_name?:   string
+		id?:             string
 	}
 	data_source_events: {
 		data_source_id!: string
@@ -827,99 +760,166 @@ package cloud_guard
 			name!:  string
 		}]
 	}
-	problem_entity: problem_id!: string
-	target: target_id!: string
-	targets: {
-		compartment_id_in_subtree?:               bool
-		display_name?:                            string
-		is_non_security_zone_targets_only_query?: bool
-		state?:                                   string
+	cloud_guard_configuration: compartment_id!: string
+	data_source_event: {
+		data_source_id!: string
+		region?:         string
+	}
+	detector_recipes: {
+		display_name?:           string
+		resource_metadata_only?: bool
+		state?:                  string
 		filter?: [...{
 			name!: string
 			values!: [...string]
 			regex?: *false | bool
 		}]
-		access_level?:   string
-		compartment_id!: string
-	}
-	saved_queries: {
 		access_level?:              string
 		compartment_id!:            string
 		compartment_id_in_subtree?: bool
-		display_name?:              string
+	}
+	responder_recipes: {
+		display_name?:           string
+		resource_metadata_only?: bool
+		state?:                  string
 		filter?: [...{
 			name!: string
 			values!: [...string]
 			regex?: *false | bool
 		}]
+		access_level?:              string
+		compartment_id!:            string
+		compartment_id_in_subtree?: bool
 	}
-	cloud_guard_configuration: compartment_id!: string
-	data_mask_rule: data_mask_rule_id!: string
-	detector_recipe: detector_recipe_id!: string
-	managed_lists: {
-		list_type?:              string
-		resource_metadata_only?: bool
+	wlp_agents: {
 		filter?: [...{
+			values!: [...string]
 			regex?: *false | bool
 			name!:  string
-			values!: [...string]
 		}]
-		display_name?:              string
-		state?:                     string
-		access_level?:              string
-		compartment_id!:            string
-		compartment_id_in_subtree?: bool
+		compartment_id!: string
 	}
-	data_mask_rules: {
-		display_name?:          string
-		access_level?:          string
-		compartment_id!:        string
-		data_mask_rule_status?: string
-		state?:                 string
-		target_id?:             string
-		target_type?:           string
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
-		iam_group_id?: string
-	}
+	adhoc_query: adhoc_query_id!: string
 	data_sources: {
 		filter?: [...{
 			name!: string
 			values!: [...string]
 			regex?: *false | bool
 		}]
-		compartment_id!:            string
+		compartment_id_in_subtree?: bool
 		data_source_feed_provider?: string
-		display_name?:              string
-		state?:                     string
 		access_level?:              string
-		compartment_id_in_subtree?: bool
-		logging_query_type?:        string
-	}
-	detector_recipes: {
 		compartment_id!:            string
-		compartment_id_in_subtree?: bool
 		display_name?:              string
-		resource_metadata_only?:    bool
+		logging_query_type?:        string
 		state?:                     string
+	}
+	responder_recipe: responder_recipe_id!: string
+	security_recipe: security_recipe_id!: string
+	security_recipes: {
+		state?: string
 		filter?: [...{
 			name!: string
 			values!: [...string]
 			regex?: *false | bool
 		}]
-		access_level?: string
+		compartment_id!: string
+		display_name?:   string
+		id?:             string
+	}
+	target: target_id!: string
+	data_mask_rules: {
+		display_name?: string
+		state?:        string
+		target_id?:    string
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		target_type?:           string
+		iam_group_id?:          string
+		access_level?:          string
+		data_mask_rule_status?: string
+		compartment_id!:        string
+	}
+	problem_entity: problem_id!: string
+	security_policies: {
+		filter?: [...{
+			values!: [...string]
+			regex?: *false | bool
+			name!:  string
+		}]
+		compartment_id!: string
+		display_name?:   string
+		id?:             string
+		state?:          string
+	}
+	security_zone: security_zone_id!: string
+	targets: {
+		state?: string
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		access_level?:                            string
+		compartment_id!:                          string
+		compartment_id_in_subtree?:               bool
+		display_name?:                            string
+		is_non_security_zone_targets_only_query?: bool
+	}
+	data_mask_rule: data_mask_rule_id!: string
+	managed_lists: {
+		display_name?: string
+		state?:        string
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		compartment_id!:            string
+		compartment_id_in_subtree?: bool
+		access_level?:              string
+		list_type?:                 string
+		resource_metadata_only?:    bool
+	}
+	managed_list: managed_list_id!: string
+	data_source: data_source_id!: string
+	wlp_agent: wlp_agent_id!: string
+	adhoc_queries: {
+		time_ended_filter_query_param?:   string
+		time_started_filter_query_param?: string
+		filter?: [...{
+			values!: [...string]
+			regex?: *false | bool
+			name!:  string
+		}]
+		access_level?:              string
+		adhoc_query_status?:        string
+		compartment_id!:            string
+		compartment_id_in_subtree?: bool
 	}
 	problem_entities: {
 		problem_id!: string
 		filter?: [...{
-			name!: string
-			values!: [...string]
 			regex?: *false | bool
+			name!:  string
+			values!: [...string]
 		}]
 	}
-	responder_recipe: responder_recipe_id!: string
+	saved_queries: {
+		filter?: [...{
+			regex?: *false | bool
+			name!:  string
+			values!: [...string]
+		}]
+		access_level?:              string
+		compartment_id!:            string
+		compartment_id_in_subtree?: bool
+		display_name?:              string
+	}
+	saved_query: saved_query_id!: string
+	detector_recipe: detector_recipe_id!: string
 }
 

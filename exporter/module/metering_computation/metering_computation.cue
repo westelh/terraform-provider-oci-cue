@@ -2,18 +2,232 @@ package metering_computation
 
 #resource: {
 	attributes: {
+		custom_table: {
+			compartment_id!: string
+			saved_custom_table!: [...{
+				display_name!: string
+				column_group_by?: [...string]
+				compartment_depth?: float
+				group_by_tag?: [...{
+					key?:       string
+					namespace?: string
+					value?:     string
+				}]
+				row_group_by?: [...string]
+				version?: float
+			}]
+			saved_report_id!: string
+		}
+		query: {
+			compartment_id!: string
+			query_definition!: [...{
+				cost_analysis_ui!: [...{
+					graph?:               string
+					is_cumulative_graph?: bool
+				}]
+				display_name!: string
+				report_query!: [...{
+					group_by_tag?: [...{
+						value?:     string
+						key?:       string
+						namespace?: string
+					}]
+					time_usage_started?: string
+					granularity!:        string
+					query_type?:         string
+					tenant_id!:          string
+					forecast?: [...{
+						time_forecast_ended!:   string
+						forecast_type?:         string
+						time_forecast_started?: string
+					}]
+					time_usage_ended?:  string
+					compartment_depth?: float
+					group_by?: [...string]
+					is_aggregate_by_time?: bool
+					date_range_name?:      string
+					filter?:               string
+				}]
+				version!: float
+			}]
+		}
+		schedule: {
+			output_file_format?: string
+			system_tags: [_]: string
+			saved_report_id?: string
+			time_next_run:    string
+			query_properties?: [...{
+				query_type?: string
+				date_range!: [...{
+					time_usage_ended?:        string
+					time_usage_started?:      string
+					date_range_type!:         string
+					dynamic_date_range_type?: string
+				}]
+				granularity!:       string
+				compartment_depth?: float
+				filter?:            string
+				group_by?: [...string]
+				group_by_tag?: [...{
+					key?:       string
+					namespace?: string
+					value?:     string
+				}]
+				is_aggregate_by_time?: bool
+			}]
+			freeform_tags?: [_]: string
+			name!:           string
+			compartment_id!: string
+			result_location!: [...{
+				bucket!:        string
+				location_type!: string
+				namespace!:     string
+				region!:        string
+			}]
+			description?:          string
+			time_created:          string
+			time_scheduled!:       string
+			schedule_recurrences!: string
+			defined_tags?: [_]: string
+			state: string
+		}
+		usage: {
+			query_type?: string
+			items: [...{
+				computed_amount:    float
+				ad:                 string
+				compartment_name:   string
+				subscription_id:    string
+				tenant_id:          string
+				attributed_cost:    string
+				platform:           string
+				region:             string
+				time_usage_started: string
+				list_rate:          float
+				tenant_name:        string
+				computed_quantity:  float
+				weight:             float
+				sku_name:           string
+				shape:              string
+				compartment_id:     string
+				compartment_path:   string
+				resource_name:      string
+				service:            string
+				currency:           string
+				tags: [...{
+					key:       string
+					namespace: string
+					value:     string
+				}]
+				sku_part_number:  string
+				is_forecast:      bool
+				unit_price:       float
+				time_usage_ended: string
+				overage:          string
+				attributed_usage: string
+				resource_id:      string
+				overages_flag:    string
+				discount:         float
+				unit:             string
+			}]
+			group_by_tag?: [...{
+				key?:       string
+				namespace?: string
+				value?:     string
+			}]
+			tenant_id!: string
+			filter?:    string
+			forecast?: [...{
+				forecast_type?:         string
+				time_forecast_started?: string
+				time_forecast_ended!:   string
+			}]
+			group_by?: [...string]
+			granularity!:          string
+			time_usage_started!:   string
+			is_aggregate_by_time?: bool
+			time_usage_ended!:     string
+			compartment_depth?:    float
+		}
+		usage_carbon_emission: {
+			group_by_tag?: [...{
+				key?:       string
+				namespace?: string
+				value?:     string
+			}]
+			group_by?: [...string]
+			usage_carbon_emission_filter?: string
+			compartment_depth?:            int
+			items: [...{
+				sku_part_number:    string
+				compartment_name:   string
+				tenant_name:        string
+				time_usage_started: string
+				ad:                 string
+				compartment_path:   string
+				compartment_id:     string
+				tags: [...{
+					key:       string
+					namespace: string
+					value:     string
+				}]
+				region:                      string
+				time_usage_ended:            string
+				subscription_id:             string
+				tenant_id:                   string
+				sku_name:                    string
+				computed_carbon_emission:    float
+				emission_calculation_method: string
+				resource_id:                 string
+				platform:                    string
+				resource_name:               string
+				service:                     string
+			}]
+			tenant_id!:            string
+			time_usage_ended!:     string
+			is_aggregate_by_time?: bool
+			time_usage_started!:   string
+		}
+		usage_carbon_emissions_query: {
+			compartment_id!: string
+			query_definition!: [...{
+				version!: int
+				cost_analysis_ui!: [...{
+					is_cumulative_graph?: bool
+					graph?:               string
+				}]
+				display_name!: string
+				report_query!: [...{
+					tenant_id!:                           string
+					is_aggregate_by_time?:                bool
+					time_usage_started?:                  string
+					usage_carbon_emissions_query_filter?: string
+					compartment_depth?:                   int
+					group_by?: [...string]
+					date_range_name?: string
+					group_by_tag?: [...{
+						key?:       string
+						namespace?: string
+						value?:     string
+					}]
+					time_usage_ended?: string
+				}]
+			}]
+		}
 		usage_statement_email_recipients_group: {
-			email_recipients_group_id?: string
-			state:                      string
-			compartment_id!:            string
+			state:           string
+			compartment_id!: string
 			recipients_list!: [...{
 				state!:      string
 				first_name?: string
 				last_name?:  string
 				email_id!:   string
 			}]
-			subscription_id!: string
+			subscription_id!:           string
+			email_recipients_group_id?: string
 		}
+	}
+	arguments: {
 		custom_table: {
 			saved_report_id!: string
 			compartment_id!:  string
@@ -35,7 +249,8 @@ package metering_computation
 			query_definition!: [...{
 				display_name!: string
 				report_query!: [...{
-					date_range_name?: string
+					tenant_id!: string
+					filter?:    string
 					forecast?: [...{
 						time_forecast_ended!:   string
 						forecast_type?:         string
@@ -46,15 +261,14 @@ package metering_computation
 						namespace?: string
 						value?:     string
 					}]
-					granularity!:       string
-					compartment_depth?: float
+					time_usage_ended?:   string
+					time_usage_started?: string
+					date_range_name?:    string
 					group_by?: [...string]
-					filter?:               string
+					compartment_depth?:    float
+					granularity!:          string
 					is_aggregate_by_time?: bool
 					query_type?:           string
-					tenant_id!:            string
-					time_usage_ended?:     string
-					time_usage_started?:   string
 				}]
 				version!: float
 				cost_analysis_ui!: [...{
@@ -64,18 +278,15 @@ package metering_computation
 			}]
 		}
 		schedule: {
-			time_scheduled!:       string
-			output_file_format?:   string
-			compartment_id!:       string
-			schedule_recurrences!: string
-			result_location!: [...{
-				bucket!:        string
-				location_type!: string
-				namespace!:     string
-				region!:        string
-			}]
-			defined_tags?: [_]: string
 			query_properties?: [...{
+				query_type?: string
+				date_range!: [...{
+					date_range_type!:         string
+					dynamic_date_range_type?: string
+					time_usage_ended?:        string
+					time_usage_started?:      string
+				}]
+				granularity!:       string
 				compartment_depth?: float
 				filter?:            string
 				group_by?: [...string]
@@ -85,124 +296,62 @@ package metering_computation
 					value?:     string
 				}]
 				is_aggregate_by_time?: bool
-				query_type?:           string
-				date_range!: [...{
-					date_range_type!:         string
-					dynamic_date_range_type?: string
-					time_usage_ended?:        string
-					time_usage_started?:      string
-				}]
-				granularity!: string
 			}]
-			time_created: string
-			name!:        string
-			description?: string
+			result_location!: [...{
+				location_type!: string
+				namespace!:     string
+				region!:        string
+				bucket!:        string
+			}]
+			schedule_recurrences!: string
+			description?:          string
+			time_scheduled!:       string
+			output_file_format?:   string
+			defined_tags?: [_]: string
 			freeform_tags?: [_]: string
+			compartment_id!:  string
+			name!:            string
 			saved_report_id?: string
-			state:            string
-			system_tags: [_]: string
-			time_next_run: string
 		}
 		usage: {
-			filter?: string
-			group_by?: [...string]
-			group_by_tag?: [...{
-				key?:       string
-				namespace?: string
-				value?:     string
-			}]
-			time_usage_started!: string
-			compartment_depth?:  float
+			time_usage_ended!: string
 			forecast?: [...{
 				time_forecast_ended!:   string
 				forecast_type?:         string
 				time_forecast_started?: string
 			}]
-			tenant_id!:            string
-			is_aggregate_by_time?: bool
-			items: [...{
-				currency:           string
-				resource_name:      string
-				overages_flag:      string
-				unit:               string
-				attributed_usage:   string
-				compartment_name:   string
-				resource_id:        string
-				weight:             float
-				sku_part_number:    string
-				computed_amount:    float
-				ad:                 string
-				overage:            string
-				tenant_id:          string
-				compartment_path:   string
-				attributed_cost:    string
-				shape:              string
-				region:             string
-				time_usage_ended:   string
-				service:            string
-				is_forecast:        bool
-				time_usage_started: string
-				tenant_name:        string
-				tags: [...{
-					namespace: string
-					value:     string
-					key:       string
-				}]
-				discount:          float
-				platform:          string
-				unit_price:        float
-				list_rate:         float
-				subscription_id:   string
-				computed_quantity: float
-				sku_name:          string
-				compartment_id:    string
-			}]
-			query_type?:       string
-			granularity!:      string
-			time_usage_ended!: string
-		}
-		usage_carbon_emission: {
-			time_usage_ended!:     string
-			is_aggregate_by_time?: bool
-			time_usage_started!:   string
-			compartment_depth?:    int
 			group_by?: [...string]
+			query_type?:           string
+			tenant_id!:            string
+			time_usage_started!:   string
+			is_aggregate_by_time?: bool
+			compartment_depth?:    float
+			filter?:               string
 			group_by_tag?: [...{
 				key?:       string
 				namespace?: string
 				value?:     string
 			}]
-			items: [...{
-				compartment_path:   string
-				time_usage_started: string
-				resource_name:      string
-				sku_name:           string
-				sku_part_number:    string
-				ad:                 string
-				time_usage_ended:   string
-				tags: [...{
-					key:       string
-					namespace: string
-					value:     string
-				}]
-				compartment_name:            string
-				compartment_id:              string
-				platform:                    string
-				tenant_id:                   string
-				computed_carbon_emission:    float
-				service:                     string
-				resource_id:                 string
-				emission_calculation_method: string
-				region:                      string
-				tenant_name:                 string
-				subscription_id:             string
+			granularity!: string
+		}
+		usage_carbon_emission: {
+			is_aggregate_by_time?: bool
+			time_usage_started!:   string
+			time_usage_ended!:     string
+			group_by_tag?: [...{
+				key?:       string
+				namespace?: string
+				value?:     string
 			}]
-			tenant_id!:                    string
 			usage_carbon_emission_filter?: string
+			tenant_id!:                    string
+			compartment_depth?:            int
+			group_by?: [...string]
 		}
 		usage_carbon_emissions_query: {
 			compartment_id!: string
 			query_definition!: [...{
+				version!: int
 				cost_analysis_ui!: [...{
 					graph?:               string
 					is_cumulative_graph?: bool
@@ -210,6 +359,7 @@ package metering_computation
 				display_name!: string
 				report_query!: [...{
 					group_by?: [...string]
+					tenant_id!: string
 					group_by_tag?: [...{
 						key?:       string
 						namespace?: string
@@ -218,177 +368,47 @@ package metering_computation
 					is_aggregate_by_time?:                bool
 					time_usage_ended?:                    string
 					usage_carbon_emissions_query_filter?: string
-					tenant_id!:                           string
 					time_usage_started?:                  string
-					compartment_depth?:                   int
 					date_range_name?:                     string
+					compartment_depth?:                   int
 				}]
-				version!: int
 			}]
 		}
-	}
-	arguments: {
 		usage_statement_email_recipients_group: {
-			compartment_id!: string
 			recipients_list!: [...{
-				first_name?: string
-				last_name?:  string
 				email_id!:   string
 				state!:      string
+				first_name?: string
+				last_name?:  string
 			}]
 			subscription_id!:           string
 			email_recipients_group_id?: string
-		}
-		custom_table: {
-			saved_custom_table!: [...{
-				group_by_tag?: [...{
-					namespace?: string
-					value?:     string
-					key?:       string
-				}]
-				row_group_by?: [...string]
-				version?:      float
-				display_name!: string
-				column_group_by?: [...string]
-				compartment_depth?: float
-			}]
-			saved_report_id!: string
-			compartment_id!:  string
-		}
-		query: {
-			compartment_id!: string
-			query_definition!: [...{
-				version!: float
-				cost_analysis_ui!: [...{
-					graph?:               string
-					is_cumulative_graph?: bool
-				}]
-				display_name!: string
-				report_query!: [...{
-					query_type?:        string
-					tenant_id!:         string
-					compartment_depth?: float
-					date_range_name?:   string
-					filter?:            string
-					group_by_tag?: [...{
-						key?:       string
-						namespace?: string
-						value?:     string
-					}]
-					is_aggregate_by_time?: bool
-					granularity!:          string
-					group_by?: [...string]
-					time_usage_ended?:   string
-					time_usage_started?: string
-					forecast?: [...{
-						time_forecast_ended!:   string
-						forecast_type?:         string
-						time_forecast_started?: string
-					}]
-				}]
-			}]
-		}
-		schedule: {
-			freeform_tags?: [_]: string
-			name!: string
-			defined_tags?: [_]: string
-			description?:          string
-			schedule_recurrences!: string
-			time_scheduled!:       string
-			output_file_format?:   string
-			result_location!: [...{
-				bucket!:        string
-				location_type!: string
-				namespace!:     string
-				region!:        string
-			}]
-			query_properties?: [...{
-				is_aggregate_by_time?: bool
-				query_type?:           string
-				date_range!: [...{
-					dynamic_date_range_type?: string
-					time_usage_ended?:        string
-					time_usage_started?:      string
-					date_range_type!:         string
-				}]
-				granularity!:       string
-				compartment_depth?: float
-				filter?:            string
-				group_by?: [...string]
-				group_by_tag?: [...{
-					value?:     string
-					key?:       string
-					namespace?: string
-				}]
-			}]
-			saved_report_id?: string
-			compartment_id!:  string
-		}
-		usage: {
-			compartment_depth?: float
-			forecast?: [...{
-				time_forecast_ended!:   string
-				forecast_type?:         string
-				time_forecast_started?: string
-			}]
-			group_by?: [...string]
-			tenant_id!:            string
-			granularity!:          string
-			time_usage_ended!:     string
-			time_usage_started!:   string
-			filter?:               string
-			is_aggregate_by_time?: bool
-			group_by_tag?: [...{
-				value?:     string
-				key?:       string
-				namespace?: string
-			}]
-			query_type?: string
-		}
-		usage_carbon_emission: {
-			time_usage_ended!:             string
-			is_aggregate_by_time?:         bool
-			usage_carbon_emission_filter?: string
-			time_usage_started!:           string
-			compartment_depth?:            int
-			group_by?: [...string]
-			group_by_tag?: [...{
-				key?:       string
-				namespace?: string
-				value?:     string
-			}]
-			tenant_id!: string
-		}
-		usage_carbon_emissions_query: {
-			compartment_id!: string
-			query_definition!: [...{
-				display_name!: string
-				report_query!: [...{
-					time_usage_ended?:   string
-					time_usage_started?: string
-					tenant_id!:          string
-					compartment_depth?:  int
-					group_by?: [...string]
-					group_by_tag?: [...{
-						key?:       string
-						namespace?: string
-						value?:     string
-					}]
-					date_range_name?:                     string
-					usage_carbon_emissions_query_filter?: string
-					is_aggregate_by_time?:                bool
-				}]
-				version!: int
-				cost_analysis_ui!: [...{
-					graph?:               string
-					is_cumulative_graph?: bool
-				}]
-			}]
+			compartment_id!:            string
 		}
 	}
 }
 #data: {
+	clean_energy_usage: region!: string
+	query: query_id!: string
+	usage_carbon_emissions_config: tenant_id!: string
+	usage_carbon_emissions_queries: {
+		filter?: [...{
+			values!: [...string]
+			regex?: *false | bool
+			name!:  string
+		}]
+		compartment_id!: string
+	}
 	custom_table: custom_table_id!: string
+	custom_tables: {
+		filter?: [...{
+			name!: string
+			values!: [...string]
+			regex?: *false | bool
+		}]
+		compartment_id!:  string
+		saved_report_id!: string
+	}
 	schedules: {
 		compartment_id!: string
 		name?:           string
@@ -399,34 +419,30 @@ package metering_computation
 		}]
 	}
 	usage_carbon_emissions_query: usage_carbon_emissions_query_id!: string
+	usage_statement_email_recipients_group: {
+		subscription_id!:           string
+		email_recipients_group_id!: string
+		compartment_id!:            string
+	}
+	average_carbon_emission: sku_part_number!: string
 	configuration: tenant_id!: string
 	queries: {
-		compartment_id!: string
 		filter?: [...{
 			regex?: *false | bool
 			name!:  string
 			values!: [...string]
 		}]
+		compartment_id!: string
 	}
-	usage_carbon_emissions_config: tenant_id!: string
-	usage_carbon_emissions_queries: {
+	schedule: schedule_id!: string
+	scheduled_run: scheduled_run_id!: string
+	scheduled_runs: {
+		schedule_id!: string
 		filter?: [...{
 			name!: string
 			values!: [...string]
 			regex?: *false | bool
 		}]
-		compartment_id!: string
-	}
-	average_carbon_emission: sku_part_number!: string
-	clean_energy_usage: region!: string
-	schedule: schedule_id!: string
-	scheduled_runs: {
-		filter?: [...{
-			regex?: *false | bool
-			name!:  string
-			values!: [...string]
-		}]
-		schedule_id!: string
 	}
 	usage_statement_email_recipients_groups: {
 		filter?: [...{
@@ -436,22 +452,6 @@ package metering_computation
 		}]
 		compartment_id!:  string
 		subscription_id!: string
-	}
-	custom_tables: {
-		compartment_id!:  string
-		saved_report_id!: string
-		filter?: [...{
-			regex?: *false | bool
-			name!:  string
-			values!: [...string]
-		}]
-	}
-	query: query_id!: string
-	scheduled_run: scheduled_run_id!: string
-	usage_statement_email_recipients_group: {
-		subscription_id!:           string
-		email_recipients_group_id!: string
-		compartment_id!:            string
 	}
 }
 

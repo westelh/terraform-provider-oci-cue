@@ -2,14 +2,22 @@ package autoscaling
 
 #resource: {
 	attributes: auto_scaling_configuration: {
+		defined_tags?: [_]: string
+		is_enabled?:        bool
+		max_resource_count: int
 		min_resource_count: int
+		compartment_id!:    string
+		time_created:       string
 		auto_scaling_resources!: [...{
 			id!:   string
 			type!: string
 		}]
+		freeform_tags?: [_]: string
+		cool_down_in_seconds?: int
+		display_name?:         string
 		policies!: [...{
+			policy_type!: string
 			rules?: [...{
-				id:            string
 				display_name!: string
 				action?: [...{
 					type?:  string
@@ -18,84 +26,76 @@ package autoscaling
 				metric?: [...{
 					metric_type?: string
 					threshold?: [...{
-						operator?: string
 						value?:    int
+						operator?: string
 					}]
 				}]
+				id: string
 			}]
-			display_name?: string
-			id:            string
-			is_enabled?:   bool
 			capacity?: [...{
+				min?:     int
 				initial?: int
 				max?:     int
-				min?:     int
 			}]
-			execution_schedule?: [...{
-				timezone!:   string
-				type!:       string
-				expression!: string
-			}]
-			time_created: string
-			policy_type!: string
-			resource_action?: [...{
-				action!:      string
-				action_type!: string
-			}]
-		}]
-		cool_down_in_seconds?: int
-		compartment_id!:       string
-		max_resource_count:    int
-		display_name?:         string
-		freeform_tags?: [_]: string
-		is_enabled?:  bool
-		time_created: string
-		defined_tags?: [_]: string
-	}
-	arguments: auto_scaling_configuration: {
-		compartment_id!: string
-		defined_tags?: [_]: string
-		display_name?: string
-		auto_scaling_resources!: [...{
-			type!: string
-			id!:   string
-		}]
-		policies!: [...{
 			execution_schedule?: [...{
 				expression!: string
 				timezone!:   string
 				type!:       string
 			}]
 			is_enabled?: bool
+			resource_action?: [...{
+				action!:      string
+				action_type!: string
+			}]
+			display_name?: string
+			id:            string
+			time_created:  string
+		}]
+	}
+	arguments: auto_scaling_configuration: {
+		auto_scaling_resources!: [...{
+			id!:   string
+			type!: string
+		}]
+		policies!: [...{
+			is_enabled?: bool
+			resource_action?: [...{
+				action!:      string
+				action_type!: string
+			}]
+			policy_type!:  string
+			display_name?: string
 			rules?: [...{
-				metric?: [...{
-					threshold?: [...{
-						operator?: string
-						value?:    int
-					}]
-					metric_type?: string
-				}]
 				display_name!: string
 				action?: [...{
 					type?:  string
 					value?: int
 				}]
-			}]
-			policy_type!: string
-			resource_action?: [...{
-				action_type!: string
-				action!:      string
+				metric?: [...{
+					metric_type?: string
+					threshold?: [...{
+						operator?: string
+						value?:    int
+					}]
+				}]
 			}]
 			capacity?: [...{
-				min?:     int
 				initial?: int
 				max?:     int
+				min?:     int
 			}]
-			display_name?: string
+			execution_schedule?: [...{
+				expression!: string
+				timezone!:   string
+				type!:       string
+			}]
 		}]
-		cool_down_in_seconds?: int
+		defined_tags?: [_]: string
 		freeform_tags?: [_]: string
-		is_enabled?: bool
+		compartment_id!:       string
+		cool_down_in_seconds?: int
+		display_name?:         string
+		is_enabled?:           bool
 	}
 }
 #data: {

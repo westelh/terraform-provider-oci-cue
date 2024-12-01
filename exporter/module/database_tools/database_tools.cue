@@ -2,131 +2,92 @@ package database_tools
 
 #resource: {
 	attributes: {
-		database_tools_private_endpoint: {
-			vcn_id:               string
-			lifecycle_details:    string
-			endpoint_fqdn:        string
-			state:                string
-			endpoint_service_id!: string
-			compartment_id!:      string
-			subnet_id!:           string
-			system_tags: [_]: string
-			defined_tags?: [_]: string
-			nsg_ids?: [...string]
-			additional_fqdns: [...string]
-			private_endpoint_vnic_id: string
+		database_tools_connection: {
+			state: string
 			locks?: [...{
 				type!:                string
 				message?:             string
 				related_resource_id?: string
 				time_created?:        string
 			}]
-			private_endpoint_ip?: string
+			related_resource?: [...{
+				entity_type?: string
+				identifier?:  string
+			}]
+			url?:         string
+			time_created: string
+			time_updated: string
+			user_password!: [...{
+				secret_id!:  string
+				value_type!: string
+			}]
+			lifecycle_details:    string
+			private_endpoint_id?: string
+			key_stores?: [...{
+				key_store_password?: [...{
+					secret_id?:  string
+					value_type!: string
+				}]
+				key_store_type?: string
+				key_store_content?: [...{
+					value_type!: string
+					secret_id?:  string
+				}]
+			}]
+			advanced_properties?: [_]: string
+			connection_string?: string
+			compartment_id!:    string
+			system_tags: [_]: string
 			freeform_tags?: [_]: string
+			runtime_support?: string
+			user_name!:       string
+			proxy_client?: [...{
+				user_password?: [...{
+					secret_id!:  string
+					value_type!: string
+				}]
+				proxy_authentication_type!: string
+				roles?: [...string]
+				user_name?: string
+			}]
+			defined_tags?: [_]: string
+			type!:         string
+			display_name!: string
+		}
+		database_tools_private_endpoint: {
+			endpoint_fqdn: string
 			reverse_connection_configuration: [...{
 				reverse_connections_source_ips: [...{
 					source_ip: string
 				}]
 			}]
-			time_created:  string
-			display_name!: string
-			time_updated:  string
-			description?:  string
-		}
-		database_tools_connection: {
-			time_updated: string
-			advanced_properties?: [_]: string
-			connection_string?: string
+			time_updated:         string
+			subnet_id!:           string
+			description?:         string
+			time_created:         string
+			private_endpoint_ip?: string
+			additional_fqdns: [...string]
+			compartment_id!: string
+			defined_tags?: [_]: string
+			freeform_tags?: [_]: string
+			private_endpoint_vnic_id: string
+			vcn_id:                   string
+			nsg_ids?: [...string]
 			system_tags: [_]: string
-			lifecycle_details:    string
-			compartment_id!:      string
-			private_endpoint_id?: string
-			url?:                 string
 			locks?: [...{
-				type!:                string
 				message?:             string
 				related_resource_id?: string
 				time_created?:        string
+				type!:                string
 			}]
-			type!: string
-			user_password!: [...{
-				secret_id!:  string
-				value_type!: string
-			}]
-			runtime_support?: string
-			time_created:     string
-			user_name!:       string
-			defined_tags?: [_]: string
-			display_name!: string
-			state:         string
-			proxy_client?: [...{
-				proxy_authentication_type!: string
-				roles?: [...string]
-				user_name?: string
-				user_password?: [...{
-					secret_id!:  string
-					value_type!: string
-				}]
-			}]
-			freeform_tags?: [_]: string
-			key_stores?: [...{
-				key_store_content?: [...{
-					value_type!: string
-					secret_id?:  string
-				}]
-				key_store_password?: [...{
-					value_type!: string
-					secret_id?:  string
-				}]
-				key_store_type?: string
-			}]
-			related_resource?: [...{
-				entity_type?: string
-				identifier?:  string
-			}]
+			lifecycle_details:    string
+			display_name!:        string
+			endpoint_service_id!: string
+			state:                string
 		}
 	}
 	arguments: {
-		database_tools_private_endpoint: {
-			private_endpoint_ip?: string
-			compartment_id!:      string
-			description?:         string
-			locks?: [...{
-				related_resource_id?: string
-				time_created?:        string
-				type!:                string
-				message?:             string
-			}]
-			freeform_tags?: [_]: string
-			nsg_ids?: [...string]
-			display_name!: string
-			subnet_id!:    string
-			defined_tags?: [_]: string
-			endpoint_service_id!: string
-		}
 		database_tools_connection: {
-			private_endpoint_id?: string
-			user_password!: [...{
-				secret_id!:  string
-				value_type!: string
-			}]
-			runtime_support?: string
-			display_name!:    string
-			type!:            string
-			freeform_tags?: [_]: string
-			key_stores?: [...{
-				key_store_password?: [...{
-					value_type!: string
-					secret_id?:  string
-				}]
-				key_store_type?: string
-				key_store_content?: [...{
-					value_type!: string
-					secret_id?:  string
-				}]
-			}]
-			user_name!: string
-			defined_tags?: [_]: string
 			proxy_client?: [...{
 				proxy_authentication_type!: string
 				roles?: [...string]
@@ -136,61 +97,100 @@ package database_tools
 					value_type!: string
 				}]
 			}]
-			compartment_id!: string
+			user_password!: [...{
+				secret_id!:  string
+				value_type!: string
+			}]
+			connection_string?: string
+			compartment_id!:    string
+			user_name!:         string
 			related_resource?: [...{
 				entity_type?: string
 				identifier?:  string
 			}]
-			url?: string
+			advanced_properties?: [_]: string
+			type!:            string
+			runtime_support?: string
+			url?:             string
 			locks?: [...{
-				related_resource_id?: string
-				time_created?:        string
 				type!:                string
 				message?:             string
+				related_resource_id?: string
+				time_created?:        string
 			}]
-			connection_string?: string
-			advanced_properties?: [_]: string
+			freeform_tags?: [_]: string
+			key_stores?: [...{
+				key_store_content?: [...{
+					value_type!: string
+					secret_id?:  string
+				}]
+				key_store_password?: [...{
+					value_type!: string
+					secret_id?:  string
+				}]
+				key_store_type?: string
+			}]
+			display_name!:        string
+			private_endpoint_id?: string
+			defined_tags?: [_]: string
+		}
+		database_tools_private_endpoint: {
+			compartment_id!: string
+			freeform_tags?: [_]: string
+			display_name!:        string
+			description?:         string
+			subnet_id!:           string
+			endpoint_service_id!: string
+			nsg_ids?: [...string]
+			locks?: [...{
+				type!:                string
+				message?:             string
+				related_resource_id?: string
+				time_created?:        string
+			}]
+			private_endpoint_ip?: string
+			defined_tags?: [_]: string
 		}
 	}
 }
 #data: {
 	database_tools_private_endpoints: {
+		compartment_id!:      string
+		display_name?:        string
 		endpoint_service_id?: string
 		state?:               string
 		subnet_id?:           string
 		filter?: [...{
-			regex?: *false | bool
-			name!:  string
+			name!: string
 			values!: [...string]
+			regex?: *false | bool
 		}]
-		compartment_id!: string
-		display_name?:   string
 	}
 	database_tools_connection: database_tools_connection_id!: string
 	database_tools_connections: {
+		runtime_support?: [...string]
+		state?: string
 		type?: [...string]
 		filter?: [...{
-			regex?: *false | bool
-			name!:  string
+			name!: string
 			values!: [...string]
+			regex?: *false | bool
 		}]
 		compartment_id!:              string
 		display_name?:                string
 		related_resource_identifier?: string
-		runtime_support?: [...string]
-		state?: string
 	}
 	database_tools_endpoint_service: database_tools_endpoint_service_id!: string
 	database_tools_endpoint_services: {
-		compartment_id!: string
-		display_name?:   string
-		name?:           string
-		state?:          string
+		display_name?: string
+		name?:         string
+		state?:        string
 		filter?: [...{
-			values!: [...string]
 			regex?: *false | bool
 			name!:  string
+			values!: [...string]
 		}]
+		compartment_id!: string
 	}
 	database_tools_private_endpoint: database_tools_private_endpoint_id!: string
 }

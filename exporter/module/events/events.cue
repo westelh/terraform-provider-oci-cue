@@ -2,48 +2,48 @@ package events
 
 #resource: {
 	attributes: rule: {
+		condition!:    string
+		display_name!: string
 		freeform_tags?: [_]: string
-		is_enabled!: bool
-		defined_tags?: [_]: string
-		description?:      string
 		lifecycle_message: string
-		time_created:      string
+		is_enabled!:       bool
 		compartment_id!:   string
-		display_name!:     string
+		defined_tags?: [_]: string
+		description?: string
 		actions!: [...{
 			actions!: [...{
-				action_type!: string, id: string, is_enabled!: bool, description?: string, state: string, function_id?: string, lifecycle_message: string, stream_id?: string, topic_id?: string
+				id: string, stream_id?: string, action_type!: string, is_enabled!: bool, description?: string, function_id?: string, topic_id?: string, lifecycle_message: string, state: string
 			}]
 		}]
-		condition!: string
-		state:      string
+		state:        string
+		time_created: string
 	}
 	arguments: rule: {
-		defined_tags?: [_]: string
-		description?:    string
-		compartment_id!: string
-		display_name!:   string
-		freeform_tags?: [_]: string
 		actions!: [...{
 			actions!: [...{
-				stream_id?: string, action_type!: string, function_id?: string, topic_id?: string, is_enabled!: bool, description?: string
+				action_type!: string, is_enabled!: bool, description?: string, function_id?: string, stream_id?: string, topic_id?: string
 			}]
 		}]
-		condition!:  string
-		is_enabled!: bool
+		compartment_id!: string
+		condition!:      string
+		display_name!:   string
+		is_enabled!:     bool
+		defined_tags?: [_]: string
+		description?: string
+		freeform_tags?: [_]: string
 	}
 }
 #data: {
-	rule: rule_id!: string
 	rules: {
-		filter?: [...{
-			name!: string
-			values!: [...string]
-			regex?: *false | bool
-		}]
 		compartment_id!: string
 		display_name?:   string
 		state?:          string
+		filter?: [...{
+			values!: [...string]
+			regex?: *false | bool
+			name!:  string
+		}]
 	}
+	rule: rule_id!: string
 }
 

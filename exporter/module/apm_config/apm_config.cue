@@ -2,103 +2,103 @@ package apm_config
 
 #resource: {
 	attributes: config: {
-		freeform_tags?: [_]: string
-		options?: string
+		etag:          string
+		config_type!:  string
+		time_updated:  string
+		display_name!: string
 		rules?: [...{
+			satisfied_response_time?:  int
 			tolerating_response_time?: int
 			display_name?:             string
 			filter_text?:              string
 			is_apply_to_error_spans?:  bool
 			is_enabled?:               bool
 			priority?:                 int
-			satisfied_response_time?:  int
 		}]
-		time_created: string
-		config_type!: string
+		description?: string
+		group?:       string
+		options?:     string
 		created_by:   string
-		updated_by:   string
+		filter_text?: string
+		filter_id?:   string
+		dimensions?: [...{
+			value_source?: string
+			name?:         string
+		}]
+		namespace?:   string
+		opc_dry_run?: string
 		in_use_by?: [...{
-			options_group: string
 			config_type:   string
 			display_name:  string
 			id:            string
+			options_group: string
 		}]
-		display_name!:  string
-		apm_domain_id!: string
-		description?:   string
-		filter_id?:     string
-		namespace?:     string
-		dimensions?: [...{
-			name?:         string
-			value_source?: string
-		}]
-		etag: string
+		time_created: string
 		metrics?: [...{
-			description?:  string
-			name?:         string
 			unit?:         string
 			value_source?: string
+			description?:  string
+			name?:         string
 		}]
-		group?:       string
-		time_updated: string
-		filter_text?: string
-		opc_dry_run?: string
 		defined_tags?: [_]: string
+		freeform_tags?: [_]: string
+		updated_by:     string
+		apm_domain_id!: string
 	}
 	arguments: config: {
+		defined_tags?: [_]: string
 		description?: string
-		dimensions?: [...{
-			name?:         string
-			value_source?: string
-		}]
-		options?:   string
-		group?:     string
-		filter_id?: string
-		freeform_tags?: [_]: string
-		in_use_by?: [...{}]
-		filter_text?:   string
-		apm_domain_id!: string
-		display_name!:  string
-		metrics?: [...{
-			description?:  string
-			name?:         string
-			unit?:         string
-			value_source?: string
-		}]
+		group?:       string
 		config_type!: string
+		namespace?:   string
+		options?:     string
+		filter_text?: string
 		rules?: [...{
-			display_name?:             string
-			filter_text?:              string
 			is_apply_to_error_spans?:  bool
 			is_enabled?:               bool
 			priority?:                 int
 			satisfied_response_time?:  int
 			tolerating_response_time?: int
+			display_name?:             string
+			filter_text?:              string
 		}]
-		namespace?: string
-		defined_tags?: [_]: string
-		opc_dry_run?: string
+		apm_domain_id!: string
+		freeform_tags?: [_]: string
+		filter_id?:    string
+		display_name!: string
+		opc_dry_run?:  string
+		metrics?: [...{
+			name?:         string
+			unit?:         string
+			value_source?: string
+			description?:  string
+		}]
+		dimensions?: [...{
+			value_source?: string
+			name?:         string
+		}]
+		in_use_by?: [...{}]
 	}
 }
 #data: {
 	config: {
-		apm_domain_id!: string
 		config_id!:     string
+		apm_domain_id!: string
 	}
 	configs: {
+		freeform_tag_exists?: [...string]
 		filter?: [...{
-			name!: string
 			values!: [...string]
 			regex?: *false | bool
+			name!:  string
 		}]
-		config_type?: string
-		freeform_tag_exists?: [...string]
-		apm_domain_id!: string
-		display_name?:  string
 		defined_tag_equals?: [...string]
-		options_group?: string
+		config_type?: string
 		defined_tag_exists?: [...string]
 		freeform_tag_equals?: [...string]
+		apm_domain_id!: string
+		display_name?:  string
+		options_group?: string
 	}
 }
 

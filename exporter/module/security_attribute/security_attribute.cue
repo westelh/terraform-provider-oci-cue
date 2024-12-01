@@ -3,76 +3,76 @@ package security_attribute
 #resource: {
 	attributes: {
 		security_attribute: {
-			security_attribute_namespace_name: string
 			time_created:                      string
+			description!:                      string
+			is_retired?:                       bool
+			type:                              string
+			name!:                             string
 			compartment_id:                    string
+			security_attribute_namespace_name: string
+			security_attribute_namespace_id!:  string
 			validator?: [...{
 				validator_type!: string
 				values?: [...string]
 			}]
-			is_retired?:                      bool
-			type:                             string
-			description!:                     string
-			security_attribute_namespace_id!: string
-			state:                            string
-			name!:                            string
+			state: string
 		}
 		security_attribute_namespace: {
-			description!: string
-			system_tags: [_]: string
+			name!: string
 			defined_tags?: [_]: string
+			is_retired?: bool
+			state:       string
+			system_tags: [_]: string
+			description!: string
 			freeform_tags?: [_]: string
-			state: string
-			mode: [...string]
 			compartment_id!: string
-			is_retired?:     bool
-			time_created:    string
-			name!:           string
+			mode: [...string]
+			time_created: string
 		}
 	}
 	arguments: {
 		security_attribute: {
-			is_retired?: bool
 			validator?: [...{
 				validator_type!: string
 				values?: [...string]
 			}]
-			name!:                            string
 			description!:                     string
+			is_retired?:                      bool
+			name!:                            string
 			security_attribute_namespace_id!: string
 		}
 		security_attribute_namespace: {
-			defined_tags?: [_]: string
-			freeform_tags?: [_]: string
-			is_retired?:     bool
 			compartment_id!: string
-			description!:    string
-			name!:           string
+			defined_tags?: [_]: string
+			is_retired?:  bool
+			name!:        string
+			description!: string
+			freeform_tags?: [_]: string
 		}
 	}
 }
 #data: {
 	security_attribute: {
-		security_attribute_name!:         string
 		security_attribute_namespace_id!: string
+		security_attribute_name!:         string
 	}
 	security_attribute_namespace: security_attribute_namespace_id!: string
 	security_attribute_namespaces: {
+		compartment_id?:            string
+		compartment_id_in_subtree?: bool
+		name?:                      string
+		state?:                     string
 		filter?: [...{
 			name!: string
 			values!: [...string]
 			regex?: *false | bool
 		}]
-		compartment_id?:            string
-		compartment_id_in_subtree?: bool
-		name?:                      string
-		state?:                     string
 	}
 	security_attributes: {
 		filter?: [...{
-			name!: string
-			values!: [...string]
 			regex?: *false | bool
+			name!:  string
+			values!: [...string]
 		}]
 		security_attribute_namespace_id!: string
 		state?:                           string
