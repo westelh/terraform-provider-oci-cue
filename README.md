@@ -1,78 +1,49 @@
-# Terraform Provider for Oracle Cloud Infrastructure
+# Terraform Provider for Oracle Cloud Infrastructure in [CUE](https://cuelang.org/)!
+## About
+This folk of original repository includes additional codes for generating provider-specific resource schema in CUE configuration language.
+Auto-generated schemas for all services supported by original provider are available via CUE module ecosystem.
 
-**The OCI Terraform Provider is now available for automatic download through the Terraform Provider Registry.**
+## Why Use This Repository?
 
-- [Documentation](https://www.terraform.io/docs/providers/oci/index.html)
-- [Setup guide](https://www.terraform.io/docs/providers/oci/guides/version-3-upgrade.html)
-- [Examples](https://github.com/oracle/terraform-provider-oci/tree/master/examples)
-- [OCI forums](https://cloudcustomerconnect.oracle.com/resources/9c8fa8f96f/summary)
-- [Github issues](https://github.com/oracle/terraform-provider-oci/issues)
-- [Troubleshooting](https://www.terraform.io/docs/providers/oci/guides/troubleshooting.html)
+### 🚀 Comprehensive Terraform Provider Schemas in CUE
+- Auto-generated CUE schemas for all services supported by the original Terraform Provider.
+- Always up-to-date with provider specifications.
 
-[![wercker status](https://app.wercker.com/status/666d2ee10f45dde41189bb03248aadf9/s/master "wercker status")](https://app.wercker.com/project/byKey/666d2ee10f45dde41189bb03248aadf9)
+### ✅ Streamlined Validation and Automation
+- Use CUE’s validation to catch errors early.
+- Simplify configuration generation and ensure correctness.
+
+### 🔄 Reusable and Scalable Configurations
+- Write modular and parameterized configurations.
+- Reduce duplication and enhance maintainability.
+
+### 🔧 Built for Automation
+- Automate configuration generation and validation for scalable infrastructure management.
+
+Use this repository to harness the power of CUE and take your Terraform workflows to the next level!
 
 
-## Requirements
+## Example
+```cue
+package main
 
-- [Terraform](https://www.terraform.io/downloads.html) v0.12.31 or greater
-- [Go](https://golang.org/doc/install) 1.21.8 (recommended)
+import (
+  // Import module and package from this repository
+	"github.com/westelh/terraform-provider-oci-cue/identity
+)
 
+resource: {
+	oci_identity_policy: {
+        // Apply constraints provided by identity package to all values in this block.
+		[Name=_]: identity.#resource.arguments.policy & {
+			name: Name
+		}
 
-## Building the Provider
-
-Clone repository to: `$GOPATH/src/terraform-provider-oci`
-
-```sh
-$ mkdir -p $GOPATH/src/github.com/terraform-providers; cd $GOPATH/src/github.com/terraform-providers
-$ git clone git@github.com:terraform-providers/terraform-provider-oci
+		example: {
+			compartment_id: "${var.oci_compartment_id}"
+			description:    "Real resource written in CUE."
+			statements: [ "Some Valid Policy" ]
+		}
+	}
+}
 ```
-
-Enter the provider directory and build the provider
-
-```sh
-$ cd $GOPATH/src/terraform-provider-oci
-$ make build
-```
-
-
-## Installation
-
-If you're building the provider, follow the instructions to [install it as a plugin.](https://www.terraform.io/docs/plugins/basics.html#installing-a-plugin) 
-After placing it into your plugins directory,  run `terraform init` to initialize it and begin using Terraform with the Oracle Cloud Infrastructure provider.
-
-
-## Troubleshooting the Provider
-
-See [verbose logging](https://www.terraform.io/docs/providers/oci/guides/troubleshooting.html#verbose-logging-for-oci-terraform-provider) for the details.
-
-## Developing the Provider
-
-To add features to the provider, install [Go](http://www.golang.org) and configure your your [GOPATH](http://golang.org/doc/code.html#GOPATH)
-
-Compile the provider by running `make build`. The provider binary will output to your `$GOPATH/bin` directory, make sure this has been added to your `$PATH`.
-
-```sh
-$ make build
-```
-
-To test the provider run `make testacc`.
-
-```sh
-$ make testacc
-```
-
-> **Note:** The tests run against live OCI service APIs, you will need to configure environment variables with valid credientials as shown in the [documentation](https://www.terraform.io/docs/providers/oci/index.html).
-
-## Contributing
-
-This project welcomes contributions from the community. Before submitting a pull request, please [review our contribution guide](./CONTRIBUTING.md)
-
-## Security
-
-Please consult the [security guide](./SECURITY.md) for our responsible security vulnerability disclosure process
-
-## License
-
-Copyright (c) 2017, 2024 Oracle and/or its affiliates.
-
-Released under the Mozilla Public License 2.0
