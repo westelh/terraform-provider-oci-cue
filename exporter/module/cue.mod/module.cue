@@ -1,4 +1,4 @@
-module: "ghcr.io/westelh/terraform-provider-oci-cue"
+module: "github.com/westelh/terraform-provider-oci-cue"
 language: {
 	version: "v0.10.1"
 }
