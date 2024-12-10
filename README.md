@@ -50,3 +50,5 @@ resource: {
 
 Omitting 'statements' in the resource definition will cause an immediate failure in `cue vet`, eliminating the need to run terraform plan and wait for it to fail. While 'name' is mandatory, cue templating defines it as 'example' and keep the definition valid.
 
+All packages: https://github.com/westelh/terraform-provider-oci-cue/tree/cue/exporter/module
+
