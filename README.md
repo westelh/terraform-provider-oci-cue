@@ -1,6 +1,6 @@
 # Terraform Provider for Oracle Cloud Infrastructure in [CUE](https://cuelang.org/)!
 ## About
-This folk of original repository includes additional codes for generating provider-specific resource schema in CUE configuration language.
+This repository holds terraform resource schema in CUE configuration language.
 Auto-generated schemas for all services supported by original provider are available via CUE module ecosystem.
 
 ## Why Use This Repository?
